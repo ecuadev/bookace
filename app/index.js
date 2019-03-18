@@ -1,6 +1,8 @@
-import { Navigation } from "react-native-navigation";
+import { Navigation } from 'react-native-navigation';
+import buildStyles from './src/styles';
 import registerScreens from './src/screens';
 
+buildStyles();
 registerScreens();
 
 Navigation.events().registerAppLaunchedListener(() => {

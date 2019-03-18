@@ -1,19 +1,20 @@
-import { StyleSheet } from 'react-native';
+import EStyleSheet from 'react-native-extended-stylesheet';
 
-export default StyleSheet.create({
+export default EStyleSheet.create({
 	button: {
 		alignItems: 'center',
 		justifyContent: 'center',
-		backgroundColor: '#b1b2b3',
-		height: 45,
+		borderRadius: 50,
+		backgroundColor: '$primaryColor',
+		height: 50,
 		width: '100%'
 	},
 	facebookButton: {
-		backgroundColor: '#3B5998',
+		backgroundColor: '$fbColor',
 		flexDirection: 'row'
 	},
 	googleButton: {
-		backgroundColor: '#DD4B39',
+		backgroundColor: '$googleColor',
 		flexDirection: 'row'
 	},
 	label: {

@@ -1,5 +1,7 @@
 const images = {
 	// Login/Signup
+	authLogo: require('./auth/logo.png'),
+	authBackground: require('./auth/background.png'),
 	facebookAuthIcon: require('./auth/facebook.png'),
 	googleAuthIcon: require('./auth/google.png'),
 	// Tabs

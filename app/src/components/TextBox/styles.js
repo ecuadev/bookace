@@ -1,21 +1,19 @@
-import { StyleSheet } from 'react-native';
+import EStyleSheet from 'react-native-extended-stylesheet';
 
-export default StyleSheet.create({
+export default EStyleSheet.create({
 	wrapper: {
-		marginBottom: 19,
+		marginBottom: 20,
 		width: '100%'
 	},
 	label: {
-		color: '#72727F',
+		color: '$darkTextColor',
 		fontSize: 12,
 		lineHeight: 14,
 		marginBottom: 9
 	},
 	textBoxWrapper: {
-		borderColor: '#E8E8E8',
-		borderWidth: 1,
-		borderRadius: 4,
-		backgroundColor: '#FFFFFF',
+		borderRadius: 10,
+		backgroundColor: 'rgba(20,15,38,0.85)',
 		flexDirection: 'row',
 		alignItems: 'center'
 	},
@@ -23,7 +21,8 @@ export default StyleSheet.create({
 		borderColor: '#FE6068'
 	},
 	textBox: {
-		height: 44,
+		color: '$lightTextColor',
+		height: 55,
 		paddingHorizontal: 15,
 		flex: 1,
 		fontSize: 14,

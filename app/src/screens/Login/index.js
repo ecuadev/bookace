@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { Image, ImageBackground, Text, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
+import Images from '@assets/images';
 
 import TextBox from '../../components/TextBox';
 import Button from '../../components/Button';
@@ -32,16 +33,30 @@ export default class Login extends Component {
 
 	render() {
 		return (
-			<View style={styles.container}>
-				<Text style={styles.title}>Login Page</Text>
-				<TextBox label="Username" />
-				<TextBox label="Password" type="password" />
-				<Button onPress={this.login}>Login</Button>
-				<LinkButton>Forgot password</LinkButton>
-				<FacebookButton onPress={this.login}>Login with Facebook</FacebookButton>
-				<GoogleButton onPress={this.login}>Login with Google</GoogleButton>
-				<LinkButton onPress={this.toSignup}>Create account</LinkButton>
-			</View>
+			<ImageBackground source={Images.authBackground} style={styles.container}>
+				<View style={styles.logo}>
+					<Image source={Images.authLogo} resizeMode="contain" style={styles.logoImage} />
+				</View>
+				<View style={styles.form}>
+					<TextBox placeholder="Username" />
+					<TextBox placeholder="Password" type="password" />
+					<Button onPress={this.login} style={styles.signinButton}>SIGN IN</Button>
+
+					<View style={styles.separator}>
+						<View style={styles.separatorLine} />
+						<Text style={styles.separatorText}>OR</Text>
+						<View style={styles.separatorLine} />
+					</View>
+
+					<FacebookButton onPress={this.login} style={styles.fbButton}>CONTINUE WITH FACEBOOK</FacebookButton>
+					<GoogleButton onPress={this.login}>CONTINUE WITH GOOGLE</GoogleButton>
+
+					<View style={styles.bottomLinks}>
+						<LinkButton style={styles.bottomLink}>Forgot password</LinkButton>
+						<LinkButton style={styles.bottomLink} onPress={this.toSignup}>Create account</LinkButton>
+					</View>
+				</View>
+			</ImageBackground>
 		);
 	}
 }

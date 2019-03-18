@@ -9,7 +9,7 @@ export const goHome = () => {
 				children: [
 					{
 						component: {
-							name: "bookace.Home",
+							name: 'bookace.Home',
 							options: {
 								bottomTab: {
 									icon: Images.homeTabIcon
@@ -19,7 +19,7 @@ export const goHome = () => {
 					},
 					{
 						component: {
-							name: "bookace.Search",
+							name: 'bookace.Search',
 							options: {
 								bottomTab: {
 									icon: Images.searchTabIcon
@@ -29,7 +29,7 @@ export const goHome = () => {
 					},
 					{
 						component: {
-							name: "bookace.Camera",
+							name: 'bookace.Camera',
 							options: {
 								bottomTab: {
 									icon: Images.cameraTabIcon
@@ -39,7 +39,7 @@ export const goHome = () => {
 					},
 					{
 						component: {
-							name: "bookace.Social",
+							name: 'bookace.Social',
 							options: {
 								bottomTab: {
 									icon: Images.socialTabIcon
@@ -49,7 +49,7 @@ export const goHome = () => {
 					},
 					{
 						component: {
-							name: "bookace.Profile",
+							name: 'bookace.Profile',
 							options: {
 								bottomTab: {
 									icon: Images.profileTabIcon

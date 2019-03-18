@@ -1,37 +1,38 @@
-import { StyleSheet, Platform, Dimensions } from 'react-native';
+import EStyleSheet from 'react-native-extended-stylesheet';
+import { Platform, Dimensions } from 'react-native';
 
-const isTallIPhone = Platform.OS === "ios" && Dimensions.get('window').height >= 812;
+const isTallIPhone = Platform.OS === 'ios' && Dimensions.get('window').height >= 812;
 
-export default StyleSheet.create({
+export default EStyleSheet.create({
 	tabBar: {
 		position: 'absolute',
 		bottom: 0,
-		width: "100%",
+		width: '100%',
 		height: isTallIPhone ? 83 : 49,
-		backgroundColor: "#f9fafb",
+		backgroundColor: '$tabsPrimaryColor',
 		flexDirection: 'row',
 		justifyContent: 'space-around',
 		borderTopWidth: 0.3,
-		borderTopColor: "#b1b2b3"
+		borderTopColor: '$tabsSecondaryColor'
 	},
 	tab: {
-		width: "20%",
+		width: '20%',
 		height: 49,
-		alignItems: "center",
-		justifyContent: "center"
+		alignItems: 'center',
+		justifyContent: 'center'
 	},
 	image: {
 		width: 20,
 		height: 20,
-		tintColor: '#b1b2b3'
+		tintColor: '$tabsSecondaryColor'
 	},
 	imageActive: {
-		tintColor: '#000000'
+		tintColor: '$tabsActiveColor'
 	},
 	cameraTab: {
-		backgroundColor: '#f9fafb',
+		backgroundColor: '$tabsPrimaryColor',
 		borderWidth: 1,
-		borderColor: "#b1b2b3",
+		borderColor: '$tabsSecondaryColor',
 		borderRadius: 50,
 		width: 60,
 		height: 60,
@@ -39,20 +40,20 @@ export default StyleSheet.create({
 		top: -10
 	},
 	cameraTabInner: {
-		backgroundColor: "#b1b2b3",
+		backgroundColor: '$tabsSecondaryColor',
 		borderRadius: 50,
 		width: 52,
 		height: 52,
-		alignItems: "center",
-		justifyContent: "center"
+		alignItems: 'center',
+		justifyContent: 'center'
 	},
 	cameraImage: {
-		tintColor: '#f9fafb'
+		tintColor: '$tabsPrimaryColor'
 	},
 	cameraTabActive: {
-		borderColor: "#000000"
+		borderColor: '$tabsActiveColor'
 	},
 	cameraTabInnerActive: {
-		backgroundColor: "#000000"
+		backgroundColor: '$tabsActiveColor'
 	}
 });

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { View, Text, TextInput } from 'react-native';
+import EStyleSheet from 'react-native-extended-stylesheet';
 
 import styles from './styles';
 
@@ -28,7 +29,7 @@ class TextBox extends Component {
 
 		return (
 			<View style={[styles.wrapper, style]}>
-				<Text style={styles.label}>{label}</Text>
+				{ label && <Text style={styles.label}>{label}</Text> }
 				<View style={[styles.textBoxWrapper, error && styles.textBoxWrapperError]}>
 					<TextInput
 						onChangeText={text => onChange(text)}
@@ -37,6 +38,7 @@ class TextBox extends Component {
 						autoCorrect={false}
 						keyboardType={this.keyBoardType}
 						placeholder={placeholder}
+						placeholderTextColor={EStyleSheet.value('$lightTextColor')}
 						style={[styles.textBox, type === 'password' && styles.password]}
 						secureTextEntry={type === 'password'}
 						underlineColorAndroid="rgba(0,0,0,0)"
