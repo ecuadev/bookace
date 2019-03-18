@@ -6,14 +6,18 @@ import Images from '@assets/images';
 import TextBox from '../../components/TextBox';
 import Button from '../../components/Button';
 import LinkButton from '../../components/LinkButton';
-import FacebookButton from '../../components/Button/FacebookButton';
-import GoogleButton from '../../components/Button/GoogleButton';
+import TransparentButton from '../../components/Button/TransparentButton';
 import { goHome } from '../../navigation';
 
 import styles from './styles';
 
 
 export default class Login extends Component {
+	constructor(props) {
+		super(props);
+		this.textInput = React.createRef();
+	}
+
 	login() {
 		goHome();
 	}
@@ -37,8 +41,10 @@ export default class Login extends Component {
 				<View style={styles.logo}>
 					<Image source={Images.authLogo} resizeMode="contain" style={styles.logoImage} />
 				</View>
+
+
 				<View style={styles.form}>
-					<TextBox placeholder="Username" />
+					<TextBox placeholder="Username" ref={this.textInput} />
 					<TextBox placeholder="Password" type="password" />
 					<Button onPress={this.login} style={styles.signinButton}>SIGN IN</Button>
 
@@ -48,12 +54,12 @@ export default class Login extends Component {
 						<View style={styles.separatorLine} />
 					</View>
 
-					<FacebookButton onPress={this.login} style={styles.fbButton}>CONTINUE WITH FACEBOOK</FacebookButton>
-					<GoogleButton onPress={this.login}>CONTINUE WITH GOOGLE</GoogleButton>
+					<TransparentButton onPress={this.login} icon={Images.facebookAuthIcon} style={styles.fbButton}>CONTINUE WITH FACEBOOK</TransparentButton>
+					<TransparentButton onPress={this.login} icon={Images.googleAuthIcon}>CONTINUE WITH GOOGLE</TransparentButton>
 
 					<View style={styles.bottomLinks}>
-						<LinkButton style={styles.bottomLink}>Forgot password</LinkButton>
-						<LinkButton style={styles.bottomLink} onPress={this.toSignup}>Create account</LinkButton>
+						<LinkButton style={styles.bottomLink} containerStyle={styles.bottomLinkContainer}>Forgot password</LinkButton>
+						<LinkButton style={styles.bottomLink} containerStyle={styles.bottomLinkContainer} onPress={this.toSignup}>Create account</LinkButton>
 					</View>
 				</View>
 			</ImageBackground>

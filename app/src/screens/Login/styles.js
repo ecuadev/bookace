@@ -31,31 +31,36 @@ export default EStyleSheet.create({
 	},
 	separator: {
 		flexDirection: 'row',
-		marginVertical: 15,
+		marginVertical: 25,
 		alignItems: 'center',
 		justifyContent: 'center'
 	},
 	separatorLine: {
-		height: 1,
+		height: 2,
 		backgroundColor: '$lightTextColor',
 		width: 40
 	},
 	separatorText: {
 		fontSize: 14,
+		fontWeight: '700',
 		color: '$lightTextColor',
-		paddingHorizontal: 15
+		paddingHorizontal: 20
 	},
 	fbButton: {
-		marginBottom: 10
+		marginBottom: 15
 	},
 	bottomLinks: {
 		width: '100%',
 		flexDirection: 'row',
 		justifyContent: 'space-between',
-		marginTop: 40,
-		marginBottom: 15
+		marginTop: 20,
+		marginBottom: 5
 	},
 	bottomLink: {
-		color: '$lightTextColor'
+		color: '$lightTextColor',
+		fontWeight: '500'
+	},
+	bottomLinkContainer: {
+		paddingVertical: 10
 	}
 });

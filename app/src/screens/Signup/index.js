@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { Text, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
+import Images from '@assets/images';
 
 import TextBox from '../../components/TextBox';
 import Button from '../../components/Button';
 import LinkButton from '../../components/LinkButton';
-import FacebookButton from '../../components/Button/FacebookButton';
-import GoogleButton from '../../components/Button/GoogleButton';
+import TransparentButton from '../../components/Button/TransparentButton';
 import { goHome } from '../../navigation';
 
 import styles from './styles';
@@ -28,8 +28,8 @@ export default class Signup extends Component {
 				<TextBox label="Password" type="password" />
 				<TextBox label="Confirm Password" type="password" />
 				<Button onPress={this.signup}>Create Account</Button>
-				<FacebookButton onPress={this.signup}>Signup with Facebook</FacebookButton>
-				<GoogleButton onPress={this.signup}>Signup with Google</GoogleButton>
+				<TransparentButton onPress={this.login} icon={Images.facebookAuthIcon} style={styles.fbButton}>CONTINUE WITH FACEBOOK</TransparentButton>
+				<TransparentButton onPress={this.login} icon={Images.googleAuthIcon}>CONTINUE WITH GOOGLE</TransparentButton>
 				<LinkButton onPress={this.toLogin}>Already have an account</LinkButton>
 			</View>
 		);

@@ -13,7 +13,6 @@ export default EStyleSheet.create({
 	},
 	textBoxWrapper: {
 		borderRadius: 10,
-		backgroundColor: 'rgba(20,15,38,0.85)',
 		flexDirection: 'row',
 		alignItems: 'center'
 	},
@@ -25,7 +24,7 @@ export default EStyleSheet.create({
 		height: 55,
 		paddingHorizontal: 15,
 		flex: 1,
-		fontSize: 14,
+		fontSize: 15,
 		lineHeight: 17
 	},
 	password: {
@@ -43,5 +42,13 @@ export default EStyleSheet.create({
 		fontSize: 12,
 		lineHeight: 14,
 		marginTop: 9
+	},
+	blurView: {
+		position: 'absolute',
+		left: 0,
+		right: 0,
+		top: 0,
+		bottom: 0,
+		borderRadius: 10
 	}
 });

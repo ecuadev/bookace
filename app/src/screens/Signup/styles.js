@@ -5,7 +5,7 @@ export default EStyleSheet.create({
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
-		backgroundColor: '#F5FCFF',
+		backgroundColor: '#000000',
 		padding: 50
 	},
 	title: {

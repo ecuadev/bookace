@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { View, Text, TextInput } from 'react-native';
+import { BlurView } from 'react-native-blur';
 import EStyleSheet from 'react-native-extended-stylesheet';
 
 import styles from './styles';
@@ -31,6 +32,7 @@ class TextBox extends Component {
 			<View style={[styles.wrapper, style]}>
 				{ label && <Text style={styles.label}>{label}</Text> }
 				<View style={[styles.textBoxWrapper, error && styles.textBoxWrapperError]}>
+					<BlurView style={styles.blurView} blurType="dark" blurAmount={10} />
 					<TextInput
 						onChangeText={text => onChange(text)}
 						value={value}

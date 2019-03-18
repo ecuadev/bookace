@@ -7,36 +7,28 @@ export default EStyleSheet.create({
 		borderRadius: 50,
 		backgroundColor: '$primaryColor',
 		height: 50,
-		width: '100%'
-	},
-	facebookButton: {
-		backgroundColor: '$fbColor',
+		width: '100%',
 		flexDirection: 'row'
 	},
-	googleButton: {
-		backgroundColor: '$googleColor',
-		flexDirection: 'row'
+	transparentButton: {
+		backgroundColor: 'transparent'
 	},
 	label: {
-		color: '#ffffff',
-		fontWeight: '600',
-		fontSize: 14,
-		lineHeight: 18
-	},
-	facebookLabel: {
-		color: '#FFFFFF',
-		fontWeight: '600',
-		fontSize: 14,
-		lineHeight: 18
-	},
-	googleLabel: {
-		color: '#FFFFFF',
+		color: '$lightTextColor',
 		fontWeight: '600',
 		fontSize: 14,
 		lineHeight: 18
 	},
 	icon: {
 		marginRight: 7,
-		tintColor: '#FFFFFF'
+		tintColor: '$lightTextColor'
+	},
+	blurView: {
+		position: 'absolute',
+		left: 0,
+		right: 0,
+		top: 0,
+		bottom: 0,
+		borderRadius: 25
 	}
 });
