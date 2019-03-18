@@ -1,18 +1,21 @@
-/**
- * @format
- */
-
 import { Navigation } from "react-native-navigation";
-import App from './src/App';
+import registerScreens from './src/screens';
 
-Navigation.registerComponent(`bookace.WelcomeScreen`, () => App);
+registerScreens();
 
 Navigation.events().registerAppLaunchedListener(() => {
-  Navigation.setRoot({
-    root: {
-      component: {
-        name: "bookace.WelcomeScreen"
-      }
-    }
-  });
+	Navigation.setDefaultOptions({
+		bottomTabs: {
+			visible: false,
+			drawBehind: true
+		}
+	});
+
+	Navigation.setRoot({
+		root: {
+			component: {
+				name: 'bookace.Welcome'
+			}
+		}
+	});
 });
