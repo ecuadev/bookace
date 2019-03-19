@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { View, Text, TextInput } from 'react-native';
+import { View, Text, TextInput, Platform } from 'react-native';
 import { BlurView } from 'react-native-blur';
 import EStyleSheet from 'react-native-extended-stylesheet';
 
 import styles from './styles';
+
+const isAndroid = Platform.OS === 'android';
 
 class TextBox extends Component {
 	constructor(props) {
@@ -31,8 +33,8 @@ class TextBox extends Component {
 		return (
 			<View style={[styles.wrapper, style]}>
 				{ label && <Text style={styles.label}>{label}</Text> }
-				<View style={[styles.textBoxWrapper, error && styles.textBoxWrapperError]}>
-					<BlurView style={styles.blurView} blurType="dark" blurAmount={10} />
+				<View style={[styles.textBoxWrapper, isAndroid && styles.textBoxWrapperAndroid, error && styles.textBoxWrapperError]}>
+					{ !isAndroid && <BlurView style={styles.blurView} blurType="dark" blurAmount={10} /> }
 					<TextInput
 						onChangeText={text => onChange(text)}
 						value={value}

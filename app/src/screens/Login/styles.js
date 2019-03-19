@@ -8,7 +8,8 @@ export default EStyleSheet.create({
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
-		padding: 30
+		paddingHorizontal: 30,
+		paddingVertical: 10
 	},
 	logo: {
 		flex: 1,

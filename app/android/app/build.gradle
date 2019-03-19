@@ -108,8 +108,6 @@ android {
         missingDimensionStrategy "RNN.reactNativeVersion", "reactNative57_5"
         versionCode 1
         versionName "1.0"
-        renderscriptTargetApi 28
-        renderscriptSupportModeEnabled true
     }
     splits {
         abi {
@@ -141,7 +139,6 @@ android {
 }
 
 dependencies {
-    implementation project(":react-native-blur")
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
     implementation "com.android.support:design:27.1.0"

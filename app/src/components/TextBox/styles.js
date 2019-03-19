@@ -16,6 +16,9 @@ export default EStyleSheet.create({
 		flexDirection: 'row',
 		alignItems: 'center'
 	},
+	textBoxWrapperAndroid: {
+		backgroundColor: 'rgba(0,0,0, 0.7)'
+	},
 	textBoxWrapperError: {
 		borderColor: '#FE6068'
 	},
