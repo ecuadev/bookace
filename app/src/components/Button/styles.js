@@ -13,7 +13,7 @@ export default EStyleSheet.create({
 	transparentButton: {
 		backgroundColor: 'transparent'
 	},
-	androidTransparentButton: {
+	transparentButtonAndroid: {
 		backgroundColor: 'rgba(255,255,255, 0.4)'
 	},
 	label: {

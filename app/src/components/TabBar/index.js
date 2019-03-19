@@ -34,21 +34,21 @@ export default class TabBar extends Component {
 					activeOpacity={1}
 					onPress={() => this.changeToTab(0)}
 					style={styles.tab}>
-					<Image source={Images.homeTabIcon} style={[styles.image, activeTab === 0 ? styles.imageActive : null]} />
+					<Image source={Images.homeTabIcon} style={[styles.image, activeTab === 0 && styles.imageActive]} />
 				</TouchableOpacity>
 
 				<TouchableOpacity
 					activeOpacity={1}
 					onPress={() => this.changeToTab(1)}
 					style={styles.tab}>
-					<Image source={Images.searchTabIcon} style={[styles.image, activeTab === 1 ? styles.imageActive : null]} />
+					<Image source={Images.searchTabIcon} style={[styles.image, activeTab === 1 && styles.imageActive]} />
 				</TouchableOpacity>
 
 				<TouchableOpacity
 					activeOpacity={1}
 					onPress={() => this.changeToTab(2)}
-					style={[styles.cameraTab, styles.cameraImage, activeTab === 2 ? styles.cameraTabActive : null]}>
-					<View style={[styles.cameraTabInner, styles.cameraImage, activeTab === 2 ? styles.cameraTabInnerActive : null]}>
+					style={[styles.cameraTab, styles.cameraImage, activeTab === 2 && styles.cameraTabActive]}>
+					<View style={[styles.cameraTabInner, styles.cameraImage, activeTab === 2 && styles.cameraTabInnerActive]}>
 						<Image source={Images.cameraTabIcon} style={[styles.image, styles.cameraImage]} />
 					</View>
 				</TouchableOpacity>
@@ -57,14 +57,14 @@ export default class TabBar extends Component {
 					activeOpacity={1}
 					onPress={() => this.changeToTab(3)}
 					style={styles.tab}>
-					<Image source={Images.socialTabIcon} style={[styles.image, activeTab === 3 ? styles.imageActive : null]} />
+					<Image source={Images.socialTabIcon} style={[styles.image, activeTab === 3 && styles.imageActive]} />
 				</TouchableOpacity>
 
 				<TouchableOpacity
 					activeOpacity={1}
 					onPress={() => this.changeToTab(4)}
 					style={styles.tab}>
-					<Image source={Images.profileTabIcon} style={[styles.image, activeTab === 4 ? styles.imageActive : null]} />
+					<Image source={Images.profileTabIcon} style={[styles.image, activeTab === 4 && styles.imageActive]} />
 				</TouchableOpacity>
 			</View>
 		);

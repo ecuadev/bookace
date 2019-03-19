@@ -1,14 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { TouchableOpacity, Text, Image, Platform } from 'react-native';
+import { TouchableOpacity, Text, Image } from 'react-native';
 import { BlurView } from 'react-native-blur';
 import styles from './styles';
 
-const isAndroid = Platform.OS === 'android';
-
 const TransparentButton = ({ children, onPress, style, icon, blurType }) => (
-	<TouchableOpacity onPress={onPress} style={[styles.button, styles.transparentButton, isAndroid && styles.androidTransparentButton, style]}>
-		{ !isAndroid && <BlurView style={styles.blurView} blurType={blurType} blurAmount={10} /> }
+	<TouchableOpacity onPress={onPress} style={[styles.button, styles.transparentButton, style]}>
+		<BlurView style={styles.blurView} blurType={blurType} blurAmount={10} />
 		{ icon && <Image source={icon} style={styles.icon} /> }
 		<Text style={[styles.label]}>{children}</Text>
 	</TouchableOpacity>
