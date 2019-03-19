@@ -11,14 +11,14 @@ import Profile from './Profile';
 
 import TabBar from '../components/TabBar';
 
-export default function (store, Provider) {
-	Navigation.registerComponent('bookace.Welcome', () => Welcome);
-	Navigation.registerComponent('bookace.Signup', () => Signup);
-	Navigation.registerComponent('bookace.Login', () => Login);
-	Navigation.registerComponent('bookace.Home', () => Home);
-	Navigation.registerComponent('bookace.Search', () => Search);
-	Navigation.registerComponent('bookace.Camera', () => Camera);
-	Navigation.registerComponent('bookace.Social', () => Social);
-	Navigation.registerComponent('bookace.Profile', () => Profile);
-	Navigation.registerComponent('bookace.TabBar', () => TabBar);
+export default function (Provider, store) {
+	Navigation.registerComponentWithRedux('bookace.Welcome', () => Welcome, Provider, store);
+	Navigation.registerComponentWithRedux('bookace.Signup', () => Signup, Provider, store);
+	Navigation.registerComponentWithRedux('bookace.Login', () => Login, Provider, store);
+	Navigation.registerComponentWithRedux('bookace.Home', () => Home, Provider, store);
+	Navigation.registerComponentWithRedux('bookace.Search', () => Search, Provider, store);
+	Navigation.registerComponentWithRedux('bookace.Camera', () => Camera, Provider, store);
+	Navigation.registerComponentWithRedux('bookace.Social', () => Social, Provider, store);
+	Navigation.registerComponentWithRedux('bookace.Profile', () => Profile, Provider, store);
+	Navigation.registerComponentWithRedux('bookace.TabBar', () => TabBar, Provider, store);
 }
