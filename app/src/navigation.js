@@ -84,7 +84,8 @@ export const goToAuth = () => Navigation.setRoot({
 						name: 'bookace.Login',
 						options: {
 							topBar: {
-								visible: false
+								visible: false,
+								height: 0
 							}
 						}
 					}

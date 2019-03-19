@@ -2,6 +2,9 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 
 export default EStyleSheet.create({
 	container: {
+		flex: 1
+	},
+	inner: {
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
@@ -53,8 +56,7 @@ export default EStyleSheet.create({
 		width: '100%',
 		flexDirection: 'row',
 		justifyContent: 'space-between',
-		marginTop: 20,
-		marginBottom: 5
+		marginTop: 20
 	},
 	bottomLink: {
 		color: '$lightTextColor',

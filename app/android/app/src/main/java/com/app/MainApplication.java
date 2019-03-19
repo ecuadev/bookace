@@ -6,6 +6,7 @@ import com.facebook.react.ReactPackage;
 import com.reactnativenavigation.NavigationApplication;
 import com.reactnativenavigation.react.NavigationReactNativeHost;
 import com.reactnativenavigation.react.ReactGateway;
+import com.cmcewen.blurview.BlurViewPackage;
 
 import java.util.Arrays;
 import java.util.List;
@@ -31,6 +32,7 @@ public class MainApplication extends NavigationApplication {
     // Add additional packages you require here
     // No need to add RnnPackage and MainReactPackage
     return Arrays.<ReactPackage>asList(
+      new BlurViewPackage()
       // eg. new VectorIconsPackage()
     );
   }
