@@ -1,5 +1,6 @@
-package com.app;
+package com.bookace.app;
 
+import com.app.BuildConfig;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 
@@ -7,10 +8,21 @@ import com.reactnativenavigation.NavigationApplication;
 import com.reactnativenavigation.react.NavigationReactNativeHost;
 import com.reactnativenavigation.react.ReactGateway;
 
+import com.facebook.CallbackManager;
+import com.facebook.FacebookSdk;
+import com.facebook.reactnative.androidsdk.FBSDKPackage;
+
 import java.util.Arrays;
 import java.util.List;
 
 public class MainApplication extends NavigationApplication {
+
+  private static CallbackManager mCallbackManager = CallbackManager.Factory.create();
+
+  protected static CallbackManager getCallbackManager() {
+    return mCallbackManager;
+  }
+
   @Override
   protected ReactGateway createReactGateway() {
     ReactNativeHost host = new NavigationReactNativeHost(this, isDebug(), createAdditionalReactPackages()) {
@@ -31,6 +43,7 @@ public class MainApplication extends NavigationApplication {
     // Add additional packages you require here
     // No need to add RnnPackage and MainReactPackage
     return Arrays.<ReactPackage>asList(
+      new FBSDKPackage(mCallbackManager)
       // eg. new VectorIconsPackage()
     );
   }

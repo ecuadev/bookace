@@ -25,8 +25,17 @@ yarn install
 
 ### Configure Facebook SDK on iOS
 
-Open /bookace/app/ios/app/Info.plist file and update FacebookDisplayName and FacebookDisplayName values.
+Download the Facebook SDK for iOS from https://origincache.facebook.com/developers/resources/?id=facebook-ios-sdk-current.zip  and uncompress it under __~/Documents/FacebookSDK__.
+
+Open /bookace/app/ios/app/Info.plist file and update FacebookDisplayName, FacebookDisplayName and CFBundleURLSchemes values.
+
 https://developers.facebook.com/docs/ios/getting-started/#xcode
+
+### Configure Facebook SDK on Android
+Open /bookace/app/android/app/src/main/res/values/strings.xml and update facebook_app_id value.
+
+https://developers.facebook.com/quickstarts/?platform=android
+
 
 ## Development
 
