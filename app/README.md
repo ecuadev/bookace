@@ -23,6 +23,11 @@ cd bookace/app
 yarn install
 ```
 
+### Configure Facebook SDK on iOS
+
+Open /bookace/app/ios/app/Info.plist file and update FacebookDisplayName and FacebookDisplayName values.
+https://developers.facebook.com/docs/ios/getting-started/#xcode
+
 ## Development
 
 This project uses EditorConfig to standarize text editor configuration.
