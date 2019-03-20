@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Image, ImageBackground, Text, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
+import { LoginManager } from 'react-native-fbsdk';
 import Images from '@assets/images';
 
 import DismissKeyboardView from '../../components/DismissKeyboardView';
@@ -37,6 +38,22 @@ export default class Login extends Component {
 		});
 	}
 
+	onFacebookLogin() {
+		// Attempt a login using the Facebook login dialog asking for default permissions.
+		LoginManager.logInWithReadPermissions(['public_profile']).then(
+			result => {
+				if (result.isCancelled) {
+					console.log('Login cancelled');
+				} else {
+					console.log(`Login success with permissions: ${result.grantedPermissions.toString()}`);
+				}
+			},
+			error => {
+				console.log('Login fail with error: ' + error);
+			}
+		);
+	}
+
 	render() {
 		return (
 			<ImageBackground source={Images.authBackground} style={styles.container}>
@@ -57,7 +74,7 @@ export default class Login extends Component {
 							<View style={styles.separatorLine} />
 						</View>
 
-						<TransparentButton onPress={this.login} icon={Images.facebookAuthIcon} style={styles.fbButton}>CONTINUE WITH FACEBOOK</TransparentButton>
+						<TransparentButton onPress={this.onFacebookLogin} icon={Images.facebookAuthIcon} style={styles.fbButton}>CONTINUE WITH FACEBOOK</TransparentButton>
 						<TransparentButton onPress={this.login} icon={Images.googleAuthIcon}>CONTINUE WITH GOOGLE</TransparentButton>
 
 						<View style={styles.bottomLinks}>
