@@ -10,6 +10,7 @@ const images = {
 	cameraTabIcon: require('./tabIcons/camera.png'),
 	socialTabIcon: require('./tabIcons/friends.png'),
 	profileTabIcon: require('./tabIcons/user.png'),
+	backIcon: require('./utils/back-icon.png'),
 };
 
 export default images;

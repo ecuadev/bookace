@@ -8,12 +8,14 @@ import Search from './Search';
 import Camera from './Camera';
 import Social from './Social';
 import Profile from './Profile';
+import ForgotPass from './ForgotPass';
 
 import TabBar from '../components/TabBar';
 
 export default function (Provider, store) {
 	Navigation.registerComponentWithRedux('bookace.Welcome', () => Welcome, Provider, store);
 	Navigation.registerComponentWithRedux('bookace.Signup', () => Signup, Provider, store);
+	Navigation.registerComponentWithRedux('bookace.ForgotPass', () => ForgotPass, Provider, store);
 	Navigation.registerComponentWithRedux('bookace.Login', () => Login, Provider, store);
 	Navigation.registerComponentWithRedux('bookace.Home', () => Home, Provider, store);
 	Navigation.registerComponentWithRedux('bookace.Search', () => Search, Provider, store);

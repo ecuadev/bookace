@@ -37,6 +37,20 @@ export default class Login extends Component {
 		});
 	}
 
+	forgotPassword() {
+		Navigation.push('AuthStack', {
+			component: {
+				name: 'bookace.ForgotPass',
+				options: {
+					topBar: {
+						visible: false,
+						height: 0
+					}
+				}
+			}
+		});
+	}
+
 	render() {
 		return (
 			<ImageBackground source={Images.authBackground} style={styles.container}>
@@ -61,7 +75,7 @@ export default class Login extends Component {
 						<TransparentButton onPress={this.login} icon={Images.googleAuthIcon}>CONTINUE WITH GOOGLE</TransparentButton>
 
 						<View style={styles.bottomLinks}>
-							<LinkButton style={styles.bottomLink} containerStyle={styles.bottomLinkContainer}>Forgot password</LinkButton>
+							<LinkButton style={styles.bottomLink} containerStyle={styles.bottomLinkContainer} onPress={this.forgotPassword}>Forgot password</LinkButton>
 							<LinkButton style={styles.bottomLink} containerStyle={styles.bottomLinkContainer} onPress={this.toSignup}>Create account</LinkButton>
 						</View>
 					</View>
