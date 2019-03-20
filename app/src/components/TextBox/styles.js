@@ -41,8 +41,10 @@ export default EStyleSheet.create({
 		width: 22
 	},
 	error: {
-		color: '#FE6068',
-		fontSize: 12,
+		position: 'absolute',
+		bottom: -16,
+		color: '#FFFFFF',
+		fontSize: 14,
 		lineHeight: 14,
 		marginTop: 9
 	},

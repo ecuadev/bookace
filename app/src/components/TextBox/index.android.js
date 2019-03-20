@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { View, Text, TextInput } from 'react-native';
-import { BlurView } from 'react-native-blur';
 import EStyleSheet from 'react-native-extended-stylesheet';
 
 import styles from './styles';

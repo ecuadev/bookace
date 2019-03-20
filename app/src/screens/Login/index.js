@@ -4,6 +4,7 @@ import { Navigation } from 'react-native-navigation';
 import Config from 'react-native-config';
 import { LoginManager } from 'react-native-fbsdk';
 import { GoogleSignin, statusCodes } from 'react-native-google-signin';
+import validator from 'validator';
 import Images from '@assets/images';
 
 import DismissKeyboardView from '../../components/DismissKeyboardView';
@@ -19,27 +20,29 @@ import styles from './styles';
 export default class Login extends Component {
 	constructor(props) {
 		super(props);
-		this.textInput = React.createRef();
+
+		this.state = {
+			email: '',
+			emailError: null,
+			password: '',
+			passwordError: null
+		};
 
 		GoogleSignin.configure({
 			iosClientId: Config.GOOGLE_CLIENT_ID
 		});
 	}
 
-	onFacebookLogin() {
-		// Attempt a login using the Facebook login dialog asking for default permissions.
-		LoginManager.logInWithReadPermissions(['public_profile']).then(
-			result => {
-				if (result.isCancelled) {
-					console.log('Login cancelled');
-				} else {
-					console.log(`Login success with permissions: ${result.grantedPermissions.toString()}`);
-				}
-			},
-			error => {
-				console.log(`Login fail with error: ${error}`);
+	async onFacebookLogin() {
+		try {
+			const result = await LoginManager.logInWithReadPermissions(['public_profile']);
+
+			if (!result.isCancelled) {
+				console.log(`Login success with permissions: ${result.grantedPermissions.toString()}`);
 			}
-		);
+		} catch (error) {
+			console.log(`Login fail with error: ${error}`);
+		}
 	}
 
 	async onGoogleLogin() {
@@ -60,7 +63,25 @@ export default class Login extends Component {
 		}
 	}
 
-	toSignup() {
+	onEmailPasswordLogin() {
+		// Clear errors
+		this.setState({ emailError: null, passwordError: null });
+
+		const { email, password } = this.state;
+
+		if (!email) {
+			this.setState({ emailError: 'Este campo es requerido' })
+		} else if (!validator.isEmail(email)) {
+			this.setState({ emailError: 'Ingresa un correo electrónico válido' })
+		} else if (!password) {
+			this.setState({ passwordError: 'Este campo es requerido' })
+		} else {
+			// Login
+			goHome();
+		}
+	}
+
+	onNavigateToSignup() {
 		Navigation.push('AuthStack', {
 			component: {
 				name: 'bookace.Signup',
@@ -75,6 +96,8 @@ export default class Login extends Component {
 	}
 
 	render() {
+		const { email, emailError, password, passwordError } = this.state;
+
 		return (
 			<ImageBackground source={Images.authBackground} style={styles.container}>
 				<DismissKeyboardView style={styles.inner}>
@@ -84,9 +107,22 @@ export default class Login extends Component {
 
 
 					<View style={styles.form}>
-						<TextBox placeholder="Username" ref={this.textInput} />
-						<TextBox placeholder="Password" type="password" />
-						<Button onPress={goHome} style={styles.signinButton}>SIGN IN</Button>
+						<TextBox
+							type="email"
+							placeholder="Email"
+							value={email}
+							onChange={value => this.setState({ email: value })}
+							error={emailError}
+						/>
+
+						<TextBox
+							type="password"
+							placeholder="Password"
+							value={password}
+							onChange={value => this.setState({ password: value })}
+							error={passwordError}
+						/>
+						<Button onPress={this.onEmailPasswordLogin.bind(this)} style={styles.signinButton}>SIGN IN</Button>
 
 						<View style={styles.separator}>
 							<View style={styles.separatorLine} />
@@ -99,7 +135,7 @@ export default class Login extends Component {
 
 						<View style={styles.bottomLinks}>
 							<LinkButton style={styles.bottomLink} containerStyle={styles.bottomLinkContainer}>Forgot password</LinkButton>
-							<LinkButton style={styles.bottomLink} containerStyle={styles.bottomLinkContainer} onPress={this.toSignup}>Create account</LinkButton>
+							<LinkButton style={styles.bottomLink} containerStyle={styles.bottomLinkContainer} onPress={this.onNavigateToSignup}>Create account</LinkButton>
 						</View>
 					</View>
 				</DismissKeyboardView>
