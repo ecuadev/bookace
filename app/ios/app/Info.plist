@@ -32,9 +32,9 @@
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>FacebookAppID</key>
-	<string></string>
+	<string>406948196798798</string>
 	<key>FacebookDisplayName</key>
-	<string></string>
+	<string>stitch-app</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
