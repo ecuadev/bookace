@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Image, ImageBackground, Text, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
+import Config from 'react-native-config';
 import { LoginManager } from 'react-native-fbsdk';
+import { GoogleSignin, statusCodes } from 'react-native-google-signin';
 import Images from '@assets/images';
 
 import DismissKeyboardView from '../../components/DismissKeyboardView';
@@ -18,10 +20,44 @@ export default class Login extends Component {
 	constructor(props) {
 		super(props);
 		this.textInput = React.createRef();
+
+		GoogleSignin.configure({
+			iosClientId: Config.GOOGLE_CLIENT_ID
+		});
 	}
 
-	login() {
-		goHome();
+	onFacebookLogin() {
+		// Attempt a login using the Facebook login dialog asking for default permissions.
+		LoginManager.logInWithReadPermissions(['public_profile']).then(
+			result => {
+				if (result.isCancelled) {
+					console.log('Login cancelled');
+				} else {
+					console.log(`Login success with permissions: ${result.grantedPermissions.toString()}`);
+				}
+			},
+			error => {
+				console.log(`Login fail with error: ${error}`);
+			}
+		);
+	}
+
+	async onGoogleLogin() {
+		try {
+			await GoogleSignin.hasPlayServices();
+			const userInfo = await GoogleSignin.signIn();
+			console.log(userInfo);
+		} catch (error) {
+			if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+				// user cancelled the login flow
+			} else if (error.code === statusCodes.IN_PROGRESS) {
+				// operation (f.e. sign in) is in progress already
+			} else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+				// play services not available or outdated
+			} else {
+				// some other error happened
+			}
+		}
 	}
 
 	toSignup() {
@@ -38,22 +74,6 @@ export default class Login extends Component {
 		});
 	}
 
-	onFacebookLogin() {
-		// Attempt a login using the Facebook login dialog asking for default permissions.
-		LoginManager.logInWithReadPermissions(['public_profile']).then(
-			result => {
-				if (result.isCancelled) {
-					console.log('Login cancelled');
-				} else {
-					console.log(`Login success with permissions: ${result.grantedPermissions.toString()}`);
-				}
-			},
-			error => {
-				console.log('Login fail with error: ' + error);
-			}
-		);
-	}
-
 	render() {
 		return (
 			<ImageBackground source={Images.authBackground} style={styles.container}>
@@ -66,7 +86,7 @@ export default class Login extends Component {
 					<View style={styles.form}>
 						<TextBox placeholder="Username" ref={this.textInput} />
 						<TextBox placeholder="Password" type="password" />
-						<Button onPress={this.login} style={styles.signinButton}>SIGN IN</Button>
+						<Button onPress={goHome} style={styles.signinButton}>SIGN IN</Button>
 
 						<View style={styles.separator}>
 							<View style={styles.separatorLine} />
@@ -75,7 +95,7 @@ export default class Login extends Component {
 						</View>
 
 						<TransparentButton onPress={this.onFacebookLogin} icon={Images.facebookAuthIcon} style={styles.fbButton}>CONTINUE WITH FACEBOOK</TransparentButton>
-						<TransparentButton onPress={this.login} icon={Images.googleAuthIcon}>CONTINUE WITH GOOGLE</TransparentButton>
+						<TransparentButton onPress={this.onGoogleLogin} icon={Images.googleAuthIcon}>CONTINUE WITH GOOGLE</TransparentButton>
 
 						<View style={styles.bottomLinks}>
 							<LinkButton style={styles.bottomLink} containerStyle={styles.bottomLinkContainer}>Forgot password</LinkButton>

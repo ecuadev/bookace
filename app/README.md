@@ -25,17 +25,24 @@ yarn install
 
 ### Configure Facebook SDK on iOS
 
-Download the Facebook SDK for iOS from https://origincache.facebook.com/developers/resources/?id=facebook-ios-sdk-current.zip  and uncompress it under __~/Documents/FacebookSDK__.
+Download the Facebook SDK for iOS from https://origincache.facebook.com/developers/resources/?id=facebook-ios-sdk-current.zip and uncompress it under __~/Documents/FacebookSDK__.
 
 Open /bookace/app/ios/app/Info.plist file and update FacebookDisplayName, FacebookDisplayName and CFBundleURLSchemes values.
 
 https://developers.facebook.com/docs/ios/getting-started/#xcode
+
+> Note: If you get this error: **Fix FBSDKCoreKit/FBSDKCoreKit.h file not found on React Native** double click on Framework Search Path under the build settings tab of your project, and replace \*~/Documents/FacebookSDK\* with to \*$(HOME)/Documents/FacebookSDK\*
 
 ### Configure Facebook SDK on Android
 Open /bookace/app/android/app/src/main/res/values/strings.xml and update facebook_app_id value.
 
 https://developers.facebook.com/quickstarts/?platform=android
 
+### Configure Google SDK on iOS
+
+Download the GoogleSignIn SDK for iOS from https://developers.google.com/identity/sign-in/ios/sdk/ nd uncompress it under __~/Documents/GoogleSDK__.
+Open /bookace/app/ios/app/Info.plist file and update the CFBundleURLSchemes value corresponding to the REVERSED_CLIENT_ID.
+Create .env file and place your GOOGLE_CLIENT_ID.
 
 ## Development
 
