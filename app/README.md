@@ -42,7 +42,11 @@ https://developers.facebook.com/quickstarts/?platform=android
 
 Download the GoogleSignIn SDK for iOS from https://developers.google.com/identity/sign-in/ios/sdk/ nd uncompress it under __~/Documents/GoogleSDK__.
 Open /bookace/app/ios/app/Info.plist file and update the CFBundleURLSchemes value corresponding to the REVERSED_CLIENT_ID.
-Create .env file and place your GOOGLE_CLIENT_ID.
+Create .env file and set your GOOGLE_CLIENT_ID.
+
+### Congigure Stitch App
+
+Set your MongoDB Stitch App Id (STITCH_CLIENT_APP_ID) in the .env file.
 
 ## Development
 

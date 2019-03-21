@@ -2,8 +2,13 @@ import React, { Component } from 'react';
 import { Image, ImageBackground, Text, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import Config from 'react-native-config';
-import { LoginManager } from 'react-native-fbsdk';
+import { LoginManager, AccessToken } from 'react-native-fbsdk';
 import { GoogleSignin, statusCodes } from 'react-native-google-signin';
+
+
+import { Stitch, UserPasswordCredential, FacebookCredential, GoogleCredential } from 'mongodb-stitch-react-native-sdk';
+
+
 import validator from 'validator';
 import Images from '@assets/images';
 
@@ -25,11 +30,25 @@ export default class Login extends Component {
 			email: '',
 			emailError: null,
 			password: '',
-			passwordError: null
+			passwordError: null,
+			currentUserId: undefined,
+			client: undefined
 		};
+	}
 
+	componentDidMount() {
 		GoogleSignin.configure({
 			iosClientId: Config.GOOGLE_CLIENT_ID
+		});
+
+		Stitch.initializeDefaultAppClient(Config.STITCH_CLIENT_APP_ID).then(client => {
+			this.setState({ client });
+
+			if (client.auth.isLoggedIn) {
+				this.setState({ currentUserId: client.auth.user.id });
+				console.log(`User signed in: ${client.auth.user.id}`);
+				goHome();
+			}
 		});
 	}
 
@@ -38,7 +57,9 @@ export default class Login extends Component {
 			const result = await LoginManager.logInWithReadPermissions(['public_profile']);
 
 			if (!result.isCancelled) {
-				console.log(`Login success with permissions: ${result.grantedPermissions.toString()}`);
+				const token = await AccessToken.getCurrentAccessToken();
+				const credential = new FacebookCredential(token.accessToken);
+				this.login(credential);
 			}
 		} catch (error) {
 			console.log(`Login fail with error: ${error}`);
@@ -49,7 +70,8 @@ export default class Login extends Component {
 		try {
 			await GoogleSignin.hasPlayServices();
 			const userInfo = await GoogleSignin.signIn();
-			console.log(userInfo);
+			const credential = new GoogleCredential(userInfo.accessToken);
+			this.login(credential);
 		} catch (error) {
 			if (error.code === statusCodes.SIGN_IN_CANCELLED) {
 				// user cancelled the login flow
@@ -76,8 +98,8 @@ export default class Login extends Component {
 		} else if (!password) {
 			this.setState({ passwordError: 'Este campo es requerido' })
 		} else {
-			// Login
-			goHome();
+			const credential = new UserPasswordCredential(email, password);
+			this.login(credential);
 		}
 	}
 
@@ -92,6 +114,19 @@ export default class Login extends Component {
 					}
 				}
 			}
+		});
+	}
+
+	login(credential) {
+		const { client } = this.state;
+
+		client.auth.loginWithCredential(credential).then(user => {
+			console.log(`Successfully logged in as user ${user.id}`);
+			this.setState({ currentUserId: user.id });
+			goHome();
+		}).catch(err => {
+			console.log(`Failed to log in anonymously: ${err}`);
+			this.setState({ currentUserId: undefined });
 		});
 	}
 
@@ -130,8 +165,8 @@ export default class Login extends Component {
 							<View style={styles.separatorLine} />
 						</View>
 
-						<TransparentButton onPress={this.onFacebookLogin} icon={Images.facebookAuthIcon} style={styles.fbButton}>CONTINUE WITH FACEBOOK</TransparentButton>
-						<TransparentButton onPress={this.onGoogleLogin} icon={Images.googleAuthIcon}>CONTINUE WITH GOOGLE</TransparentButton>
+						<TransparentButton onPress={this.onFacebookLogin.bind(this)} icon={Images.facebookAuthIcon} style={styles.fbButton}>CONTINUE WITH FACEBOOK</TransparentButton>
+						<TransparentButton onPress={this.onGoogleLogin.bind(this)} icon={Images.googleAuthIcon}>CONTINUE WITH GOOGLE</TransparentButton>
 
 						<View style={styles.bottomLinks}>
 							<LinkButton style={styles.bottomLink} containerStyle={styles.bottomLinkContainer}>Forgot password</LinkButton>
