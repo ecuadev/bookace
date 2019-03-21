@@ -28,6 +28,9 @@ export default EStyleSheet.create({
 		flex: 1,
 		width: '100%'
 	},
+	formFields: {
+		flex: 1
+	},
 	sendEmail: {
 		marginTop: 10
 	},
@@ -36,7 +39,7 @@ export default EStyleSheet.create({
 
 		width: '100%',
 		flexDirection: 'row',
-		justifyContent: 'space-between',
+		justifyContent: 'space-around',
 		marginTop: 10
 	},
 	bottomLink: {

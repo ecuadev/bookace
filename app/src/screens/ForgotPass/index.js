@@ -30,7 +30,7 @@ export class ForgotPass extends Component {
 			}
 		});
 	}
-	
+
 	// TODO
 	// resendEmail(){}
 
@@ -42,18 +42,20 @@ export class ForgotPass extends Component {
 						<Text style={styles.title}>Forgot Password?</Text>
 					</View>
 					<View style={styles.form}>
+						<View style={styles.formFields}>
 
-						<TextBox
-							placeholder="Email"
-							type="email"
-							ref={this.email}
-						/>
+							<TextBox
+								placeholder="Email"
+								type="email"
+								ref={this.email}
+							/>
 
-						<Button onPress={this.sendEmail}>SEND EMAIL</Button>
+							<Button onPress={this.sendEmail}>SEND EMAIL</Button>
+						</View>
 
 						<View style={styles.bottomLinks}>
 							<LinkButton style={styles.bottomLink} containerStyle={styles.bottomLinkContainer} onPress={this.goBack}>Back</LinkButton>
-							<LinkButton style={styles.bottomLink} containerStyle={styles.bottomLinkContainer} onPress={this.toSignup}>Resend Email</LinkButton>
+
 						</View>
 					</View>
 				</DismissKeyboardView>

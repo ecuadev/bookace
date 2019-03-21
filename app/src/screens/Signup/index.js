@@ -5,7 +5,7 @@ import Images from '@assets/images';
 import DismissKeyboardView from '../../components/DismissKeyboardView';
 import TextBox from '../../components/TextBox';
 import Button from '../../components/Button';
-// import LinkButton from '../../components/LinkButton';
+import LinkButton from '../../components/LinkButton';
 import TransparentButton from '../../components/Button/TransparentButton';
 import { goHome } from '../../navigation';
 
@@ -73,15 +73,8 @@ export default class Signup extends Component {
 							CONTINUE WITH GOOGLE
 						</TransparentButton>
 						<View style={styles.bottomLinks}>
-							<Text style={styles.bottomLink}>
-								Already have an account?{' '}
-								<Text
-									style={styles.backToLogin}
-									onPress={this.toLogin}
-								>
-									Sign In
-								</Text>
-							</Text>
+							<LinkButton style={styles.bottomLink} containerStyle={styles.bottomLinkContainer} onPress={this.toLogin}>Already have an account</LinkButton>
+
 						</View>
 					</View>
 				</DismissKeyboardView>
