@@ -1,6 +1,6 @@
 package com.bookace.app;
 
-import com.app.BuildConfig;
+import com.bookace.app.BuildConfig;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 
@@ -11,6 +11,7 @@ import com.reactnativenavigation.react.ReactGateway;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookSdk;
 import com.facebook.reactnative.androidsdk.FBSDKPackage;
+import co.apptailor.googlesignin.RNGoogleSigninPackage;
 
 import java.util.Arrays;
 import java.util.List;
@@ -43,8 +44,8 @@ public class MainApplication extends NavigationApplication {
     // Add additional packages you require here
     // No need to add RnnPackage and MainReactPackage
     return Arrays.<ReactPackage>asList(
-      new FBSDKPackage(mCallbackManager)
-      // eg. new VectorIconsPackage()
+      new FBSDKPackage(mCallbackManager),
+      new RNGoogleSigninPackage()
     );
   }
 

@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "825454354533",
+    "firebase_url": "https://stitch-app.firebaseio.com",
+    "project_id": "stitch-app",
+    "storage_bucket": "stitch-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:825454354533:android:9a52c061b3297164",
+        "android_client_info": {
+          "package_name": "com.bookace.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "825454354533-dbkc6cf8bkt9eck5eu0264fbfs95rhtm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUijLA3lmNiJ9wkqjzkcmbPcklvoxYgJI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
