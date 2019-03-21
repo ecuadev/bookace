@@ -4919,6 +4919,12 @@ react-native-blur@^3.2.2:
   dependencies:
     prop-types "^15.5.10"
 
+react-native-camera@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-2.0.2.tgz#484e1116c0b6cb53147385a1b4aeb0fba59466de"
+  dependencies:
+    prop-types "^15.6.2"
+
 react-native-config@^0.11.7:
   version "0.11.7"
   resolved "https://registry.yarnpkg.com/react-native-config/-/react-native-config-0.11.7.tgz#a2b323f2ecd76a4df88cbb6bc86eaa2ef9febee7"
