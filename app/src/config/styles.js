@@ -3,9 +3,10 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 export default function () {
 	EStyleSheet.build({
 		$primaryColor: '#645AFF',
-		$tabsPrimaryColor: '#F9FAFB',
-		$tabsSecondaryColor: '#B1B2B3',
-		$tabsActiveColor: '#000000',
+		$tabsBorder: '#FDFDFD',
+		$tabsPrimaryColor: '#FFFFFF',
+		$tabsSecondaryColor: '#727177',
+		$tabsActiveColor: '#4B5CE1',
 		$darkTextColor: '#000000',
 		$lightTextColor: '#FFFFFF',
 		$searchBarColor: '#000000'
