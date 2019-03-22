@@ -1,12 +1,5 @@
 import { CHANGE_CONNECTION_STATUS } from '../actions/network';
 
-const isConnected = status => {
-	if (status.toLowerCase() === 'none') {
-		return false;
-	}
-	return true;
-};
-
 const initialState = {
 	connected: false,
 	hasCheckedStatus: false
@@ -18,7 +11,7 @@ export default (state = initialState, action) => {
 			return {
 				...state,
 				hasCheckedStatus: true,
-				connected: isConnected(action.status)
+				connected: action.status !== 'none'
 			};
 		default:
 			return state;

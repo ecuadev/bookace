@@ -74,7 +74,7 @@ export const goHome = () => {
 	});
 };
 
-export const goToAuth = () => Navigation.setRoot({
+export const goToLogin = () => Navigation.setRoot({
 	root: {
 		stack: {
 			id: 'AuthStack',
@@ -91,6 +91,18 @@ export const goToAuth = () => Navigation.setRoot({
 					}
 				}
 			]
+		}
+	}
+});
+
+export const goToSignup = () => Navigation.push('AuthStack', {
+	component: {
+		name: 'bookace.Signup',
+		options: {
+			topBar: {
+				visible: false,
+				height: 0
+			}
 		}
 	}
 });

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Image, Text, TouchableOpacity, View } from 'react-native';
-import { RNCamera } from 'react-native-camera'
+import { Image, View } from 'react-native';
+import { RNCamera } from 'react-native-camera';
 import Images from '@assets/images';
 
 import styles from './styles';
@@ -27,11 +27,6 @@ export default class Camera extends Component {
 					}}
 				/>
 				<Image source={Images.cameraOverlay} style={styles.overlay} resizeMode="contain" />
-				<View style={{ flex: 0, flexDirection: 'row', justifyContent: 'center' }}>
-					<TouchableOpacity onPress={this.takePicture.bind(this)} style={styles.capture}>
-						<Text style={{ fontSize: 14 }}> SNAP </Text>
-					</TouchableOpacity>
-				</View>
 			</View>
 		);
 	}

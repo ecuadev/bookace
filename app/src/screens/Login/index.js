@@ -1,28 +1,26 @@
 import React, { Component } from 'react';
 import { Image, ImageBackground, Text, View } from 'react-native';
-import { Navigation } from 'react-native-navigation';
 import Config from 'react-native-config';
 import { LoginManager, AccessToken } from 'react-native-fbsdk';
 import { GoogleSignin, statusCodes } from 'react-native-google-signin';
-
-
-import { Stitch, UserPasswordCredential, FacebookCredential, GoogleCredential } from 'mongodb-stitch-react-native-sdk';
-
-
+import { UserPasswordCredential, FacebookCredential, GoogleCredential } from 'mongodb-stitch-react-native-sdk';
+import { connect } from 'react-redux';
 import validator from 'validator';
 import Images from '@assets/images';
+
+import { setCurrentUser } from '../../actions/user';
 
 import DismissKeyboardView from '../../components/DismissKeyboardView';
 import TextBox from '../../components/TextBox';
 import Button from '../../components/Button';
 import LinkButton from '../../components/LinkButton';
 import TransparentButton from '../../components/Button/TransparentButton';
-import { goHome } from '../../navigation';
+import { goToSignup, goHome } from '../../config/navigation';
 
 import styles from './styles';
 
 
-export default class Login extends Component {
+class Login extends Component {
 	constructor(props) {
 		super(props);
 
@@ -30,25 +28,13 @@ export default class Login extends Component {
 			email: '',
 			emailError: null,
 			password: '',
-			passwordError: null,
-			currentUserId: undefined,
-			client: undefined
+			passwordError: null
 		};
 	}
 
 	componentDidMount() {
 		GoogleSignin.configure({
 			iosClientId: Config.GOOGLE_CLIENT_ID
-		});
-
-		Stitch.initializeDefaultAppClient(Config.STITCH_CLIENT_APP_ID).then(client => {
-			this.setState({ client });
-
-			if (client.auth.isLoggedIn) {
-				this.setState({ currentUserId: client.auth.user.id });
-				console.log(`User signed in: ${client.auth.user.id}`);
-				goHome();
-			}
 		});
 	}
 
@@ -104,29 +90,17 @@ export default class Login extends Component {
 	}
 
 	onNavigateToSignup() {
-		Navigation.push('AuthStack', {
-			component: {
-				name: 'bookace.Signup',
-				options: {
-					topBar: {
-						visible: false,
-						height: 0
-					}
-				}
-			}
-		});
 	}
 
 	login(credential) {
-		const { client } = this.state;
+		const { client, setCurrentUser } = this.props;
 
 		client.auth.loginWithCredential(credential).then(user => {
-			console.log(`Successfully logged in as user ${user.id}`);
-			this.setState({ currentUserId: user.id });
+			setCurrentUser(user);
 			goHome();
 		}).catch(err => {
 			console.log(`Failed to log in anonymously: ${err}`);
-			this.setState({ currentUserId: undefined });
+			setCurrentUser(null);
 		});
 	}
 
@@ -170,7 +144,7 @@ export default class Login extends Component {
 
 						<View style={styles.bottomLinks}>
 							<LinkButton style={styles.bottomLink} containerStyle={styles.bottomLinkContainer}>Forgot password</LinkButton>
-							<LinkButton style={styles.bottomLink} containerStyle={styles.bottomLinkContainer} onPress={this.onNavigateToSignup}>Create account</LinkButton>
+							<LinkButton style={styles.bottomLink} containerStyle={styles.bottomLinkContainer} onPress={goToSignup}>Create account</LinkButton>
 						</View>
 					</View>
 				</DismissKeyboardView>
@@ -178,3 +152,10 @@ export default class Login extends Component {
 		);
 	}
 }
+
+export default connect(
+	state => ({
+		client: state.global.client
+	}),
+	{ setCurrentUser }
+)(Login);

@@ -13,9 +13,8 @@ export default EStyleSheet.create({
 	},
 	preview: {
 		flex: 1,
-		justifyContent: 'flex-end',
-		alignItems: 'center',
-		marginBottom: isTallIPhone ? 83 : 49
+		height: height - (isTallIPhone ? 83 : 49),
+		width
 	},
 	overlay: {
 		position: 'absolute',
@@ -26,14 +25,5 @@ export default EStyleSheet.create({
 		width,
 		justifyContent: 'flex-end',
 		alignItems: 'center'
-	},
-	capture: {
-		flex: 0,
-		backgroundColor: '#fff',
-		borderRadius: 5,
-		padding: 15,
-		paddingHorizontal: 20,
-		alignSelf: 'center',
-		margin: 20
 	}
 });
