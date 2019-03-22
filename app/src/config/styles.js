@@ -7,6 +7,7 @@ export default function () {
 		$tabsSecondaryColor: '#B1B2B3',
 		$tabsActiveColor: '#000000',
 		$darkTextColor: '#000000',
-		$lightTextColor: '#FFFFFF'
+		$lightTextColor: '#FFFFFF',
+		$searchBarColor: '#000000'
 	});
 }
