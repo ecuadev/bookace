@@ -22,9 +22,6 @@ export default class Camera extends Component {
 					style={styles.preview}
 					type={RNCamera.Constants.Type.back}
 					flashMode={RNCamera.Constants.FlashMode.on}
-					onGoogleVisionBarcodesDetected={({ barcodes }) => {
-						console.log(barcodes);
-					}}
 				/>
 				<Image source={Images.cameraOverlay} style={styles.overlay} resizeMode="contain" />
 			</View>
