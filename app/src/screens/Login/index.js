@@ -104,7 +104,7 @@ class Login extends Component {
 						<LinkButton style={styles.bottomLink} containerStyle={styles.bottomLinkContainer} onPress={goToSignup}>Create account</LinkButton>
 					</View>
 				</View>
-				</View>
+
 			</ImageBackground >
 		);
 	}
