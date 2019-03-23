@@ -47,8 +47,8 @@ export default class TabBar extends Component {
 				<TouchableOpacity
 					activeOpacity={1}
 					onPress={() => this.changeToTab(2)}
-					style={[styles.cameraTab, styles.cameraImage, activeTab === 2 && styles.cameraTabActive]}>
-					<View style={[styles.cameraTabInner, styles.cameraImage, activeTab === 2 && styles.cameraTabInnerActive]}>
+					style={[styles.cameraTab, activeTab === 2 && styles.cameraTabActive]}>
+					<View style={[styles.cameraTabInner, activeTab === 2 && styles.cameraTabInnerActive]}>
 						<Image source={Images.cameraTabIcon} style={[styles.image, styles.cameraImage]} />
 					</View>
 				</TouchableOpacity>

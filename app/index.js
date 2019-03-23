@@ -2,9 +2,9 @@ import { NetInfo } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { Provider } from 'react-redux';
 
-import buildStyles from './src/styles';
-import registerScreens from './src/screens';
+import buildStyles from './src/config/styles';
 import store from './src/config/store';
+import registerScreens from './src/screens';
 import { changeNetworkStatus } from './src/actions/network';
 
 buildStyles();

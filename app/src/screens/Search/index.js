@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { ImageBackground, ScrollView, Text, View} from 'react-native';
+import Images from '@assets/images';
+
+import SearchBar from '../../components/SearchBar';
+import CategoryGrid from '../../components/CategoryGrid';
 
 import styles from './styles';
 
@@ -7,7 +11,15 @@ export default class Search extends Component {
 	render() {
 		return (
 			<View style={styles.container}>
-				<Text style={styles.title}>Search Page</Text>
+				<ImageBackground source={Images.searchBackground} style={styles.searchBackground}>
+					<View style={styles.searchWrapper}>
+						<SearchBar style={styles.searchBar} />
+					</View>
+				</ImageBackground>
+				<ScrollView style={styles.categories} showsVerticalScrollIndicator={false}>
+					<Text style={styles.title}>Categories</Text>
+					<CategoryGrid />
+				</ScrollView>
 			</View>
 		);
 	}

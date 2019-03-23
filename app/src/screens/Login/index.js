@@ -3,17 +3,19 @@ import { Image, ImageBackground, Text, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import Images from '@assets/images';
 
+import { setCurrentUser } from '../../actions/user';
+
 import DismissKeyboardView from '../../components/DismissKeyboardView';
 import TextBox from '../../components/TextBox';
 import Button from '../../components/Button';
 import LinkButton from '../../components/LinkButton';
 import TransparentButton from '../../components/Button/TransparentButton';
-import { goHome } from '../../navigation';
+import { goToSignup, goHome } from '../../config/navigation';
 
 import styles from './styles';
 
 
-export default class Login extends Component {
+class Login extends Component {
 	constructor(props) {
 		super(props);
 		this.textInput = React.createRef();
@@ -23,31 +25,55 @@ export default class Login extends Component {
 		goHome();
 	}
 
-	toSignup() {
-		Navigation.push('AuthStack', {
-			component: {
-				name: 'bookace.Signup',
-				options: {
-					topBar: {
-						visible: false,
-						height: 0
-					}
-				}
+	async onGoogleLogin() {
+		try {
+			await GoogleSignin.hasPlayServices();
+			const userInfo = await GoogleSignin.signIn();
+			const credential = new GoogleCredential(userInfo.accessToken);
+			this.login(credential);
+		} catch (error) {
+			if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+				// user cancelled the login flow
+			} else if (error.code === statusCodes.IN_PROGRESS) {
+				// operation (f.e. sign in) is in progress already
+			} else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+				// play services not available or outdated
+			} else {
+				// some other error happened
 			}
-		});
+		}
 	}
 
-	forgotPassword() {
-		Navigation.push('AuthStack', {
-			component: {
-				name: 'bookace.ForgotPass',
-				options: {
-					topBar: {
-						visible: false,
-						height: 0
-					}
-				}
-			}
+	onEmailPasswordLogin() {
+		// Clear errors
+		this.setState({ emailError: null, passwordError: null });
+
+		const { email, password } = this.state;
+
+		if (!email) {
+			this.setState({ emailError: 'Este campo es requerido' })
+		} else if (!validator.isEmail(email)) {
+			this.setState({ emailError: 'Ingresa un correo electrónico válido' })
+		} else if (!password) {
+			this.setState({ passwordError: 'Este campo es requerido' })
+		} else {
+			const credential = new UserPasswordCredential(email, password);
+			this.login(credential);
+		}
+	}
+
+	onNavigateToSignup() {
+	}
+
+	login(credential) {
+		const { client, setCurrentUser } = this.props;
+
+		client.auth.loginWithCredential(credential).then(user => {
+			setCurrentUser(user);
+			goHome();
+		}).catch(err => {
+			console.log(`Failed to log in anonymously: ${err}`);
+			setCurrentUser(null);
 		});
 	}
 
@@ -74,11 +100,19 @@ export default class Login extends Component {
 					<TransparentButton onPress={this.login} icon={Images.googleAuthIcon}>CONTINUE WITH GOOGLE</TransparentButton>
 
 					<View style={styles.bottomLinks}>
-						<LinkButton style={styles.bottomLink} containerStyle={styles.bottomLinkContainer} onPress={this.forgotPassword}>Forgot password</LinkButton>
-						<LinkButton style={styles.bottomLink} containerStyle={styles.bottomLinkContainer} onPress={this.toSignup}>Create account</LinkButton>
+						<LinkButton style={styles.bottomLink} containerStyle={styles.bottomLinkContainer}>Forgot password</LinkButton>
+						<LinkButton style={styles.bottomLink} containerStyle={styles.bottomLinkContainer} onPress={goToSignup}>Create account</LinkButton>
 					</View>
 				</View>
-			</ImageBackground>
+				</View>
+			</ImageBackground >
 		);
 	}
 }
+
+export default connect(
+	state => ({
+		client: state.global.client
+	}),
+	{ setCurrentUser }
+)(Login);

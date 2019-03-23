@@ -13,10 +13,10 @@ export default EStyleSheet.create({
 		flexDirection: 'row',
 		justifyContent: 'space-around',
 		borderTopWidth: 0.3,
-		borderTopColor: '$tabsSecondaryColor'
+		borderTopColor: '$tabsBorder'
 	},
 	tab: {
-		width: '20%',
+		width: '10%',
 		height: 49,
 		alignItems: 'center',
 		justifyContent: 'center'
@@ -31,23 +31,25 @@ export default EStyleSheet.create({
 	},
 	cameraTab: {
 		backgroundColor: '$tabsPrimaryColor',
-		borderWidth: 1,
+		borderWidth: 2,
 		borderColor: '$tabsSecondaryColor',
 		borderRadius: 50,
-		width: 60,
-		height: 60,
+		width: 70,
+		height: 70,
 		padding: 3,
 		top: -10
 	},
 	cameraTabInner: {
 		backgroundColor: '$tabsSecondaryColor',
 		borderRadius: 50,
-		width: 52,
-		height: 52,
+		width: 60,
+		height: 60,
 		alignItems: 'center',
 		justifyContent: 'center'
 	},
 	cameraImage: {
+		width: 30,
+		height: 30,
 		tintColor: '$tabsPrimaryColor'
 	},
 	cameraTabActive: {

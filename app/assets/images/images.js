@@ -10,7 +10,13 @@ const images = {
 	cameraTabIcon: require('./tabIcons/camera.png'),
 	socialTabIcon: require('./tabIcons/friends.png'),
 	profileTabIcon: require('./tabIcons/user.png'),
-	backIcon: require('./utils/back-icon.png'),
+	// Camera
+	cameraOverlay: require('./camera/overlay.png'),
+	// Search
+	searchBackground: require('./search/background.jpg'),
+	searchBarIcon: require('./search/search.png'),
+	// Categories
+	categoryHorror: require('./categories/horror.jpg')
 };
 
 export default images;

@@ -1,24 +1,30 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
+import Config from 'react-native-config';
+import { Stitch } from 'mongodb-stitch-react-native-sdk';
+import { connect } from 'react-redux';
 
-import { goToAuth, goHome } from '../../navigation';
+import { setStitchClient } from '../../actions/global';
+import { setCurrentUser } from '../../actions/user';
+
+import { goToLogin, goHome } from '../../config/navigation';
 
 import styles from './styles';
 
-export default class Welcome extends Component {
+class Welcome extends Component {
 	componentDidMount() {
-		try {
-			const user = null;
+		const { setStitchClient, setCurrentUser } = this.props;
 
-			if (user) {
+		Stitch.initializeDefaultAppClient(Config.STITCH_CLIENT_APP_ID).then(client => {
+			setStitchClient(client);
+
+			if (client.auth.isLoggedIn) {
+				setCurrentUser(client.auth.user);
 				goHome();
 			} else {
-				goToAuth();
+				goToLogin();
 			}
-		} catch (err) {
-			console.log('error: ', err);
-			goToAuth();
-		}
+		});
 	}
 
 	render() {
@@ -29,3 +35,10 @@ export default class Welcome extends Component {
 		);
 	}
 }
+
+export default connect(
+	state => ({
+		user: state.user.currentUser
+	}),
+	{ setStitchClient, setCurrentUser }
+)(Welcome);

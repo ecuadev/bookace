@@ -7,7 +7,7 @@ import TextBox from '../../components/TextBox';
 import Button from '../../components/Button';
 import LinkButton from '../../components/LinkButton';
 import TransparentButton from '../../components/Button/TransparentButton';
-import { goHome } from '../../navigation';
+import { goHome } from '../../config/navigation';
 
 import styles from './styles';
 
