@@ -6,29 +6,24 @@
  */
 
 #import "AppDelegate.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
-#import <ReactNativeNavigation/ReactNativeNavigation.h>
-#import <FBSDKCoreKit/FBSDKCoreKit.h>
+//#import <ReactNativeNavigation/ReactNativeNavigation.h>
+#import "ReactNativeNavigation.h"
 
 @implementation AppDelegate
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-  NSURL *jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
-  [ReactNativeNavigation bootstrap:jsCodeLocation launchOptions:launchOptions];
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   [[FBSDKApplicationDelegate sharedInstance] application:application
                            didFinishLaunchingWithOptions:launchOptions];
-  
-  
   return YES;
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
   [FBSDKAppEvents activateApp];
 }
-  
 
   
 - (BOOL)application:(UIApplication *)application
@@ -40,6 +35,7 @@
                                               sourceApplication:sourceApplication
                                                      annotation:annotation];
 }
-  
-  
+
+
+
 @end
