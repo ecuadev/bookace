@@ -24,8 +24,6 @@ cd bookace/app
 yarn install
 ```
 
-<<<<<<< HEAD
-=======
 ### Configure Facebook SDK on iOS
 
 - Download the Facebook SDK for iOS from https://origincache.facebook.com/developers/resources/?id=facebook-ios-sdk-current.zip and uncompress it under __~/Documents/FacebookSDK__.
@@ -58,7 +56,6 @@ https://developers.facebook.com/quickstarts/?platform=android
 
 Set your MongoDB Stitch App Id (STITCH_CLIENT_APP_ID) in the .env file.
 
->>>>>>> rn-app
 ## Development
 
 - This project uses EditorConfig to standarize text editor configuration.
