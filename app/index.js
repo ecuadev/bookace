@@ -29,4 +29,15 @@ Navigation.events().registerAppLaunchedListener(() => {
 			}
 		}
 	});
+
+	Navigation.showOverlay({
+		component: {
+			name: 'bookace.Alert',
+			options: {
+				overlay: {
+					interceptTouchOutside: false
+				}
+			}
+		}
+	});
 });

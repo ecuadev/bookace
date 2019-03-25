@@ -6,7 +6,8 @@ const isTallIPhone = Platform.OS === 'ios' && Dimensions.get('window').height >=
 export default EStyleSheet.create({
 	container: {
 		flex: 1,
-		marginBottom: isTallIPhone ? 83 : 49
+		marginBottom: isTallIPhone ? 83 : 49,
+		backgroundColor: '$screenBackground'
 	},
 	searchBackground: {
 		width: '100%',
@@ -16,20 +17,20 @@ export default EStyleSheet.create({
 	searchWrapper: {
 		width: '100%',
 		height: '100%',
-		paddingHorizontal: 25
+		paddingHorizontal: 15
 	},
 	searchBar: {
 		position: 'absolute',
 		bottom: -28,
-		left: 25
+		left: 15
 	},
 	title: {
-		fontSize: 35,
-		color: '$darkTextColor',
-		lineHeight: 40,
-		paddingHorizontal: 25,
+		color: '$primaryTextColor',
+		fontFamily: 'Montserrat-SemiBold',
+		fontSize: 30,
+		paddingHorizontal: 15,
 		marginTop: 50,
-		marginBottom: 25
+		marginBottom: 15
 	},
 	categories: {
 		flex: 1,

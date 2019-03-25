@@ -9,6 +9,7 @@ import Camera from './Camera';
 import Social from './Social';
 import Profile from './Profile';
 
+import Alert from '../components/Alert';
 import TabBar from '../components/TabBar';
 
 export default function (Provider, store) {
@@ -20,5 +21,7 @@ export default function (Provider, store) {
 	Navigation.registerComponentWithRedux('bookace.Camera', () => Camera, Provider, store);
 	Navigation.registerComponentWithRedux('bookace.Social', () => Social, Provider, store);
 	Navigation.registerComponentWithRedux('bookace.Profile', () => Profile, Provider, store);
+
+	Navigation.registerComponentWithRedux('bookace.Alert', () => Alert, Provider, store);
 	Navigation.registerComponentWithRedux('bookace.TabBar', () => TabBar, Provider, store);
 }

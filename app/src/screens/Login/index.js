@@ -9,6 +9,7 @@ import validator from 'validator';
 import Images from '@assets/images';
 
 import { setCurrentUser } from '../../actions/user';
+import { setError } from '../../actions/global';
 
 import DismissKeyboardView from '../../components/DismissKeyboardView';
 import TextBox from '../../components/TextBox';
@@ -39,6 +40,10 @@ class Login extends Component {
 	}
 
 	async onFacebookLogin() {
+		if (!this.verifyConnection()) {
+			return false;
+		}
+
 		try {
 			const result = await LoginManager.logInWithReadPermissions(['public_profile']);
 
@@ -53,6 +58,10 @@ class Login extends Component {
 	}
 
 	async onGoogleLogin() {
+		if (!this.verifyConnection()) {
+			return false;
+		}
+
 		try {
 			await GoogleSignin.hasPlayServices();
 			const userInfo = await GoogleSignin.signIn();
@@ -72,17 +81,21 @@ class Login extends Component {
 	}
 
 	onEmailPasswordLogin() {
+		if (!this.verifyConnection()) {
+			return false;
+		}
+
 		// Clear errors
 		this.setState({ emailError: null, passwordError: null });
 
 		const { email, password } = this.state;
 
 		if (!email) {
-			this.setState({ emailError: 'Este campo es requerido' })
+			this.setState({ emailError: 'This field is required' });
 		} else if (!validator.isEmail(email)) {
-			this.setState({ emailError: 'Ingresa un correo electrónico válido' })
+			this.setState({ emailError: 'Please enter a valid email address' });
 		} else if (!password) {
-			this.setState({ passwordError: 'Este campo es requerido' })
+			this.setState({ passwordError: 'This field is required' });
 		} else {
 			const credential = new UserPasswordCredential(email, password);
 			this.login(credential);
@@ -92,8 +105,19 @@ class Login extends Component {
 	onNavigateToSignup() {
 	}
 
+	verifyConnection() {
+		const { network, setError } = this.props;
+
+		if (network.hasCheckedStatus && network.connected) {
+			setError('Your device is not connected to the internet, please make sure your connection is working.');
+			return false;
+		}
+
+		return true;
+	}
+
 	login(credential) {
-		const { client, setCurrentUser } = this.props;
+		const { client, setCurrentUser, setError } = this.props;
 
 		client.auth.loginWithCredential(credential).then(user => {
 			setCurrentUser(user);
@@ -113,7 +137,6 @@ class Login extends Component {
 					<View style={styles.logo}>
 						<Image source={Images.authLogo} resizeMode="contain" style={styles.logoImage} />
 					</View>
-
 
 					<View style={styles.form}>
 						<TextBox
@@ -155,7 +178,8 @@ class Login extends Component {
 
 export default connect(
 	state => ({
-		client: state.global.client
+		client: state.global.client,
+		network: state.network
 	}),
-	{ setCurrentUser }
+	{ setCurrentUser, setError }
 )(Login);

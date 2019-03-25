@@ -1,4 +1,7 @@
 const images = {
+	// Globals
+	noInternet: require('./global/no-connection.png'),
+
 	// Login/Signup
 	authLogo: require('./auth/logo.png'),
 	authBackground: require('./auth/background.png'),

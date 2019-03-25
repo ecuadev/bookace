@@ -6,10 +6,7 @@ const isTallIPhone = Platform.OS === 'ios' && height >= 812;
 
 export default EStyleSheet.create({
 	container: {
-		flex: 1,
-		justifyContent: 'center',
-		alignItems: 'center',
-		backgroundColor: '#F5FCFF'
+		flex: 1
 	},
 	preview: {
 		flex: 1,

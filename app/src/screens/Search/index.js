@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { ImageBackground, ScrollView, Text, View} from 'react-native';
 import Images from '@assets/images';
 
+import DismissKeyboardView from '../../components/DismissKeyboardView';
 import SearchBar from '../../components/SearchBar';
 import CategoryGrid from '../../components/CategoryGrid';
 
@@ -10,7 +11,7 @@ import styles from './styles';
 export default class Search extends Component {
 	render() {
 		return (
-			<View style={styles.container}>
+			<DismissKeyboardView style={styles.container}>
 				<ImageBackground source={Images.searchBackground} style={styles.searchBackground}>
 					<View style={styles.searchWrapper}>
 						<SearchBar style={styles.searchBar} />
@@ -20,7 +21,7 @@ export default class Search extends Component {
 					<Text style={styles.title}>Categories</Text>
 					<CategoryGrid />
 				</ScrollView>
-			</View>
+			</DismissKeyboardView>
 		);
 	}
 }

@@ -4,7 +4,8 @@ export default EStyleSheet.create({
 	container: {
 		flex: 1,
 		justifyContent: 'center',
-		alignItems: 'center'
+		alignItems: 'center',
+		backgroundColor: '$screenBackground'
 	},
 	message: {
 		fontSize: 28
