@@ -13,6 +13,7 @@ import com.facebook.FacebookSdk;
 import com.facebook.reactnative.androidsdk.FBSDKPackage;
 import co.apptailor.googlesignin.RNGoogleSigninPackage;
 import org.reactnative.camera.RNCameraPackage;
+import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
 
 import java.util.Arrays;
 import java.util.List;
@@ -47,7 +48,8 @@ public class MainApplication extends NavigationApplication {
     return Arrays.<ReactPackage>asList(
       new FBSDKPackage(mCallbackManager),
       new RNGoogleSigninPackage(),
-      new RNCameraPackage()
+			new RNCameraPackage(),
+			new ReactNativeConfigPackage()
     );
   }
 

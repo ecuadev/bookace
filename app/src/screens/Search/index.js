@@ -49,7 +49,7 @@ export default class Search extends Component {
 					</View>
 				</ImageBackground>
 				<View style={styles.paginator}>
-					<ScrollView style={styles.categories} showsVerticalScrollIndicator={false}>
+					<ScrollView style={styles.categories} showsVerticalScrollIndicator={false} keyboardDismissMode="on-drag">
 						<Text style={styles.title}>Categories</Text>
 						<CategoryGrid />
 					</ScrollView>

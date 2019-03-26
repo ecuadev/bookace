@@ -7,7 +7,7 @@ import SearchResult from './SearchResult';
 import styles from './styles';
 
 const SearchResults = () => (
-	<ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
+	<ScrollView style={styles.container} showsVerticalScrollIndicator={false} keyboardDismissMode="on-drag">
 		<Text style={styles.title}>Search Results</Text>
 		<SearchResult />
 		<SearchResult />

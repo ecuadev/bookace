@@ -19,7 +19,10 @@ const images = {
 	searchBackground: require('./search/background.jpg'),
 	searchBarIcon: require('./search/search.png'),
 	// Categories
-	categoryHorror: require('./categories/horror.jpg')
+	categoryHorror: require('./categories/horror.jpg'),
+	// Profile
+	profilePic: require('./profile/profile-pic.png'),
+	profileEditIcon: require('./profile/edit.png')
 };
 
 export default images;

@@ -27,8 +27,8 @@ export default EStyleSheet.create({
 	},
 	title: {
 		color: '$primaryTextColor',
-		fontFamily: 'Montserrat-SemiBold',
-		fontSize: 30,
+		fontFamily: 'Montserrat-Medium',
+		fontSize: 26,
 		paddingHorizontal: 15,
 		marginTop: 50,
 		marginBottom: 15
