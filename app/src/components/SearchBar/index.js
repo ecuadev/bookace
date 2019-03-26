@@ -12,13 +12,13 @@ export default class SearchBar extends Component {
 	}
 
 	render() {
-		const { style } = this.props;
+		const { onChangeText, value, style } = this.props;
 
 		return (
 			<View style={[styles.textBoxWrapper, style]}>
 				<TextInput
-					onChangeText={text => {}}
-					value=""
+					onChangeText={text => onChangeText(text)}
+					value={value}
 					autoCapitalize="sentences"
 					autoCorrect={false}
 					placeholder="Search books"
@@ -34,9 +34,13 @@ export default class SearchBar extends Component {
 }
 
 SearchBar.propTypes = {
+	onChangeText: PropTypes.func,
+	value: PropTypes.string,
 	style: PropTypes.object
 };
 
 SearchBar.defaultProps = {
+	onChangeText: undefined,
+	value: '',
 	style: null
 };

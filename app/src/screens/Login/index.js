@@ -108,7 +108,7 @@ class Login extends Component {
 	verifyConnection() {
 		const { network, setError } = this.props;
 
-		if (network.hasCheckedStatus && network.connected) {
+		if (network.hasCheckedStatus && !network.connected) {
 			setError('Your device is not connected to the internet, please make sure your connection is working.');
 			return false;
 		}

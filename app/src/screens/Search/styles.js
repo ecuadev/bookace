@@ -1,7 +1,8 @@
 import EStyleSheet from 'react-native-extended-stylesheet';
 import { Platform, Dimensions } from 'react-native';
 
-const isTallIPhone = Platform.OS === 'ios' && Dimensions.get('window').height >= 812;
+const { width, height } = Dimensions.get('window');
+const isTallIPhone = Platform.OS === 'ios' && height >= 812;
 
 export default EStyleSheet.create({
 	container: {
@@ -32,8 +33,22 @@ export default EStyleSheet.create({
 		marginTop: 50,
 		marginBottom: 15
 	},
+	paginator: {
+		position: 'relative',
+		flex: 1,
+		width: '100%'
+	},
 	categories: {
 		flex: 1,
 		width: '100%'
+	},
+	results: {
+		position: 'absolute',
+		flex: 1,
+		backgroundColor: '$screenBackground',
+		top: 0,
+		right: width,
+		width: '100%',
+		height: '100%'
 	}
 });

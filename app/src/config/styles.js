@@ -10,9 +10,10 @@ export default function () {
 		$primaryColor: '#97253F',
 		$tabsBorder: '#6C7B8A',
 		$tabsPrimaryColor: '#FFFFFF',
-		$tabsSecondaryColor: '#140F26',
+		$tabsSecondaryColor: '#8f9fb3',
 		$tabsActiveColor: '#4B5CE1',
 		$searchBarColor: '#000000',
-		$errorColor: '#CC3232'
+		$errorColor: '#CC3232',
+		$listBorderColor: '#c4c9df'
 	});
 }

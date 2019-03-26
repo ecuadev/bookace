@@ -1,6 +1,5 @@
 import EStyleSheet from 'react-native-extended-stylesheet';
 import { Dimensions } from 'react-native';
-import { iOSUIKit, systemWeights } from 'react-native-typography';
 
 const { width } = Dimensions.get('window');
 
@@ -20,7 +19,7 @@ export default EStyleSheet.create({
 		margin: 7.5
 	},
 	categoryBackgroundImage: {
-		borderRadius: 10
+		borderRadius: 8
 	},
 	categoryText: {
 		color: '$lightTextColor',
