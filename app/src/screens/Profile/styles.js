@@ -18,7 +18,7 @@ export default EStyleSheet.create({
 	},
 	bottomContainer: {
 		flex: 1,
-		paddingHorizontal: 25,
+		padding: 25,
 		backgroundColor: '$grayBackground'
 	},
 	header: {

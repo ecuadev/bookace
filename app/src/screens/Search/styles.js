@@ -8,7 +8,7 @@ export default EStyleSheet.create({
 	container: {
 		flex: 1,
 		marginBottom: isTallIPhone ? 83 : 49,
-		backgroundColor: '$screenBackground'
+		backgroundColor: '$grayBackground'
 	},
 	searchBackground: {
 		width: '100%',
