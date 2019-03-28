@@ -5,8 +5,8 @@ import { Rating } from 'react-native-ratings';
 
 import styles from './styles';
 
-const Book = ({ style }) => (
-	<TouchableOpacity style={style}>
+const Book = ({ onPress, style }) => (
+	<TouchableOpacity onPress={onPress} style={style}>
 		<View>
 			<View style={styles.bookImageContainer}>
 				<Image source={{ uri: 'https://images-na.ssl-images-amazon.com/images/I/51HSkTKlauL._SX346_BO1,204,203,200_.jpg' }} style={styles.bookImage} />
@@ -24,6 +24,7 @@ const Book = ({ style }) => (
 );
 
 Book.propTypes = {
+	onPress: PropTypes.func,
 	style: PropTypes.oneOfType([
 		PropTypes.arrayOf(PropTypes.object),
 		PropTypes.object
@@ -31,6 +32,7 @@ Book.propTypes = {
 };
 
 Book.defaultProps = {
+	onPress: () => {},
 	style: null
 };
 

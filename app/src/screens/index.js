@@ -6,10 +6,11 @@ import Login from './Login';
 import Home from './Home';
 import Search from './Search';
 import Category from './Category';
+import Book from './Book';
 import Camera from './Camera';
 import Social from './Social';
 import Profile from './Profile';
-import ForgotPass from "./ForgotPass";
+import ForgotPass from './ForgotPass';
 
 import Alert from '../components/Alert';
 import TabBar from '../components/TabBar';
@@ -24,6 +25,7 @@ export default function (Provider, store) {
 	Navigation.registerComponentWithRedux('bookace.Home', () => Home, Provider, store);
 	Navigation.registerComponentWithRedux('bookace.Search', () => Search, Provider, store);
 	Navigation.registerComponentWithRedux('bookace.Category', () => Category, Provider, store);
+	Navigation.registerComponentWithRedux('bookace.Book', () => Book, Provider, store);
 	Navigation.registerComponentWithRedux('bookace.Camera', () => Camera, Provider, store);
 	Navigation.registerComponentWithRedux('bookace.Social', () => Social, Provider, store);
 	Navigation.registerComponentWithRedux('bookace.Profile', () => Profile, Provider, store);

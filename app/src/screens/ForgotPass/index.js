@@ -8,27 +8,12 @@ import TextBox from '../../components/TextBox';
 import Button from '../../components/Button';
 import LinkButton from '../../components/LinkButton';
 // import TransparentButton from '../../components/Button/TransparentButton';
-import { goToSignup } from '../../config/navigation';
 import styles from './styles';
 
 export class ForgotPass extends Component {
 	constructor(props) {
 		super(props);
 		this.email = React.createRef();
-	}
-
-	goBack() {
-		Navigation.push('AuthStack', {
-			component: {
-				name: 'bookace.Login',
-				options: {
-					topBar: {
-						visible: false,
-						height: 0
-					}
-				}
-			}
-		});
 	}
 
 	// TODO
@@ -52,8 +37,7 @@ export class ForgotPass extends Component {
 							<LinkButton
 								style={styles.bottomLink}
 								containerStyle={styles.bottomLinkContainer}
-								onPress={goToSignup}
-							>
+								onPress={() => Navigation.pop(componentId)}>
 								Back
 							</LinkButton>
 						</View>

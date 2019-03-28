@@ -33,7 +33,7 @@ DismissKeyboardView.propTypes = {
 DismissKeyboardView.defaultProps = {
 	children: null,
 	scrollable: false,
-	onRefresh: undefined,
+	onRefresh: () => {},
 	refreshing: false,
 	style: null
 };

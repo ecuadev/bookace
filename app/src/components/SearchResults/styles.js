@@ -38,14 +38,12 @@ export default EStyleSheet.create({
 	},
 	resultTitle: {
 		color: '$primaryTextColor',
-		fontFamily: 'Montserrat-Medium',
-		fontSize: 14,
-		fontWeight: '500'
+		fontFamily: 'Montserrat-Semibold',
+		fontSize: 14
 	},
 	resultAuthor: {
 		color: '$primaryTextColor',
 		fontFamily: 'Montserrat-Light',
-		fontSize: 14,
-		fontWeight: '300'
+		fontSize: 14
 	}
 });

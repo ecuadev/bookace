@@ -27,7 +27,7 @@ CategoryGrid.propTypes = {
 };
 
 CategoryGrid.defaultProps = {
-	onCategoryPress: undefined,
+	onCategoryPress: () => {},
 	style: null
 };
 

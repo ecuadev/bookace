@@ -24,7 +24,7 @@ Category.propTypes = {
 };
 
 Category.defaultProps = {
-	onPress: undefined,
+	onPress: () => {},
 	style: null
 };
 

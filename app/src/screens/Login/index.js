@@ -184,14 +184,12 @@ class Login extends Component {
 						<TransparentButton
 							onPress={this.onFacebookLogin.bind(this)}
 							icon={Images.facebookAuthIcon}
-							style={styles.fbButton}
-						>
+							style={styles.fbButton}>
 							CONTINUE WITH FACEBOOK
 						</TransparentButton>
 						<TransparentButton
 							onPress={this.onGoogleLogin.bind(this)}
-							icon={Images.googleAuthIcon}
-						>
+							icon={Images.googleAuthIcon}>
 							CONTINUE WITH GOOGLE
 						</TransparentButton>
 
@@ -199,15 +197,13 @@ class Login extends Component {
 							<LinkButton
 								style={styles.bottomLink}
 								containerStyle={styles.bottomLinkContainer}
-								onPress={goToForgotPass}
-							>
+								onPress={goToForgotPass}>
 								Forgot password
 							</LinkButton>
 							<LinkButton
 								style={styles.bottomLink}
 								containerStyle={styles.bottomLinkContainer}
-								onPress={goToSignup}
-							>
+								onPress={goToSignup}>
 								Create account
 							</LinkButton>
 						</View>

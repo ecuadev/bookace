@@ -84,56 +84,50 @@ export const goHome = () => {
 	});
 };
 
-export const goToLogin = () => {
-	Navigation.setRoot({
-		root: {
-			stack: {
-				id: 'AuthStack',
-				children: [
-					{
-						component: {
-							name: 'bookace.Login',
-							options: {
-								topBar: {
-									visible: false,
-									height: 0
-								}
+export const goToLogin = () => Navigation.setRoot({
+	root: {
+		stack: {
+			id: 'AuthStack',
+			children: [
+				{
+					component: {
+						name: 'bookace.Login',
+						options: {
+							topBar: {
+								visible: false,
+								height: 0
 							}
 						}
 					}
-				]
-			}
-		}
-	});
-};
-
-export const goToSignup = () => {
-	Navigation.push('AuthStack', {
-		component: {
-			name: 'bookace.Signup',
-			options: {
-				topBar: {
-					visible: false,
-					height: 0
 				}
-			}
+			]
 		}
-	});
-};
+	}
+});
 
-export const goToForgotPass = () => {
-	Navigation.push('AuthStack', {
-		component: {
-			name: 'bookace.ForgotPass',
-			options: {
-				topBar: {
-					visible: false,
-					height: 0
-				}
+export const goToSignup = () => Navigation.push('AuthStack', {
+	component: {
+		name: 'bookace.Signup',
+		options: {
+			topBar: {
+				visible: false,
+				height: 0
 			}
 		}
-	});
-};
+	}
+});
+
+export const goToForgotPass = () => Navigation.push('AuthStack', {
+	component: {
+		name: 'bookace.ForgotPass',
+		options: {
+			topBar: {
+				visible: false,
+				height: 0
+			}
+		}
+	}
+});
 
 export const goToCategory = category => Navigation.push('SearchStack', {
 	component: {
@@ -144,4 +138,11 @@ export const goToCategory = category => Navigation.push('SearchStack', {
 	}
 });
 
-export const backToSearch = () => Navigation.popToRoot('SearchStack');
+export const goToBook = (book, stack) => Navigation.push(stack, {
+	component: {
+		name: 'bookace.Book',
+		passProps: {
+			book
+		}
+	}
+});

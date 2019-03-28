@@ -36,7 +36,7 @@ SearchBar.propTypes = {
 };
 
 SearchBar.defaultProps = {
-	onChangeText: undefined,
+	onChangeText: () => {},
 	value: '',
 	style: null
 };

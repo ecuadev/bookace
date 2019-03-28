@@ -115,8 +115,8 @@ SlideContainer.defaultProps = {
 	title: '',
 	children: null,
 	leftIcon: Images.backIcon,
-	onLeftButtonPress: undefined,
+	onLeftButtonPress: () => {},
 	rightIcon: Images.menuIcon,
-	onRightButtonPress: undefined,
+	onRightButtonPress: () => {},
 	style: null
 };

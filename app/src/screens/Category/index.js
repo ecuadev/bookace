@@ -1,22 +1,22 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
+import { Navigation } from 'react-native-navigation';
 
 import SlideContainer from '../../components/SlideContainer';
 import BookGrid from '../../components/BookGrid';
 
-import { backToSearch } from '../../config/navigation';
+import { goToBook } from '../../config/navigation';
 import styles from './styles';
 
 class Category extends Component {
 	render() {
-		const { category } = this.props;
+		const { componentId, category } = this.props;
 
 		return (
 			<SlideContainer
 				title={`${category} Books`}
-				onLeftButtonPress={backToSearch}
+				onLeftButtonPress={() => Navigation.pop(componentId)}
 				style={styles.container}>
-				<BookGrid />
+				<BookGrid onBookPress={book => goToBook(book, componentId)} />
 			</SlideContainer>
 		);
 	}

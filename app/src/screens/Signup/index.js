@@ -1,15 +1,15 @@
-import React, { Component } from "react";
-import { Text, View, ImageBackground } from "react-native";
-import { Navigation } from "react-native-navigation";
-import Images from "@assets/images";
-import DismissKeyboardView from "../../components/DismissKeyboardView";
-import TextBox from "../../components/TextBox";
-import Button from "../../components/Button";
-import LinkButton from "../../components/LinkButton";
-import TransparentButton from "../../components/Button/TransparentButton";
-import { goHome } from "../../config/navigation";
+import React, { Component } from 'react';
+import { Text, View, ImageBackground } from 'react-native';
+import { Navigation } from 'react-native-navigation';
+import Images from '@assets/images';
+import DismissKeyboardView from '../../components/DismissKeyboardView';
+import TextBox from '../../components/TextBox';
+import Button from '../../components/Button';
+import LinkButton from '../../components/LinkButton';
+import TransparentButton from '../../components/Button/TransparentButton';
+import { goHome } from '../../config/navigation';
 
-import styles from "./styles";
+import styles from './styles';
 
 export default class Signup extends Component {
 	constructor(props) {
@@ -27,11 +27,9 @@ export default class Signup extends Component {
 		goHome();
 	}
 
-	toLogin() {
-		Navigation.popToRoot("AuthStack");
-	}
-
 	render() {
+		const { componentId } = this.props;
+
 		return (
 			<ImageBackground source={Images.authBackground} style={styles.container}>
 				<DismissKeyboardView style={styles.inner}>
@@ -61,22 +59,21 @@ export default class Signup extends Component {
 						<TransparentButton
 							onPress={this.login}
 							icon={Images.facebookAuthIcon}
-							style={styles.fbButton}
-						>
+							style={styles.fbButton}>
 							CONTINUE WITH FACEBOOK
 						</TransparentButton>
+
 						<TransparentButton
 							onPress={this.login}
-							icon={Images.googleAuthIcon}
-						>
+							icon={Images.googleAuthIcon}>
 							CONTINUE WITH GOOGLE
 						</TransparentButton>
+
 						<View style={styles.bottomLinks}>
 							<LinkButton
 								style={styles.bottomLink}
 								containerStyle={styles.bottomLinkContainer}
-								onPress={this.toLogin}
-							>
+								onPress={() => Navigation.pop(componentId)}>
 								Already have an account
 							</LinkButton>
 						</View>

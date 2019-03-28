@@ -6,20 +6,20 @@ import SearchResult from './SearchResult';
 
 import styles from './styles';
 
-const SearchResults = () => (
+const SearchResults = ({ onBookPress }) => (
 	<ScrollView style={styles.container} showsVerticalScrollIndicator={false} keyboardDismissMode="on-drag">
 		<Text style={styles.title}>Search Results</Text>
-		<SearchResult />
-		<SearchResult />
-		<SearchResult />
-		<SearchResult />
-		<SearchResult />
-		<SearchResult />
-		<SearchResult />
-		<SearchResult />
-		<SearchResult />
-		<SearchResult />
-		<SearchResult />
+		<SearchResult onBookPress={book => onBookPress(book)} />
+		<SearchResult onBookPress={book => onBookPress(book)} />
+		<SearchResult onBookPress={book => onBookPress(book)} />
+		<SearchResult onBookPress={book => onBookPress(book)} />
+		<SearchResult onBookPress={book => onBookPress(book)} />
+		<SearchResult onBookPress={book => onBookPress(book)} />
+		<SearchResult onBookPress={book => onBookPress(book)} />
+		<SearchResult onBookPress={book => onBookPress(book)} />
+		<SearchResult onBookPress={book => onBookPress(book)} />
+		<SearchResult onBookPress={book => onBookPress(book)} />
+		<SearchResult onBookPress={book => onBookPress(book)} />
 	</ScrollView>
 );
 
