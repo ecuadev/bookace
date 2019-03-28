@@ -20,6 +20,8 @@ export class ForgotPass extends Component {
 	// resendEmail(){}
 
 	render() {
+		const { componentId } = this.props;
+
 		return (
 			<ImageBackground source={Images.authBackground} style={styles.container}>
 				<DismissKeyboardView style={styles.inner}>

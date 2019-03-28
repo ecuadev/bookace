@@ -1,38 +1,38 @@
 /* eslint-disable react/jsx-one-expression-per-line */
-import React, { Component } from "react";
-import { Image, ImageBackground, Text, View } from "react-native";
-import Config from "react-native-config";
-import { LoginManager, AccessToken } from "react-native-fbsdk";
-import { GoogleSignin, statusCodes } from "react-native-google-signin";
+import React, { Component } from 'react';
+import { Image, ImageBackground, Text, View } from 'react-native';
+import Config from 'react-native-config';
+import { LoginManager, AccessToken } from 'react-native-fbsdk';
+import { GoogleSignin, statusCodes } from 'react-native-google-signin';
 import {
 	UserPasswordCredential,
 	FacebookCredential,
 	GoogleCredential
-} from "mongodb-stitch-react-native-sdk";
-import { connect } from "react-redux";
-import validator from "validator";
-import Images from "@assets/images";
+} from 'mongodb-stitch-react-native-sdk';
+import { connect } from 'react-redux';
+import validator from 'validator';
+import Images from '@assets/images';
 
-import { setCurrentUser } from "../../actions/user";
-import { setError } from "../../actions/global";
+import { setCurrentUser } from '../../actions/user';
+import { setError } from '../../actions/global';
 
-import DismissKeyboardView from "../../components/DismissKeyboardView";
-import TextBox from "../../components/TextBox";
-import Button from "../../components/Button";
-import LinkButton from "../../components/LinkButton";
-import TransparentButton from "../../components/Button/TransparentButton";
-import { goToSignup, goHome, goToForgotPass } from "../../config/navigation";
+import DismissKeyboardView from '../../components/DismissKeyboardView';
+import TextBox from '../../components/TextBox';
+import Button from '../../components/Button';
+import LinkButton from '../../components/LinkButton';
+import TransparentButton from '../../components/Button/TransparentButton';
+import { goToSignup, goHome, goToForgotPass } from '../../config/navigation';
 
-import styles from "./styles";
+import styles from './styles';
 
 class Login extends Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			email: "",
+			email: '',
 			emailError: null,
-			password: "",
+			password: '',
 			passwordError: null
 		};
 	}
@@ -50,7 +50,7 @@ class Login extends Component {
 
 		try {
 			const result = await LoginManager.logInWithReadPermissions([
-				"public_profile"
+				'public_profile'
 			]);
 
 			if (!result.isCancelled) {
@@ -97,11 +97,11 @@ class Login extends Component {
 		const { email, password } = this.state;
 
 		if (!email) {
-			this.setState({ emailError: "This field is required" });
+			this.setState({ emailError: 'This field is required' });
 		} else if (!validator.isEmail(email)) {
-			this.setState({ emailError: "Please enter a valid email address" });
+			this.setState({ emailError: 'Please enter a valid email address' });
 		} else if (!password) {
-			this.setState({ passwordError: "This field is required" });
+			this.setState({ passwordError: 'This field is required' });
 		} else {
 			const credential = new UserPasswordCredential(email, password);
 			this.login(credential);
@@ -115,7 +115,7 @@ class Login extends Component {
 
 		if (network.hasCheckedStatus && !network.connected) {
 			setError(
-				"Your device is not connected to the internet, please make sure your connection is working."
+				'Your device is not connected to the internet, please make sure your connection is working.'
 			);
 			return false;
 		}

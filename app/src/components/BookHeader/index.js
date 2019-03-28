@@ -22,19 +22,21 @@ const BookHeader = ({ onBack, onMenu }) => (
 				</View>
 			</View>
 			<View style={styles.bookInfo}>
-				<Text style={styles.bookTitle}>Harry Potter and the Sorcerer's Stone</Text>
-				<Text style={styles.bookAuthors}>JK. Rowling</Text>
+				<Text style={styles.bookTitle} numberOfLines={4}>Harry Potter and the Sorcerer's Stone</Text>
+				<Text style={styles.bookAuthors} numberOfLines={3}>JK. Rowling</Text>
 			</View>
 		</View>
 	</View>
 );
 
 BookHeader.propTypes = {
-	onBack: PropTypes.func
+	onBack: PropTypes.func,
+	onMenu: PropTypes.func
 };
 
 BookHeader.defaultProps = {
-	onBack: () => {}
+	onBack: () => {},
+	onMenu: () => {}
 };
 
 export default BookHeader;

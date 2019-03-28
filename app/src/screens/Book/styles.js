@@ -11,10 +11,17 @@ export default EStyleSheet.create({
 	headerImageContainer: {
 		height: 300,
 		width,
-		backgroundColor: 'rgba(0, 0, 0, 0.2)'
+		backgroundColor: 'rgba(0, 0, 0, 0.4)'
 	},
 	headerImage: {
 		height: '100%',
 		width: '100%'
+	},
+	staticHeader: {
+		opacity: 0
+	},
+	content: {
+		padding: 20,
+		height: 1000
 	}
 });

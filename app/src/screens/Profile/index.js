@@ -1,10 +1,29 @@
 import React, { Component } from 'react';
 import { Image, Text, TouchableOpacity, View } from 'react-native';
+import { connect } from 'react-redux';
 import Images from '@assets/images';
 
+import Button from '../../components/Button';
+
+import { setCurrentUser } from '../../actions/user';
+import { goToLogin } from '../../config/navigation';
 import styles from './styles';
 
-export default class Profile extends Component {
+class Profile extends Component {
+	logout() {
+		const { client } = this.props;
+
+		client.auth
+			.logout()
+			.then(user => {
+				setCurrentUser(null);
+				goToLogin(true);
+			})
+			.catch(err => {
+				console.log(`Failed to log in anonymously: ${err}`);
+			});
+	}
+
 	render() {
 		return (
 			<View style={styles.container}>
@@ -41,8 +60,16 @@ export default class Profile extends Component {
 				</View>
 				<View style={styles.bottomContainer}>
 					<Text>List of books</Text>
+					<Button onPress={this.logout.bind(this)}>Sign out</Button>
 				</View>
 			</View>
 		);
 	}
 }
+
+export default connect(
+	state => ({
+		client: state.global.client
+	}),
+	{ setCurrentUser }
+)(Profile);

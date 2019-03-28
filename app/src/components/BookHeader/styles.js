@@ -10,6 +10,12 @@ export default EStyleSheet.create({
 		padding: 20,
 		paddingTop: isTallIPhone ? 49 : 28
 	},
+	staticContainer: {
+		flexDirection: 'row',
+		justifyContent: 'space-between',
+		alignItems: 'center',
+		paddingTop: isTallIPhone ? 42 : 21
+	},
 	headerButtons: {
 		flexDirection: 'row',
 		justifyContent: 'space-between',
@@ -71,6 +77,15 @@ export default EStyleSheet.create({
 		textShadowColor: 'rgba(0, 0, 0, 0.75)',
 		textShadowOffset: { width: 1, height: 1 },
 		textShadowRadius: 2
+	},
+	bookTitleSmall: {
+		flex: 1,
+		flexWrap: 'wrap',
+		color: '$lightTextColor',
+		fontFamily: 'Montserrat-Semibold',
+		fontSize: 16,
+		textAlign: 'center',
+		paddingHorizontal: 20
 	},
 	bookAuthors: {
 		color: '$lightTextColor',

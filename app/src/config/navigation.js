@@ -74,6 +74,7 @@ export const goHome = () => {
 
 	Navigation.showOverlay({
 		component: {
+			id: 'mainTabbar',
 			name: 'bookace.TabBar',
 			options: {
 				overlay: {
@@ -84,26 +85,32 @@ export const goHome = () => {
 	});
 };
 
-export const goToLogin = () => Navigation.setRoot({
-	root: {
-		stack: {
-			id: 'AuthStack',
-			children: [
-				{
-					component: {
-						name: 'bookace.Login',
-						options: {
-							topBar: {
-								visible: false,
-								height: 0
+export const goToLogin = dismissTabBar => {
+	if (dismissTabBar) {
+		Navigation.dismissOverlay('mainTabbar');
+	}
+
+	Navigation.setRoot({
+		root: {
+			stack: {
+				id: 'AuthStack',
+				children: [
+					{
+						component: {
+							name: 'bookace.Login',
+							options: {
+								topBar: {
+									visible: false,
+									height: 0
+								}
 							}
 						}
 					}
-				}
-			]
+				]
+			}
 		}
-	}
-});
+	});
+};
 
 export const goToSignup = () => Navigation.push('AuthStack', {
 	component: {
