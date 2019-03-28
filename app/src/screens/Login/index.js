@@ -1,34 +1,38 @@
-import React, { Component } from 'react';
-import { Image, ImageBackground, Text, View } from 'react-native';
-import Config from 'react-native-config';
-import { LoginManager, AccessToken } from 'react-native-fbsdk';
-import { GoogleSignin, statusCodes } from 'react-native-google-signin';
-import { UserPasswordCredential, FacebookCredential, GoogleCredential } from 'mongodb-stitch-react-native-sdk';
-import { connect } from 'react-redux';
-import validator from 'validator';
-import Images from '@assets/images';
+/* eslint-disable react/jsx-one-expression-per-line */
+import React, { Component } from "react";
+import { Image, ImageBackground, Text, View } from "react-native";
+import Config from "react-native-config";
+import { LoginManager, AccessToken } from "react-native-fbsdk";
+import { GoogleSignin, statusCodes } from "react-native-google-signin";
+import {
+	UserPasswordCredential,
+	FacebookCredential,
+	GoogleCredential
+} from "mongodb-stitch-react-native-sdk";
+import { connect } from "react-redux";
+import validator from "validator";
+import Images from "@assets/images";
 
-import { setCurrentUser } from '../../actions/user';
-import { setError } from '../../actions/global';
+import { setCurrentUser } from "../../actions/user";
+import { setError } from "../../actions/global";
 
-import DismissKeyboardView from '../../components/DismissKeyboardView';
-import TextBox from '../../components/TextBox';
-import Button from '../../components/Button';
-import LinkButton from '../../components/LinkButton';
-import TransparentButton from '../../components/Button/TransparentButton';
-import { goToSignup, goHome } from '../../config/navigation';
+import DismissKeyboardView from "../../components/DismissKeyboardView";
+import TextBox from "../../components/TextBox";
+import Button from "../../components/Button";
+import LinkButton from "../../components/LinkButton";
+import TransparentButton from "../../components/Button/TransparentButton";
+import { goToSignup, goHome, goToForgotPass } from "../../config/navigation";
 
-import styles from './styles';
-
+import styles from "./styles";
 
 class Login extends Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			email: '',
+			email: "",
 			emailError: null,
-			password: '',
+			password: "",
 			passwordError: null
 		};
 	}
@@ -45,7 +49,9 @@ class Login extends Component {
 		}
 
 		try {
-			const result = await LoginManager.logInWithReadPermissions(['public_profile']);
+			const result = await LoginManager.logInWithReadPermissions([
+				"public_profile"
+			]);
 
 			if (!result.isCancelled) {
 				const token = await AccessToken.getCurrentAccessToken();
@@ -91,25 +97,26 @@ class Login extends Component {
 		const { email, password } = this.state;
 
 		if (!email) {
-			this.setState({ emailError: 'This field is required' });
+			this.setState({ emailError: "This field is required" });
 		} else if (!validator.isEmail(email)) {
-			this.setState({ emailError: 'Please enter a valid email address' });
+			this.setState({ emailError: "Please enter a valid email address" });
 		} else if (!password) {
-			this.setState({ passwordError: 'This field is required' });
+			this.setState({ passwordError: "This field is required" });
 		} else {
 			const credential = new UserPasswordCredential(email, password);
 			this.login(credential);
 		}
 	}
 
-	onNavigateToSignup() {
-	}
+	onNavigateToSignup() {}
 
 	verifyConnection() {
 		const { network, setError } = this.props;
 
 		if (network.hasCheckedStatus && !network.connected) {
-			setError('Your device is not connected to the internet, please make sure your connection is working.');
+			setError(
+				"Your device is not connected to the internet, please make sure your connection is working."
+			);
 			return false;
 		}
 
@@ -119,13 +126,16 @@ class Login extends Component {
 	login(credential) {
 		const { client, setCurrentUser, setError } = this.props;
 
-		client.auth.loginWithCredential(credential).then(user => {
-			setCurrentUser(user);
-			goHome();
-		}).catch(err => {
-			console.log(`Failed to log in anonymously: ${err}`);
-			setCurrentUser(null);
-		});
+		client.auth
+			.loginWithCredential(credential)
+			.then(user => {
+				setCurrentUser(user);
+				goHome();
+			})
+			.catch(err => {
+				console.log(`Failed to log in anonymously: ${err}`);
+				setCurrentUser(null);
+			});
 	}
 
 	render() {
@@ -135,7 +145,11 @@ class Login extends Component {
 			<ImageBackground source={Images.authBackground} style={styles.container}>
 				<DismissKeyboardView style={styles.inner}>
 					<View style={styles.logo}>
-						<Image source={Images.authLogo} resizeMode="contain" style={styles.logoImage} />
+						<Image
+							source={Images.authLogo}
+							resizeMode="contain"
+							style={styles.logoImage}
+						/>
 					</View>
 
 					<View style={styles.form}>
@@ -154,7 +168,12 @@ class Login extends Component {
 							onChange={value => this.setState({ password: value })}
 							error={passwordError}
 						/>
-						<Button onPress={this.onEmailPasswordLogin.bind(this)} style={styles.signinButton}>SIGN IN</Button>
+						<Button
+							onPress={this.onEmailPasswordLogin.bind(this)}
+							style={styles.signinButton}
+						>
+							SIGN IN
+						</Button>
 
 						<View style={styles.separator}>
 							<View style={styles.separatorLine} />
@@ -162,12 +181,35 @@ class Login extends Component {
 							<View style={styles.separatorLine} />
 						</View>
 
-						<TransparentButton onPress={this.onFacebookLogin.bind(this)} icon={Images.facebookAuthIcon} style={styles.fbButton}>CONTINUE WITH FACEBOOK</TransparentButton>
-						<TransparentButton onPress={this.onGoogleLogin.bind(this)} icon={Images.googleAuthIcon}>CONTINUE WITH GOOGLE</TransparentButton>
+						<TransparentButton
+							onPress={this.onFacebookLogin.bind(this)}
+							icon={Images.facebookAuthIcon}
+							style={styles.fbButton}
+						>
+							CONTINUE WITH FACEBOOK
+						</TransparentButton>
+						<TransparentButton
+							onPress={this.onGoogleLogin.bind(this)}
+							icon={Images.googleAuthIcon}
+						>
+							CONTINUE WITH GOOGLE
+						</TransparentButton>
 
 						<View style={styles.bottomLinks}>
-							<LinkButton style={styles.bottomLink} containerStyle={styles.bottomLinkContainer}>Forgot password</LinkButton>
-							<LinkButton style={styles.bottomLink} containerStyle={styles.bottomLinkContainer} onPress={goToSignup}>Create account</LinkButton>
+							<LinkButton
+								style={styles.bottomLink}
+								containerStyle={styles.bottomLinkContainer}
+								onPress={goToForgotPass}
+							>
+								Forgot password
+							</LinkButton>
+							<LinkButton
+								style={styles.bottomLink}
+								containerStyle={styles.bottomLinkContainer}
+								onPress={goToSignup}
+							>
+								Create account
+							</LinkButton>
 						</View>
 					</View>
 				</DismissKeyboardView>

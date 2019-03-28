@@ -1,15 +1,15 @@
-import { Navigation } from 'react-native-navigation';
-import Images from '@assets/images';
+import { Navigation } from "react-native-navigation";
+import Images from "@assets/images";
 
 export const goHome = () => {
 	Navigation.setRoot({
 		root: {
 			bottomTabs: {
-				id: 'BotomTabs',
+				id: "BotomTabs",
 				children: [
 					{
 						component: {
-							name: 'bookace.Home',
+							name: "bookace.Home",
 							options: {
 								bottomTab: {
 									icon: Images.homeTabIcon
@@ -19,7 +19,7 @@ export const goHome = () => {
 					},
 					{
 						component: {
-							name: 'bookace.Search',
+							name: "bookace.Search",
 							options: {
 								bottomTab: {
 									icon: Images.searchTabIcon
@@ -29,7 +29,7 @@ export const goHome = () => {
 					},
 					{
 						component: {
-							name: 'bookace.Camera',
+							name: "bookace.Camera",
 							options: {
 								bottomTab: {
 									icon: Images.cameraTabIcon
@@ -39,7 +39,7 @@ export const goHome = () => {
 					},
 					{
 						component: {
-							name: 'bookace.Social',
+							name: "bookace.Social",
 							options: {
 								bottomTab: {
 									icon: Images.socialTabIcon
@@ -49,7 +49,7 @@ export const goHome = () => {
 					},
 					{
 						component: {
-							name: 'bookace.Profile',
+							name: "bookace.Profile",
 							options: {
 								bottomTab: {
 									icon: Images.profileTabIcon
@@ -64,7 +64,7 @@ export const goHome = () => {
 
 	Navigation.showOverlay({
 		component: {
-			name: 'bookace.TabBar',
+			name: "bookace.TabBar",
 			options: {
 				overlay: {
 					interceptTouchOutside: false
@@ -74,35 +74,49 @@ export const goHome = () => {
 	});
 };
 
-export const goToLogin = () => Navigation.setRoot({
-	root: {
-		stack: {
-			id: 'AuthStack',
-			children: [
-				{
-					component: {
-						name: 'bookace.Login',
-						options: {
-							topBar: {
-								visible: false,
-								height: 0
+export const goToLogin = () =>
+	Navigation.setRoot({
+		root: {
+			stack: {
+				id: "AuthStack",
+				children: [
+					{
+						component: {
+							name: "bookace.Login",
+							options: {
+								topBar: {
+									visible: false,
+									height: 0
+								}
 							}
 						}
 					}
-				}
-			]
-		}
-	}
-});
-
-export const goToSignup = () => Navigation.push('AuthStack', {
-	component: {
-		name: 'bookace.Signup',
-		options: {
-			topBar: {
-				visible: false,
-				height: 0
+				]
 			}
 		}
-	}
-});
+	});
+
+export const goToSignup = () =>
+	Navigation.push("AuthStack", {
+		component: {
+			name: "bookace.Signup",
+			options: {
+				topBar: {
+					visible: false,
+					height: 0
+				}
+			}
+		}
+	});
+export const goToForgotPass = () =>
+	Navigation.push("AuthStack", {
+		component: {
+			name: "bookace.ForgotPass",
+			options: {
+				topBar: {
+					visible: false,
+					height: 0
+				}
+			}
+		}
+	});
