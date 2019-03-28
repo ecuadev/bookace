@@ -1,5 +1,7 @@
 const images = {
 	// Globals
+	backIcon: require('./global/back.png'),
+	menuIcon: require('./global/menu.png'),
 	noInternet: require('./global/no-connection.png'),
 
 	// Login/Signup

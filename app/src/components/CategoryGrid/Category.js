@@ -5,8 +5,8 @@ import Images from '@assets/images';
 
 import styles from './styles';
 
-const Category = ({ label, style }) => (
-	<TouchableOpacity onPress={() => {}}>
+const Category = ({ label, onPress, style }) => (
+	<TouchableOpacity onPress={onPress}>
 		<ImageBackground
 			source={Images.categoryHorror}
 			style={[styles.categoryBackground, style]}
@@ -18,11 +18,13 @@ const Category = ({ label, style }) => (
 );
 
 Category.propTypes = {
+	onPress: PropTypes.func,
 	label: PropTypes.string.isRequired,
 	style: PropTypes.object
 };
 
 Category.defaultProps = {
+	onPress: undefined,
 	style: null
 };
 

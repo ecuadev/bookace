@@ -23,6 +23,8 @@ export default EStyleSheet.create({
 	},
 	resultImageContainer: {
 		borderRadius: 8,
+		width: 50,
+		height: 70,
 		overflow: 'hidden'
 	},
 	resultImage: {

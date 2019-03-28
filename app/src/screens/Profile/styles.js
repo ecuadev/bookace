@@ -1,5 +1,4 @@
 import EStyleSheet from 'react-native-extended-stylesheet';
-
 import { Platform, Dimensions } from 'react-native';
 
 const { height } = Dimensions.get('window');
@@ -28,7 +27,7 @@ export default EStyleSheet.create({
 	},
 	title: {
 		color: '$primaryTextColor',
-		fontFamily: 'Montserrat-Medium',
+		fontFamily: 'Montserrat-SemiBold',
 		fontSize: 26,
 		marginVertical: 30
 	},

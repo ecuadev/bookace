@@ -8,6 +8,7 @@ import SearchBar from '../../components/SearchBar';
 import CategoryGrid from '../../components/CategoryGrid';
 import SearchResults from '../../components/SearchResults';
 
+import { goToCategory } from '../../config/navigation';
 import styles from './styles';
 
 const { width } = Dimensions.get('window');
@@ -21,7 +22,7 @@ export default class Search extends Component {
 		};
 	}
 
-	componentDidUpdate(prevProps, prevState, snapshot) {
+	componentDidUpdate(prevProps, prevState) {
 		const { searchValue } = this.state;
 		if (prevState.searchValue === '' && searchValue) {
 			this.resultsView.transitionTo({ right: 0 }, 200, 'ease');
@@ -32,6 +33,10 @@ export default class Search extends Component {
 
 	onSearch(value) {
 		this.setState({ searchValue: value });
+	}
+
+	onCategoryPress(category) {
+		goToCategory(category);
 	}
 
 	render() {
@@ -51,7 +56,7 @@ export default class Search extends Component {
 				<View style={styles.paginator}>
 					<ScrollView style={styles.categories} showsVerticalScrollIndicator={false} keyboardDismissMode="on-drag">
 						<Text style={styles.title}>Categories</Text>
-						<CategoryGrid />
+						<CategoryGrid onCategoryPress={this.onCategoryPress.bind(this)} />
 					</ScrollView>
 					<Animatable.View ref={ref => { this.resultsView = ref; }} style={styles.results}>
 						<SearchResults />

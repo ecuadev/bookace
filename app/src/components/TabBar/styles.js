@@ -13,7 +13,7 @@ export default EStyleSheet.create({
 		flexDirection: 'row',
 		justifyContent: 'space-around',
 		borderTopWidth: 0.3,
-		borderTopColor: '$tabsBorder'
+		borderTopColor: '$borderColor'
 	},
 	tab: {
 		width: '10%',

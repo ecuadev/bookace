@@ -7,10 +7,6 @@ import Images from '@assets/images';
 import styles from './styles';
 
 export default class SearchBar extends Component {
-	constructor(props) {
-		super(props);
-	}
-
 	render() {
 		const { onChangeText, value, style } = this.props;
 

@@ -8,10 +8,10 @@ export default EStyleSheet.create({
 		flex: 1,
 		flexDirection: 'row',
 		flexWrap: 'wrap',
-		paddingHorizontal: 7.5
+		paddingHorizontal: 12.5
 	},
 	categoryBackground: {
-		width: (width / 2) - 22.5,
+		width: (width / 2) - 27.5,
 		height: 120,
 		alignItems: 'center',
 		justifyContent: 'center',

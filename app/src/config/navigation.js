@@ -18,15 +18,25 @@ export const goHome = () => {
 						}
 					},
 					{
-						component: {
-							name: 'bookace.Search',
+						stack: {
+							id: 'SearchStack',
+							children: [{
+								component: {
+									name: 'bookace.Search'
+								}
+							}],
 							options: {
+								topBar: {
+									visible: false,
+									height: 0
+								},
 								bottomTab: {
 									icon: Images.searchTabIcon
 								}
 							}
 						}
 					},
+
 					{
 						component: {
 							name: 'bookace.Camera',
@@ -106,3 +116,14 @@ export const goToSignup = () => Navigation.push('AuthStack', {
 		}
 	}
 });
+
+export const goToCategory = category => Navigation.push('SearchStack', {
+	component: {
+		name: 'bookace.Category',
+		passProps: {
+			category
+		}
+	}
+});
+
+export const backToSearch = category => Navigation.popToRoot('SearchStack');

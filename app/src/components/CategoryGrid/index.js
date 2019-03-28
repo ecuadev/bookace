@@ -6,26 +6,28 @@ import Category from './Category';
 
 import styles from './styles';
 
-const CategoryGrid = ({ style }) => (
+const CategoryGrid = ({ onCategoryPress, style }) => (
 	<View style={[styles.grid, style]}>
-		<Category label="Action" />
-		<Category label="Horror" />
-		<Category label="Drama" />
-		<Category label="Novel" />
-		<Category label="Fiction" />
-		<Category label="Cooking" />
-		<Category label="Kids" />
-		<Category label="History" />
-		<Category label="Crime" />
-		<Category label="Fantasy" />
+		<Category label="Action" onPress={() => onCategoryPress('Action')} />
+		<Category label="Horror" onPress={() => onCategoryPress('Horror')} />
+		<Category label="Drama" onPress={() => onCategoryPress('Drama')} />
+		<Category label="Novel" onPress={() => onCategoryPress('Novel')} />
+		<Category label="Fiction" onPress={() => onCategoryPress('Fiction')} />
+		<Category label="Cooking" onPress={() => onCategoryPress('Cooking')} />
+		<Category label="Kids" onPress={() => onCategoryPress('Kids')} />
+		<Category label="History" onPress={() => onCategoryPress('History')} />
+		<Category label="Crime" onPress={() => onCategoryPress('Crime')} />
+		<Category label="Fantasy" onPress={() => onCategoryPress('Fantasy')} />
 	</View>
 );
 
 CategoryGrid.propTypes = {
+	onCategoryPress: PropTypes.func,
 	style: PropTypes.object
 };
 
 CategoryGrid.defaultProps = {
+	onCategoryPress: undefined,
 	style: null
 };
 

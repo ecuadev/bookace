@@ -18,18 +18,18 @@ export default EStyleSheet.create({
 	searchWrapper: {
 		width: '100%',
 		height: '100%',
-		paddingHorizontal: 15
+		paddingHorizontal: 20
 	},
 	searchBar: {
 		position: 'absolute',
 		bottom: -28,
-		left: 15
+		left: 20
 	},
 	title: {
 		color: '$primaryTextColor',
-		fontFamily: 'Montserrat-Medium',
+		fontFamily: 'Montserrat-SemiBold',
 		fontSize: 26,
-		paddingHorizontal: 15,
+		paddingHorizontal: 20,
 		marginTop: 50,
 		marginBottom: 15
 	},
