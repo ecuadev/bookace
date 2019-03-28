@@ -23,5 +23,10 @@ export default EStyleSheet.create({
 	content: {
 		padding: 20,
 		height: 1000
+	},
+	description: {
+		color: '$primaryTextColor',
+		fontFamily: 'Montserrat',
+		fontSize: 16
 	}
 });

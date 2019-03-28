@@ -11,13 +11,13 @@ export default EStyleSheet.create({
 		paddingBottom: isTallIPhone ? 83 : 49
 	},
 	topContainer: {
-		paddingHorizontal: 25,
+		paddingHorizontal: 20,
 		paddingTop: isTallIPhone ? 34 : 0,
 		paddingBottom: 20
 	},
 	bottomContainer: {
 		flex: 1,
-		padding: 25,
+		padding: 20,
 		backgroundColor: '$grayBackground'
 	},
 	header: {
@@ -30,6 +30,9 @@ export default EStyleSheet.create({
 		fontFamily: 'Montserrat-SemiBold',
 		fontSize: 26,
 		marginVertical: 30
+	},
+	edit: {
+		padding: 5
 	},
 	editIcon: {
 		width: 18,

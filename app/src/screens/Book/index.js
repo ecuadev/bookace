@@ -34,10 +34,10 @@ class Book extends Component {
 				)}
 				renderForeground={() => <BookHeader onBack={() => Navigation.pop(componentId)} />}>
 				<View style={styles.content}>
-					<Text>Scroll Me!</Text>
 					<TriggeringView
 						onHide={() => this.navTitleView.fadeInUp(200)}
 						onDisplay={() => this.navTitleView.fadeOut(100)} />
+					<Text style={styles.description}>Rescued from the outrageous neglect of his aunt and uncle, a young boy with a great destiny proves his worth while attending Hogwarts School for Wizards and Witches.</Text>
 				</View>
 			</HeaderImageScrollView>
 		);

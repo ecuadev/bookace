@@ -25,22 +25,24 @@ class Profile extends Component {
 	}
 
 	render() {
+		const { user } = this.props;
+
 		return (
 			<View style={styles.container}>
 				<View style={styles.topContainer}>
 					<View style={styles.header}>
 						<Text style={styles.title}>My Profile</Text>
-						<TouchableOpacity>
+						<TouchableOpacity style={styles.edit}>
 							<Image source={Images.profileEditIcon} style={styles.editIcon} />
 						</TouchableOpacity>
 					</View>
 					<View style={styles.user}>
 						<View style={styles.userImageContainer}>
-							<Image source={Images.profilePic} style={styles.userImage} />
+							<Image source={user.profile.pictureUrl ? { uri: user.profile.pictureUrl } : Images.profilePic} style={styles.userImage} />
 						</View>
 						<View style={styles.userInfoContainer}>
-							<Text style={styles.userName}>David Bergmann</Text>
-							<Text style={styles.userEmail}>davidbepa@gmail.com</Text>
+							<Text style={styles.userName}>{user.profile.name}</Text>
+							<Text style={styles.userEmail}>{user.profile.email}</Text>
 						</View>
 					</View>
 					<View style={styles.scores}>
@@ -69,7 +71,8 @@ class Profile extends Component {
 
 export default connect(
 	state => ({
-		client: state.global.client
+		client: state.global.client,
+		user: state.user.currentUser
 	}),
 	{ setCurrentUser }
 )(Profile);
