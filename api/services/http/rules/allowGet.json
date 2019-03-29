@@ -1,0 +1,14 @@
+{
+    "id": "5c9d9662fca303df6b806c29",
+    "name": "allowGet",
+    "actions": [
+        "get"
+    ],
+    "when": {
+        "%%args.url.host": {
+            "%in": [
+                "www.googleapis.com"
+            ]
+        }
+    }
+}
