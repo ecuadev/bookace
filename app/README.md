@@ -76,8 +76,7 @@ react-native run-android
 
 ### Testing
 
-- This project uses Jest for testing.
-Visit https://jestjs.io/ for details.
+- This project uses [Jest](https://jestjs.io/) and [Enzyme](https://airbnb.io/enzyme/) for testing.
 
 To execute tests:
 

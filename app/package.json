@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest",
+		"test": "jest",
+		"test:coverage": "jest --coverage && open coverage/lcov-report/index.html",
     "eslint": "eslint",
     "android": "cd ./android && ./gradlew app:assembleDebug && ./gradlew installDebug"
   },
@@ -35,18 +36,29 @@
     "@babel/core": "^7.3.4",
     "@babel/runtime": "^7.3.4",
     "babel-jest": "^24.5.0",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.11.2",
     "eslint": "^5.15.2",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jest": "^22.4.1",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.12.4",
     "eslint-plugin-react-native": "^3.6.0",
     "jest": "^24.5.0",
+    "jest-fetch-mock": "^2.1.1",
     "metro-react-native-babel-preset": "^0.53.1",
-    "react-test-renderer": "16.8.3"
+    "react-dom": "^16.8.6",
+    "react-test-renderer": "16.8.3",
+    "redux-mock-store": "^1.5.3"
   },
   "jest": {
-    "preset": "react-native"
+		"preset": "react-native",
+    "setupFiles": [
+			"./jest/setup.js",
+			"./jest/throw-on-prop-type-error.js"
+		],
+		"collectCoverageFrom": ["src/**/*.js"]
   },
   "rnpm": {
     "assets": [
