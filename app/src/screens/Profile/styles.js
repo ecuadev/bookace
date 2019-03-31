@@ -1,19 +1,21 @@
 import EStyleSheet from 'react-native-extended-stylesheet';
-import { Platform, Dimensions } from 'react-native';
-
-const { height } = Dimensions.get('window');
-const isTallIPhone = Platform.OS === 'ios' && height >= 812;
 
 export default EStyleSheet.create({
 	container: {
 		flex: 1,
 		backgroundColor: '$screenBackground',
-		paddingBottom: isTallIPhone ? 83 : 49
+		padding: 0
+	},
+	title: {
+		paddingHorizontal: 20,
+		marginBottom: 9
 	},
 	topContainer: {
-		paddingHorizontal: 20,
-		paddingTop: isTallIPhone ? 34 : 0,
-		paddingBottom: 20
+		padding: 20,
+		borderBottomWidth: 0.3,
+		borderColor: '$borderColor',
+		height: 165,
+		backgroundColor: '$screenBackground'
 	},
 	bottomContainer: {
 		flex: 1,
@@ -25,35 +27,21 @@ export default EStyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'space-between'
 	},
-	title: {
-		color: '$primaryTextColor',
-		fontFamily: 'Montserrat-SemiBold',
-		fontSize: 26,
-		marginVertical: 30
-	},
-	edit: {
-		padding: 5
-	},
-	editIcon: {
-		width: 18,
-		height: 18,
-		tintColor: '$primaryColor'
-	},
 	user: {
 		flexDirection: 'row',
 		alignItems: 'center',
 		width: '100%'
 	},
 	userImageContainer: {
-		width: 50,
-		height: 50,
+		width: 65,
+		height: 65,
 		borderRadius: 100,
 		overflow: 'hidden',
 		marginRight: 15
 	},
 	userImage: {
-		width: 50,
-		height: 50
+		width: '100%',
+		height: '100%'
 	},
 	userInfoContainer: {
 		flex: 1,

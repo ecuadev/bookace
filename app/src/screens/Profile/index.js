@@ -1,44 +1,32 @@
 import React, { Component } from 'react';
-import { Image, Text, TouchableOpacity, View } from 'react-native';
+import { Image, Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import Images from '@assets/images';
 
-import Button from '../../components/Button';
-
-import { setCurrentUser } from '../../actions/user';
-import { goToLogin } from '../../config/navigation';
+import SlideContainer from '../../components/SlideContainer';
 import styles from './styles';
 
+import { goToProfileEdit } from '../../config/navigation';
+
 class Profile extends Component {
-	logout() {
-		const { client } = this.props;
-
-		client.auth
-			.logout()
-			.then(user => {
-				setCurrentUser(null);
-				goToLogin(true);
-			})
-			.catch(err => {
-				console.log(`Failed to log in anonymously: ${err}`);
-			});
-	}
-
 	render() {
 		const { user } = this.props;
 
 		return (
-			<View style={styles.container}>
+			<SlideContainer
+				title="My Profile"
+				onRightButtonPress={goToProfileEdit}
+				rightIcon={Images.profileEditIcon}
+				style={styles.container}
+				titleStyle={styles.title}
+				stickyHeaderIndices={[0]}>
 				<View style={styles.topContainer}>
-					<View style={styles.header}>
-						<Text style={styles.title}>My Profile</Text>
-						<TouchableOpacity style={styles.edit}>
-							<Image source={Images.profileEditIcon} style={styles.editIcon} />
-						</TouchableOpacity>
-					</View>
 					<View style={styles.user}>
 						<View style={styles.userImageContainer}>
-							<Image source={user.profile.pictureUrl ? { uri: user.profile.pictureUrl } : Images.profilePic} style={styles.userImage} />
+							<Image
+								source={user.profile.pictureUrl ? { uri: user.profile.pictureUrl } : Images.profilePic}
+								style={styles.userImage}
+							/>
 						</View>
 						<View style={styles.userInfoContainer}>
 							<Text style={styles.userName}>{user.profile.name}</Text>
@@ -62,9 +50,8 @@ class Profile extends Component {
 				</View>
 				<View style={styles.bottomContainer}>
 					<Text>List of books</Text>
-					<Button onPress={this.logout.bind(this)}>Sign out</Button>
 				</View>
-			</View>
+			</SlideContainer>
 		);
 	}
 }
@@ -73,6 +60,5 @@ export default connect(
 	state => ({
 		client: state.global.client,
 		user: state.user.currentUser
-	}),
-	{ setCurrentUser }
+	})
 )(Profile);

@@ -36,7 +36,6 @@ export const goHome = () => {
 							}
 						}
 					},
-
 					{
 						component: {
 							name: 'bookace.Camera',
@@ -58,11 +57,20 @@ export const goHome = () => {
 						}
 					},
 					{
-						component: {
-							name: 'bookace.Profile',
+						stack: {
+							id: 'ProfileStack',
+							children: [{
+								component: {
+									name: 'bookace.Profile'
+								}
+							}],
 							options: {
+								topBar: {
+									visible: false,
+									height: 0
+								},
 								bottomTab: {
-									icon: Images.profileTabIcon
+									icon: Images.searchTabIcon
 								}
 							}
 						}
@@ -151,5 +159,11 @@ export const goToBook = (book, stack) => Navigation.push(stack, {
 		passProps: {
 			book
 		}
+	}
+});
+
+export const goToProfileEdit = () => Navigation.push('ProfileStack', {
+	component: {
+		name: 'bookace.ProfileEdit'
 	}
 });

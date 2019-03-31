@@ -2,6 +2,9 @@ const images = {
 	// Globals
 	backIcon: require('./global/back.png'),
 	menuIcon: require('./global/menu.png'),
+	cogIcon: require('./global/cog.png'),
+	calendarIcon: require('./global/calendar.png'),
+	caretDown: require('./global/caret-down.png'),
 	noInternet: require('./global/no-connection.png'),
 
 	// Login/Signup

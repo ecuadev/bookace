@@ -1,4 +1,4 @@
-import EStyleSheet from "react-native-extended-stylesheet";
+import EStyleSheet from 'react-native-extended-stylesheet';
 
 export default EStyleSheet.create({
 	container: {
@@ -6,27 +6,27 @@ export default EStyleSheet.create({
 	},
 	inner: {
 		flex: 1,
-		justifyContent: "center",
-		alignItems: "center",
+		justifyContent: 'center',
+		alignItems: 'center',
 		paddingHorizontal: 20,
 		paddingVertical: 10
 	},
 	heading: {
 		flex: 1,
-		width: "100%",
-		alignItems: "center",
-		justifyContent: "center"
+		width: '100%',
+		alignItems: 'center',
+		justifyContent: 'center'
 	},
-
 	title: {
-		fontSize: 40,
-		textAlign: "center",
+		fontFamily: 'Montserrat-Bold',
+		fontSize: 35,
+		textAlign: 'center',
 		margin: 5,
-		color: "$lightTextColor"
+		color: '$lightTextColor'
 	},
 	form: {
 		flex: 1,
-		width: "100%"
+		width: '100%'
 	},
 	formFields: {
 		flex: 1
@@ -36,14 +36,13 @@ export default EStyleSheet.create({
 	},
 
 	bottomLinks: {
-		width: "100%",
-		flexDirection: "row",
-		justifyContent: "space-around",
+		width: '100%',
+		flexDirection: 'row',
+		justifyContent: 'space-around',
 		marginTop: 10
 	},
 	bottomLink: {
-		color: "$lightTextColor",
-		fontWeight: "500"
+		color: '$lightTextColor'
 	},
 	bottomLinkContainer: {
 		paddingVertical: 10

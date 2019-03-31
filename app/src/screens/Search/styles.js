@@ -1,18 +1,19 @@
 import EStyleSheet from 'react-native-extended-stylesheet';
-import { Platform, Dimensions } from 'react-native';
+import { Dimensions } from 'react-native';
 
-const { width, height } = Dimensions.get('window');
-const isTallIPhone = Platform.OS === 'ios' && height >= 812;
+import { isTallIPhone } from '../../helpers';
+
+const { width } = Dimensions.get('window');
 
 export default EStyleSheet.create({
 	container: {
 		flex: 1,
-		marginBottom: isTallIPhone ? 83 : 49,
+		marginBottom: isTallIPhone() ? 83 : 49,
 		backgroundColor: '$grayBackground'
 	},
 	searchBackground: {
 		width: '100%',
-		height: isTallIPhone ? 200 : 160,
+		height: isTallIPhone() ? 200 : 160,
 		zIndex: 2
 	},
 	searchWrapper: {

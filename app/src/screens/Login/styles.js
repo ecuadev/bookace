@@ -45,8 +45,8 @@ export default EStyleSheet.create({
 		width: 40
 	},
 	separatorText: {
+		fontFamily: 'Montserrat-Medium',
 		fontSize: 14,
-		fontWeight: '700',
 		color: '$lightTextColor',
 		paddingHorizontal: 20
 	},
@@ -60,8 +60,7 @@ export default EStyleSheet.create({
 		marginTop: 20
 	},
 	bottomLink: {
-		color: '$lightTextColor',
-		fontWeight: '500'
+		color: '$lightTextColor'
 	},
 	bottomLinkContainer: {
 		paddingVertical: 10

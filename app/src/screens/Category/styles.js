@@ -1,11 +1,8 @@
 import EStyleSheet from 'react-native-extended-stylesheet';
-import { Platform, Dimensions } from 'react-native';
-
-const { height } = Dimensions.get('window');
-const isTallIPhone = Platform.OS === 'ios' && height >= 812;
+import { isTallIPhone } from '../../helpers';
 
 export default EStyleSheet.create({
 	container: {
-		paddingBottom: isTallIPhone ? 83 : 49
+		paddingBottom: isTallIPhone() ? 83 : 49
 	}
 });

@@ -1,8 +1,5 @@
 import EStyleSheet from 'react-native-extended-stylesheet';
-import { Platform, Dimensions } from 'react-native';
-
-const { height } = Dimensions.get('window');
-const isTallIPhone = Platform.OS === 'ios' && height >= 812;
+import { isTallIPhone } from '../../helpers';
 
 export default EStyleSheet.create({
 	container: {
@@ -13,8 +10,8 @@ export default EStyleSheet.create({
 		flexDirection: 'row',
 		alignItems: 'center',
 		justifyContent: 'space-between',
-		paddingHorizontal: 10,
-		paddingTop: isTallIPhone ? 49 : 23,
+		paddingHorizontal: 15,
+		paddingTop: isTallIPhone() ? 49 : 23,
 		paddingBottom: 5,
 		borderColor: 'white',
 		borderBottomWidth: 0.5
