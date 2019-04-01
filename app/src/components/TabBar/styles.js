@@ -1,14 +1,12 @@
 import EStyleSheet from 'react-native-extended-stylesheet';
-import { Platform, Dimensions } from 'react-native';
-
-const isTallIPhone = Platform.OS === 'ios' && Dimensions.get('window').height >= 812;
+import { isTallIPhone } from '../../helpers';
 
 export default EStyleSheet.create({
 	tabBar: {
 		position: 'absolute',
 		bottom: 0,
 		width: '100%',
-		height: isTallIPhone ? 83 : 49,
+		height: isTallIPhone() ? 83 : 49,
 		backgroundColor: '$tabsPrimaryColor',
 		flexDirection: 'row',
 		justifyContent: 'space-around',

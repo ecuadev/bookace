@@ -1,25 +1,22 @@
 import EStyleSheet from 'react-native-extended-stylesheet';
-import { Platform, Dimensions } from 'react-native';
-
-const { height } = Dimensions.get('window');
-const isTallIPhone = Platform.OS === 'ios' && height >= 812;
+import { isTallIPhone } from '../../helpers';
 
 export default EStyleSheet.create({
 	container: {
 		justifyContent: 'center',
-		padding: 20,
-		paddingTop: isTallIPhone ? 49 : 28
+		paddingHorizontal: 15,
+		paddingTop: isTallIPhone() ? 49 : 28
 	},
 	staticContainer: {
 		flexDirection: 'row',
 		justifyContent: 'space-between',
 		alignItems: 'center',
-		paddingTop: isTallIPhone ? 42 : 21
+		paddingTop: isTallIPhone() ? 42 : 21
 	},
 	headerButtons: {
 		flexDirection: 'row',
 		justifyContent: 'space-between',
-		marginBottom: 20
+		marginBottom: 15
 	},
 	headerButtonBack: {
 		padding: 5
@@ -38,7 +35,8 @@ export default EStyleSheet.create({
 		tintColor: '$lightTextColor'
 	},
 	bookMain: {
-		flexDirection: 'row'
+		flexDirection: 'row',
+		paddingHorizontal: 5
 	},
 	bookImageShadow: {
 		borderWidth: 5,

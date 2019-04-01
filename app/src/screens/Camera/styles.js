@@ -1,8 +1,8 @@
 import EStyleSheet from 'react-native-extended-stylesheet';
-import { Platform, Dimensions } from 'react-native';
+import { Dimensions } from 'react-native';
+import { isTallIPhone } from '../../helpers';
 
 const { width, height } = Dimensions.get('window');
-const isTallIPhone = Platform.OS === 'ios' && height >= 812;
 
 export default EStyleSheet.create({
 	container: {
@@ -10,7 +10,7 @@ export default EStyleSheet.create({
 	},
 	preview: {
 		flex: 1,
-		height: height - (isTallIPhone ? 83 : 49),
+		height: height - (isTallIPhone() ? 83 : 49),
 		width
 	},
 	overlay: {
@@ -18,7 +18,7 @@ export default EStyleSheet.create({
 		top: 0,
 		left: 0,
 		flex: 1,
-		height: height - (isTallIPhone ? 83 : 49),
+		height: height - (isTallIPhone() ? 83 : 49),
 		width,
 		justifyContent: 'flex-end',
 		alignItems: 'center'

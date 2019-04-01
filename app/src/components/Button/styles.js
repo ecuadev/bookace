@@ -17,6 +17,7 @@ export default EStyleSheet.create({
 		backgroundColor: 'rgba(255,255,255, 0.4)'
 	},
 	label: {
+		fontFamily: 'Montserrat-SemiBold',
 		color: '$lightTextColor',
 		fontWeight: '600',
 		fontSize: 14,

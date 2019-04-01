@@ -7,8 +7,8 @@ export default StyleSheet.create({
 		justifyContent: 'center'
 	},
 	label: {
+		fontFamily: 'Montserrat-Light',
 		color: 'blue',
-		fontWeight: '500',
 		fontSize: 14,
 		lineHeight: 18
 	},

@@ -23,6 +23,7 @@ export default EStyleSheet.create({
 		borderColor: '#FE6068'
 	},
 	textBox: {
+		fontFamily: 'Montserrat',
 		color: '$lightTextColor',
 		height: 55,
 		paddingHorizontal: 15,

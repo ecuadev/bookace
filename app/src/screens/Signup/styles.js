@@ -24,7 +24,8 @@ export default EStyleSheet.create({
 		tintColor: "$lightTextColor"
 	},
 	title: {
-		fontSize: 40,
+		fontFamily: 'Montserrat-Medium',
+		fontSize: 35,
 		textAlign: "center",
 		margin: 10,
 		color: "$lightTextColor"
@@ -47,8 +48,8 @@ export default EStyleSheet.create({
 		width: 40
 	},
 	separatorText: {
+		fontFamily: 'Montserrat-Medium',
 		fontSize: 14,
-		fontWeight: "700",
 		color: "$lightTextColor",
 		paddingHorizontal: 20
 	},
@@ -69,7 +70,6 @@ export default EStyleSheet.create({
 		paddingVertical: 10
 	},
 	backToLogin: {
-		color: "$primaryColor",
-		fontWeight: "500"
+		color: "$primaryColor"
 	}
 });

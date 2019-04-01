@@ -19,9 +19,6 @@ class Welcome extends Component {
 			setStitchClient(client);
 
 			if (client.auth.isLoggedIn) {
-				console.log('---------')
-				console.log(client.auth.user.profile.pictureUrl)
-				console.log('---------')
 				setCurrentUser(client.auth.user);
 				goHome();
 			} else {

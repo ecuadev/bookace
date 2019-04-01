@@ -55,7 +55,9 @@ export default class SlideContainer extends Component {
 			leftIcon,
 			onRightButtonPress,
 			rightIcon,
-			style
+			style,
+			titleStyle,
+			stickyHeaderIndices
 		} = this.props;
 
 		const borderBottomColor = borderOpacity.interpolate({
@@ -89,8 +91,11 @@ export default class SlideContainer extends Component {
 					contentContainerStyle={[styles.content, style]}
 					showsVerticalScrollIndicator={false}
 					onScroll={this.handleScroll.bind(this)}
-					scrollEventThrottle={1}>
-					<Text style={styles.bigTitle}>{title}</Text>
+					scrollEventThrottle={1}
+					stickyHeaderIndices={
+						stickyHeaderIndices.map(i => i + 1)
+					}>
+					<Text style={[styles.bigTitle, titleStyle]}>{title}</Text>
 					{children}
 				</ScrollView>
 			</View>
@@ -108,7 +113,9 @@ SlideContainer.propTypes = {
 	onLeftButtonPress: PropTypes.func,
 	rightIcon: PropTypes.number,
 	onRightButtonPress: PropTypes.func,
-	style: PropTypes.object
+	stickyHeaderIndices: PropTypes.arrayOf(PropTypes.number),
+	style: PropTypes.object,
+	titleStyle: PropTypes.object
 };
 
 SlideContainer.defaultProps = {
@@ -118,5 +125,7 @@ SlideContainer.defaultProps = {
 	onLeftButtonPress: undefined,
 	rightIcon: Images.menuIcon,
 	onRightButtonPress: undefined,
-	style: null
+	stickyHeaderIndices: [],
+	style: null,
+	titleStyle: null
 };

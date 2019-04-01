@@ -8,14 +8,15 @@ export default function () {
 		$secondaryTextColor: '#6C7B8A',
 		$darkTextColor: '#000000',
 		$lightTextColor: '#FFFFFF',
+		$placeholderTextColor: '#C9C9C9',
 		$primaryColor: '#97253F',
-		$borderColor: '#C1C1C1',
+		$borderColor: '#D4D1D1',
 		$tabsPrimaryColor: '#FFFFFF',
-		$tabsSecondaryColor: '#d4d1d1',
+		$tabsSecondaryColor: '#D4D1D1',
 		$tabsActiveColor: '#97253F',
 		$searchBarColor: '#000000',
 		$errorColor: '#CC3232',
-		$listBorderColor: '#c4c9df',
+		$listBorderColor: '#C4C9DF',
 		$shadowColor: '#000000'
 	});
 }
