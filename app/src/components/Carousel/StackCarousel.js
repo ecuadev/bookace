@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { View, ScrollView, Text, StatusBar, SafeAreaView } from 'react-native';
+import { View, Text } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import SliderEntry from './SliderEntry';
 import { sliderWidth, itemWidth } from './SliderEntry.styles';
@@ -15,27 +15,21 @@ class StackCarousel extends Component {
 		const { books, title, componentId } = this.props;
 
 		return (
-			<SafeAreaView style={styles.safeArea}>
-				<View style={styles.container}>
-					<ScrollView style={styles.scrollview} scrollEventThrottle={200} directionalLockEnabled>
-						<View style={styles.exampleContainer}>
-							{/* <Text style={[styles.title, styles.titleDark]}>{`Example ${number}`}</Text> */}
-							<Text style={styles.title}>{title}</Text>
-							<Carousel
-								data={books}
-								renderItem={this._renderItem}
-								sliderWidth={sliderWidth}
-								itemWidth={itemWidth}
-								containerCustomStyle={styles.slider}
-								contentContainerCustomStyle={styles.sliderContentContainer}
-								layout="stack"
-								// layoutCardOffset={`18`}
-								loop
-							/>
-						</View>
-					</ScrollView>
-				</View>
-			</SafeAreaView>
+			<View style={styles.exampleContainer}>
+				{/* <Text style={[styles.title, styles.titleDark]}>{`Example ${number}`}</Text> */}
+				<Text style={styles.title}>{title}</Text>
+				<Carousel
+					data={books}
+					renderItem={this._renderItem}
+					sliderWidth={sliderWidth}
+					itemWidth={itemWidth}
+					containerCustomStyle={styles.slider}
+					contentContainerCustomStyle={styles.sliderContentContainer}
+					layout="stack"
+					// layoutCardOffset={`18`}
+					loop
+				/>
+			</View>
 		);
 	}
 }

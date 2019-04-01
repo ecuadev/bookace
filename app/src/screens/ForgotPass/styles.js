@@ -1,4 +1,5 @@
 import EStyleSheet from 'react-native-extended-stylesheet';
+import { isTallIPhone } from '../../helpers';
 
 export default EStyleSheet.create({
 	container: {
@@ -40,7 +41,7 @@ export default EStyleSheet.create({
 		alignItems: 'flex-start',
 		justifyContent: 'space-between',
 		paddingHorizontal: 10,
-		paddingTop: isTallIPhone ? 49 : 23,
+		paddingTop: isTallIPhone() ? 49 : 23,
 		paddingBottom: 5,
 	},
 	headerButtonLeftView: {

@@ -9,32 +9,17 @@ export const colors = {
 };
 
 export default EStyleSheet.create({
-	safeArea: {
-		// flex: 1,
-		backgroundColor: '$darkTextColor',
-		flex: 3,
-		marginHorizontal: 20,
-		paddingBottom: 10,
-	},
-	container: {
-		flex: 1,
-		height: '40%',
-		backgroundColor: '$screenBackground',
-	},
 	gradient: {
 		...StyleSheet.absoluteFillObject,
 	},
-	scrollview: {
-		flex: 1,
-	},
 	exampleContainer: {
-		paddingVertical: 1,
+		paddingVertical: 1
 	},
 	exampleContainerDark: {
-		backgroundColor: '$darkTextColor',
+		backgroundColor: '$darkTextColor'
 	},
 	exampleContainerLight: {
-		backgroundColor: 'white',
+		backgroundColor: 'white'
 	},
 	title: {
 		// paddingHorizontal: 3,
@@ -46,10 +31,10 @@ export default EStyleSheet.create({
 		color: '$primaryTextColor',
 		fontFamily: 'Montserrat-SemiBold',
 		fontSize: 26,
-		paddingTop: 8,
+		paddingTop: 8
 	},
 	titleDark: {
-		color: '$darkTextColor',
+		color: '$darkTextColor'
 	},
 	subtitle: {
 		marginTop: 5,
@@ -58,22 +43,22 @@ export default EStyleSheet.create({
 		color: 'rgba(255, 255, 255, 0.75)',
 		fontSize: 13,
 		fontStyle: 'italic',
-		textAlign: 'center',
+		textAlign: 'center'
 	},
 	slider: {
 		marginTop: 5,
-		overflow: 'visible', // for custom animations
+		overflow: 'visible' // for custom animations
 	},
 	sliderContentContainer: {
-		paddingVertical: 10, // for custom animation
+		paddingVertical: 10 // for custom animation
 	},
 	paginationContainer: {
-		paddingVertical: 8,
+		paddingVertical: 8
 	},
 	paginationDot: {
 		width: 8,
 		height: 8,
 		borderRadius: 4,
-		marginHorizontal: 8,
+		marginHorizontal: 8
 	},
 });

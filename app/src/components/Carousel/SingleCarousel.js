@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { View, ScrollView, Text, StatusBar, SafeAreaView } from 'react-native';
-import Carousel, { Pagination } from 'react-native-snap-carousel';
+import { View, Text } from 'react-native';
+import Carousel from 'react-native-snap-carousel';
 import SliderEntry from './SliderEntry';
 import { sliderWidth, itemWidth } from './SliderEntry.styles';
 import styles, { colors } from './styles';
@@ -36,38 +36,32 @@ class SingleCarousel extends Component {
 		const { slider1ActiveSlide } = this.state;
 		const { books, title } = this.props;
 		return (
-			<SafeAreaView style={styles.safeArea}>
-				<View style={styles.container}>
-					<ScrollView style={styles.scrollview} scrollEventThrottle={200} directionalLockEnabled>
-						<View style={styles.exampleContainer}>
-							{title && <Text style={styles.title}>{title}</Text>}
+			<View style={styles.exampleContainer}>
+				{title && <Text style={styles.title}>{title}</Text>}
 
-							<Carousel
-								activeSlideAlignment="start"
-								// eslint-disable-next-line no-return-assign
-								ref={c => (this._slider1Ref = c)}
-								data={books}
-								renderItem={this._renderItemWithParallax}
-								sliderWidth={sliderWidth}
-								itemWidth={itemWidth}
-								hasParallaxImages
-								firstItem={SLIDER_1_FIRST_ITEM}
-								inactiveSlideScale={0.9}
-								inactiveSlideOpacity={0.7}
-								// inactiveSlideShift={20}
-								containerCustomStyle={styles.slider}
-								contentContainerCustomStyle={styles.sliderContentContainer}
-								loop
-								loopClonesPerSide={2}
-								// autoplay
-								// autoplayDelay={500}
-								// autoplayInterval={3000}
-								onSnapToItem={index => this.setState({ slider1ActiveSlide: index })}
-							/>
-						</View>
-					</ScrollView>
-				</View>
-			</SafeAreaView>
+				<Carousel
+					activeSlideAlignment="start"
+					// eslint-disable-next-line no-return-assign
+					ref={c => (this._slider1Ref = c)}
+					data={books}
+					renderItem={this._renderItemWithParallax}
+					sliderWidth={sliderWidth}
+					itemWidth={itemWidth}
+					hasParallaxImages
+					firstItem={SLIDER_1_FIRST_ITEM}
+					inactiveSlideScale={0.9}
+					inactiveSlideOpacity={0.7}
+					// inactiveSlideShift={20}
+					containerCustomStyle={styles.slider}
+					contentContainerCustomStyle={styles.sliderContentContainer}
+					// loop
+					loopClonesPerSide={2}
+					// autoplay
+					// autoplayDelay={500}
+					// autoplayInterval={3000}
+					onSnapToItem={index => this.setState({ slider1ActiveSlide: index })}
+				/>
+			</View>
 		);
 	}
 }
