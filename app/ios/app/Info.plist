@@ -25,7 +25,7 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb406948196798798</string>
+				<string>fb454019612072534</string>
 			</array>
 		</dict>
 		<dict>
@@ -40,9 +40,9 @@
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>FacebookAppID</key>
-	<string>406948196798798</string>
+	<string>454019612072534</string>
 	<key>FacebookDisplayName</key>
-	<string>Bookace</string>
+	<string>bookace</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
