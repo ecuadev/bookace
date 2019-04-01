@@ -1,3 +1,4 @@
+/* eslint-disable implicit-arrow-linebreak */
 import { Navigation } from 'react-native-navigation';
 import Images from '@assets/images';
 
@@ -12,29 +13,31 @@ export const goHome = () => {
 							name: 'bookace.Home',
 							options: {
 								bottomTab: {
-									icon: Images.homeTabIcon
-								}
-							}
-						}
+									icon: Images.homeTabIcon,
+								},
+							},
+						},
 					},
 					{
 						stack: {
 							id: 'SearchStack',
-							children: [{
-								component: {
-									name: 'bookace.Search'
-								}
-							}],
+							children: [
+								{
+									component: {
+										name: 'bookace.Search',
+									},
+								},
+							],
 							options: {
 								topBar: {
 									visible: false,
-									height: 0
+									height: 0,
 								},
 								bottomTab: {
-									icon: Images.searchTabIcon
-								}
-							}
-						}
+									icon: Images.searchTabIcon,
+								},
+							},
+						},
 					},
 
 					{
@@ -42,34 +45,34 @@ export const goHome = () => {
 							name: 'bookace.Camera',
 							options: {
 								bottomTab: {
-									icon: Images.cameraTabIcon
-								}
-							}
-						}
+									icon: Images.cameraTabIcon,
+								},
+							},
+						},
 					},
 					{
 						component: {
 							name: 'bookace.Social',
 							options: {
 								bottomTab: {
-									icon: Images.socialTabIcon
-								}
-							}
-						}
+									icon: Images.socialTabIcon,
+								},
+							},
+						},
 					},
 					{
 						component: {
 							name: 'bookace.Profile',
 							options: {
 								bottomTab: {
-									icon: Images.profileTabIcon
-								}
-							}
-						}
-					}
-				]
-			}
-		}
+									icon: Images.profileTabIcon,
+								},
+							},
+						},
+					},
+				],
+			},
+		},
 	});
 
 	Navigation.showOverlay({
@@ -78,10 +81,10 @@ export const goHome = () => {
 			name: 'bookace.TabBar',
 			options: {
 				overlay: {
-					interceptTouchOutside: false
-				}
-			}
-		}
+					interceptTouchOutside: false,
+				},
+			},
+		},
 	});
 };
 
@@ -101,55 +104,72 @@ export const goToLogin = dismissTabBar => {
 							options: {
 								topBar: {
 									visible: false,
-									height: 0
-								}
-							}
-						}
-					}
-				]
-			}
-		}
+									height: 0,
+								},
+							},
+						},
+					},
+				],
+			},
+		},
 	});
 };
 
-export const goToSignup = () => Navigation.push('AuthStack', {
-	component: {
-		name: 'bookace.Signup',
-		options: {
-			topBar: {
-				visible: false,
-				height: 0
-			}
-		}
-	}
-});
+export const goToSignup = () =>
+	Navigation.push('AuthStack', {
+		component: {
+			name: 'bookace.Signup',
+			options: {
+				topBar: {
+					visible: false,
+					height: 0,
+				},
+			},
+		},
+	});
 
-export const goToForgotPass = () => Navigation.push('AuthStack', {
-	component: {
-		name: 'bookace.ForgotPass',
-		options: {
-			topBar: {
-				visible: false,
-				height: 0
-			}
-		}
-	}
-});
+export const goToForgotPass = () =>
+	Navigation.push('AuthStack', {
+		component: {
+			name: 'bookace.ForgotPass',
+			options: {
+				topBar: {
+					visible: false,
+					height: 0,
+				},
+			},
+		},
+	});
 
-export const goToCategory = category => Navigation.push('SearchStack', {
-	component: {
-		name: 'bookace.Category',
-		passProps: {
-			category
-		}
-	}
-});
+export const goToProfile = stack =>
+	Navigation.push(stack, {
+		component: {
+			name: 'bookace.Profile',
+			options: {
+				topBar: {
+					visible: false,
+					height: 0,
+				},
+			},
+		},
+	});
 
-export const goToBook = (book, stack) => Navigation.push(stack, {
-	component: {
-		name: 'bookace.Book',
-		passProps: {
-			book
-		}
-	}
-});
+export const goToCategory = category =>
+	Navigation.push('SearchStack', {
+		component: {
+			name: 'bookace.Category',
+			passProps: {
+				category,
+			},
+		},
+	});
+
+export const goToBook = (book, stack) =>
+	Navigation.push(stack, {
+		component: {
+			name: 'bookace.Book',
+			passProps: {
+				book,
+			},
+		},
+	});

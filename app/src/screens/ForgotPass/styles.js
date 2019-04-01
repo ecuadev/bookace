@@ -1,4 +1,8 @@
 import EStyleSheet from "react-native-extended-stylesheet";
+import { Platform, Dimensions } from "react-native";
+
+const { height } = Dimensions.get("window");
+const isTallIPhone = Platform.OS === "ios" && height >= 812;
 
 export default EStyleSheet.create({
 	container: {
@@ -6,8 +10,8 @@ export default EStyleSheet.create({
 	},
 	inner: {
 		flex: 1,
-		justifyContent: "center",
-		alignItems: "center",
+		// justifyContent: "center",
+		// alignItems: "center",
 		paddingHorizontal: 20,
 		paddingVertical: 10
 	},
@@ -33,6 +37,27 @@ export default EStyleSheet.create({
 	},
 	sendEmail: {
 		marginTop: 10
+	},
+
+	header: {
+		flexDirection: "row",
+		alignItems: "flex-start",
+		justifyContent: "space-between",
+		paddingHorizontal: 10,
+		paddingTop: isTallIPhone ? 49 : 23,
+		paddingBottom: 5
+	},
+	headerButtonLeftView: {
+		width: 32,
+		height: 32
+	},
+	headerButtonLeft: {
+		padding: 5
+	},
+	headerButtonLeftIcon: {
+		width: 22,
+		height: 22,
+		tintColor: "$lightTextColor"
 	},
 
 	bottomLinks: {

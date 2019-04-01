@@ -60,3 +60,6 @@ buck-out/
 
 # Testing
 coverage/
+
+# VS Code Settings
+.vscode

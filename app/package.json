@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-		"test": "jest",
-		"test:coverage": "jest --coverage && open coverage/lcov-report/index.html",
+    "test": "jest",
+    "test:coverage": "jest --coverage && open coverage/lcov-report/index.html",
     "eslint": "eslint",
     "android": "cd ./android && ./gradlew app:assembleDebug && ./gradlew installDebug"
   },
@@ -24,6 +24,7 @@
     "react-native-image-header-scroll-view": "^0.10.1",
     "react-native-navigation": "2.13.1",
     "react-native-ratings": "^6.3.1",
+    "react-native-snap-carousel": "^3.7.5",
     "react-redux": "^6.0.1",
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
@@ -53,12 +54,14 @@
     "redux-mock-store": "^1.5.3"
   },
   "jest": {
-		"preset": "react-native",
+    "preset": "react-native",
     "setupFiles": [
-			"./jest/setup.js",
-			"./jest/throw-on-prop-type-error.js"
-		],
-		"collectCoverageFrom": ["src/**/*.js"]
+      "./jest/setup.js",
+      "./jest/throw-on-prop-type-error.js"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.js"
+    ]
   },
   "rnpm": {
     "assets": [
