@@ -1,42 +1,43 @@
 import EStyleSheet from 'react-native-extended-stylesheet';
 import { isTallIPhone } from '../../helpers';
+import normalize from '../../helpers/normalizeText';
 
 export default EStyleSheet.create({
 	container: {
 		justifyContent: 'center',
 		paddingHorizontal: 15,
-		paddingTop: isTallIPhone() ? 49 : 28
+		paddingTop: isTallIPhone() ? 49 : 28,
 	},
 	staticContainer: {
 		flexDirection: 'row',
 		justifyContent: 'space-between',
 		alignItems: 'center',
-		paddingTop: isTallIPhone() ? 42 : 21
+		paddingTop: isTallIPhone() ? 42 : 21,
 	},
 	headerButtons: {
 		flexDirection: 'row',
 		justifyContent: 'space-between',
-		marginBottom: 15
+		marginBottom: 15,
 	},
 	headerButtonBack: {
-		padding: 5
+		padding: 5,
 	},
 	headerButtonBackIcon: {
 		width: 22,
 		height: 22,
-		tintColor: '$lightTextColor'
+		tintColor: '$lightTextColor',
 	},
 	headerButtonMenu: {
-		padding: 5
+		padding: 5,
 	},
 	headerButtonMenuIcon: {
 		width: 22,
 		height: 22,
-		tintColor: '$lightTextColor'
+		tintColor: '$lightTextColor',
 	},
 	bookMain: {
 		flexDirection: 'row',
-		paddingHorizontal: 5
+		paddingHorizontal: 5,
 	},
 	bookImageShadow: {
 		borderWidth: 5,
@@ -47,51 +48,50 @@ export default EStyleSheet.create({
 		shadowColor: '$shadowColor',
 		shadowOffset: {
 			width: 0,
-			height: 2
+			height: 2,
 		},
 		shadowOpacity: 0.25,
 		shadowRadius: 3.84,
-		elevation: 5
-
+		elevation: 5,
 	},
 	bookImageContainer: {
 		width: '100%',
 		height: '100%',
-		overflow: 'hidden'
+		overflow: 'hidden',
 	},
 	bookImage: {
 		width: '100%',
-		height: '100%'
+		height: '100%',
 	},
 	bookInfo: {
 		flex: 1,
 		flexWrap: 'wrap',
-		marginLeft: 20
+		marginLeft: 20,
 	},
 	bookTitle: {
 		color: '$lightTextColor',
 		fontFamily: 'Montserrat-Semibold',
-		fontSize: 22,
+		fontSize: normalize(22),
 		textShadowColor: 'rgba(0, 0, 0, 0.75)',
 		textShadowOffset: { width: 1, height: 1 },
-		textShadowRadius: 2
+		textShadowRadius: 2,
 	},
 	bookTitleSmall: {
 		flex: 1,
 		flexWrap: 'wrap',
 		color: '$lightTextColor',
 		fontFamily: 'Montserrat-Semibold',
-		fontSize: 16,
+		fontSize: normalize(16),
 		textAlign: 'center',
-		paddingHorizontal: 20
+		paddingHorizontal: 20,
 	},
 	bookAuthors: {
 		color: '$lightTextColor',
 		fontFamily: 'Montserrat-Medium',
-		fontSize: 18,
+		fontSize: normalize(18),
 		marginTop: 10,
 		textShadowColor: 'rgba(0, 0, 0, 0.75)',
 		textShadowOffset: { width: 1, height: 1 },
-		textShadowRadius: 2
-	}
+		textShadowRadius: 2,
+	},
 });

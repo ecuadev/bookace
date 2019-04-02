@@ -1,5 +1,6 @@
 import EStyleSheet from 'react-native-extended-stylesheet';
 import { Dimensions } from 'react-native';
+import normalize from '../../helpers/normalizeText';
 
 import { isTallIPhone } from '../../helpers';
 
@@ -9,39 +10,39 @@ export default EStyleSheet.create({
 	container: {
 		flex: 1,
 		marginBottom: isTallIPhone() ? 83 : 49,
-		backgroundColor: '$grayBackground'
+		backgroundColor: '$grayBackground',
 	},
 	searchBackground: {
 		width: '100%',
 		height: isTallIPhone() ? 200 : 160,
-		zIndex: 2
+		zIndex: 2,
 	},
 	searchWrapper: {
 		width: '100%',
 		height: '100%',
-		paddingHorizontal: 20
+		paddingHorizontal: 20,
 	},
 	searchBar: {
 		position: 'absolute',
 		bottom: -28,
-		left: 20
+		left: 20,
 	},
 	title: {
 		color: '$primaryTextColor',
 		fontFamily: 'Montserrat-SemiBold',
-		fontSize: 26,
+		fontSize: normalize(26),
 		paddingHorizontal: 20,
 		marginTop: 50,
-		marginBottom: 15
+		marginBottom: 15,
 	},
 	paginator: {
 		position: 'relative',
 		flex: 1,
-		width: '100%'
+		width: '100%',
 	},
 	categories: {
 		flex: 1,
-		width: '100%'
+		width: '100%',
 	},
 	results: {
 		position: 'absolute',
@@ -50,6 +51,6 @@ export default EStyleSheet.create({
 		top: 0,
 		right: width,
 		width: '100%',
-		height: '100%'
-	}
+		height: '100%',
+	},
 });

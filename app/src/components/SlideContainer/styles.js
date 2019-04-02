@@ -1,10 +1,11 @@
 import EStyleSheet from 'react-native-extended-stylesheet';
 import { isTallIPhone } from '../../helpers';
+import normalize from '../../helpers/normalizeText';
 
 export default EStyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: '$screenBackground'
+		backgroundColor: '$screenBackground',
 	},
 	header: {
 		flexDirection: 'row',
@@ -14,48 +15,48 @@ export default EStyleSheet.create({
 		paddingTop: isTallIPhone() ? 49 : 23,
 		paddingBottom: 5,
 		borderColor: 'white',
-		borderBottomWidth: 0.5
+		borderBottomWidth: 0.5,
 	},
 	headerButtonLeftView: {
 		width: 32,
-		height: 32
+		height: 32,
 	},
 	headerButtonLeft: {
-		padding: 5
+		padding: 5,
 	},
 	headerButtonLeftIcon: {
 		width: 22,
 		height: 22,
-		tintColor: '$primaryColor'
+		tintColor: '$primaryColor',
 	},
 	headerTitle: {
 		color: '$primaryTextColor',
 		fontFamily: 'Montserrat-SemiBold',
-		fontSize: 16
+		fontSize: normalize(16),
 	},
 	headerButtonRightView: {
 		width: 32,
-		height: 32
+		height: 32,
 	},
 	headerButtonRight: {
-		padding: 5
+		padding: 5,
 	},
 	headerButtonRightIcon: {
 		width: 22,
 		height: 22,
-		tintColor: '$primaryColor'
+		tintColor: '$primaryColor',
 	},
 	bigTitle: {
 		color: '$primaryTextColor',
 		fontFamily: 'Montserrat-SemiBold',
-		fontSize: 28,
-		marginBottom: 29
+		fontSize: normalize(28),
+		marginBottom: 29,
 	},
 	scrollView: {
-		flex: 1
+		flex: 1,
 	},
 	content: {
 		padding: 20,
-		paddingTop: 10
-	}
+		paddingTop: 10,
+	},
 });

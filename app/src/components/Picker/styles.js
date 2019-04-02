@@ -1,4 +1,5 @@
 import EStyleSheet from 'react-native-extended-stylesheet';
+import normalize from '../../helpers/normalizeText';
 
 export default EStyleSheet.create({
 	label: {
@@ -6,54 +7,54 @@ export default EStyleSheet.create({
 		top: 10,
 		paddingHorizontal: 20,
 		fontFamily: 'Montserrat-SemiBold',
-		fontSize: 14,
-		color: '$secondaryTextColor'
+		fontSize: normalize(14),
+		color: '$secondaryTextColor',
 	},
 	textBoxWrapper: {
 		borderColor: '$borderColor',
 		borderBottomWidth: 0.3,
 		flexDirection: 'row',
 		alignItems: 'center',
-		height: 65
+		height: 65,
 	},
 	textBoxWrapperAndroid: {
-		paddingHorizontal: 20
+		paddingHorizontal: 20,
 	},
 	pickerAndroid: {
 		fontFamily: 'Montserrat',
-		fontSize: 14,
+		fontSize: normalize(14),
 		paddingTop: 20,
-		flex: 1
+		flex: 1,
 	},
 	valueText: {
 		fontFamily: 'Montserrat',
-		fontSize: 14,
+		fontSize: normalize(14),
 		color: '$primaryTextColor',
 		paddingHorizontal: 20,
 		paddingTop: 20,
-		flex: 1
+		flex: 1,
 	},
 	placeholderText: {
 		fontFamily: 'Montserrat',
-		fontSize: 14,
-		color: '$placeholderTextColor'
+		fontSize: normalize(14),
+		color: '$placeholderTextColor',
 	},
 	icon: {
 		width: 15,
 		height: 15,
 		tintColor: '$secondaryTextColor',
-		marginHorizontal: 20
+		marginHorizontal: 20,
 	},
 	pickerMask: {
 		flex: 1,
 		alignItems: 'flex-end',
 		flexDirection: 'row',
-		backgroundColor: '#00000077'
+		backgroundColor: '#00000077',
 	},
 	pickerContainer: {
 		backgroundColor: '$screenBackground',
 		height: 0,
-		overflow: 'hidden'
+		overflow: 'hidden',
 	},
 	btnText: {
 		position: 'absolute',
@@ -62,31 +63,31 @@ export default EStyleSheet.create({
 		paddingHorizontal: 20,
 		flexDirection: 'row',
 		alignItems: 'center',
-		justifyContent: 'center'
+		justifyContent: 'center',
 	},
 	btnCancel: {
-		left: 0
+		left: 0,
 	},
 	btnConfirm: {
-		right: 0
+		right: 0,
 	},
 	btnTextConfirm: {
 		fontFamily: 'Montserrat-Medium',
-		fontSize: 14,
-		color: '$primaryColor'
+		fontSize: normalize(14),
+		color: '$primaryColor',
 	},
 	btnTextCancel: {
 		fontFamily: 'Montserrat-Medium',
-		fontSize: 14,
-		color: '$secondaryTextColor'
+		fontSize: normalize(14),
+		color: '$secondaryTextColor',
 	},
 	picker: {
 		marginTop: 42,
 		backgroundColor: '$grayBackground',
 		borderTopColor: '$borderColor',
-		borderTopWidth: 0.3
+		borderTopWidth: 0.3,
 	},
 	disabled: {
-		backgroundColor: '$grayBackground'
-	}
+		backgroundColor: '$grayBackground',
+	},
 });

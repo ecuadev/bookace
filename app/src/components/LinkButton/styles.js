@@ -1,19 +1,20 @@
 import { StyleSheet } from 'react-native';
+import normalize from '../../helpers/normalizeText';
 
 export default StyleSheet.create({
 	wrapper: {
 		flexDirection: 'row',
 		alignItems: 'center',
-		justifyContent: 'center'
+		justifyContent: 'center',
 	},
 	label: {
 		fontFamily: 'Montserrat-Light',
 		color: 'blue',
-		fontSize: 14,
-		lineHeight: 18
+		fontSize: normalize(14),
+		lineHeight: 18,
 	},
 	rightIcon: {
 		marginLeft: 8,
-		tintColor: 'blue'
-	}
+		tintColor: 'blue',
+	},
 });

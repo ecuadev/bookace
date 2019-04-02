@@ -1,4 +1,5 @@
 import EStyleSheet from 'react-native-extended-stylesheet';
+import normalize from '../../helpers/normalizeText';
 
 export default EStyleSheet.create({
 	textBoxWrapper: {
@@ -7,19 +8,19 @@ export default EStyleSheet.create({
 		flexDirection: 'row',
 		alignItems: 'center',
 		backgroundColor: '$searchBarColor',
-		paddingHorizontal: 20
+		paddingHorizontal: 20,
 	},
 	textBox: {
 		color: '$lightTextColor',
 		height: 55,
 		paddingHorizontal: 15,
 		flex: 1,
-		fontSize: 15,
-		lineHeight: 17
+		fontSize: normalize(15),
+		lineHeight: 17,
 	},
 	icons: {
 		width: 20,
 		height: 20,
-		tintColor: '$lightTextColor'
-	}
+		tintColor: '$lightTextColor',
+	},
 });

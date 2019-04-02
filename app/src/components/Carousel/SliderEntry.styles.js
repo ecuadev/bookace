@@ -1,6 +1,7 @@
 import EStyleSheet from 'react-native-extended-stylesheet';
 import { StyleSheet, Dimensions, Platform } from 'react-native';
 import { colors } from './styles';
+import normalize from '../../helpers/normalizeText';
 
 const IS_IOS = Platform.OS === 'ios';
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');

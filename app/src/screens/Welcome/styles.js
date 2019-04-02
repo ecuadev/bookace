@@ -1,13 +1,14 @@
 import EStyleSheet from 'react-native-extended-stylesheet';
+import normalize from '../../helpers/normalizeText';
 
 export default EStyleSheet.create({
 	container: {
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
-		backgroundColor: '$screenBackground'
+		backgroundColor: '$screenBackground',
 	},
 	message: {
-		fontSize: 28
-	}
+		fontSize: normalize(28),
+	},
 });

@@ -1,26 +1,27 @@
 import EStyleSheet from 'react-native-extended-stylesheet';
+import normalize from '../../helpers/normalizeText';
 
 export default EStyleSheet.create({
 	wrapper: {
 		marginBottom: 20,
-		width: '100%'
+		width: '100%',
 	},
 	label: {
 		color: '$darkTextColor',
-		fontSize: 12,
+		fontSize: normalize(12),
 		lineHeight: 14,
-		marginBottom: 9
+		marginBottom: 9,
 	},
 	textBoxWrapper: {
 		borderRadius: 10,
 		flexDirection: 'row',
-		alignItems: 'center'
+		alignItems: 'center',
 	},
 	textBoxWrapperAndroid: {
-		backgroundColor: 'rgba(0,0,0, 0.7)'
+		backgroundColor: 'rgba(0,0,0, 0.7)',
 	},
 	textBoxWrapperError: {
-		borderColor: '#FE6068'
+		borderColor: '#FE6068',
 	},
 	textBox: {
 		fontFamily: 'Montserrat',
@@ -28,26 +29,26 @@ export default EStyleSheet.create({
 		height: 55,
 		paddingHorizontal: 15,
 		flex: 1,
-		fontSize: 15,
-		lineHeight: 17
+		fontSize: normalize(15),
+		lineHeight: 17,
 	},
 	password: {
-		paddingRight: 15
+		paddingRight: 15,
 	},
 	showPasswordWrapper: {
 		paddingRight: 15,
-		paddingLeft: 15
+		paddingLeft: 15,
 	},
 	showPassword: {
-		width: 22
+		width: 22,
 	},
 	error: {
 		position: 'absolute',
 		bottom: -16,
 		color: '#FFFFFF',
-		fontSize: 14,
+		fontSize: normalize(14),
 		lineHeight: 14,
-		marginTop: 9
+		marginTop: 9,
 	},
 	blurView: {
 		position: 'absolute',
@@ -55,6 +56,6 @@ export default EStyleSheet.create({
 		right: 0,
 		top: 0,
 		bottom: 0,
-		borderRadius: 10
-	}
+		borderRadius: 10,
+	},
 });

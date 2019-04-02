@@ -1,5 +1,6 @@
 import EStyleSheet from 'react-native-extended-stylesheet';
 import { isTallIPhone } from '../../helpers';
+import normalize from '../../helpers/normalizeText';
 
 export default EStyleSheet.create({
 	container: {
@@ -8,7 +9,7 @@ export default EStyleSheet.create({
 	inner: {
 		flex: 1,
 		justifyContent: 'center',
-		alignItems: 'center',
+		alignItems: 'flex-start',
 		paddingHorizontal: 20,
 		paddingVertical: 10,
 	},
@@ -20,7 +21,7 @@ export default EStyleSheet.create({
 	},
 	title: {
 		fontFamily: 'Montserrat-Bold',
-		fontSize: 35,
+		fontSize: normalize(35),
 		textAlign: 'center',
 		margin: 5,
 		color: '$lightTextColor',
@@ -38,9 +39,8 @@ export default EStyleSheet.create({
 
 	header: {
 		flexDirection: 'row',
-		alignItems: 'flex-start',
-		justifyContent: 'space-between',
-		paddingHorizontal: 10,
+		justifyContent: 'flex-start',
+		paddingHorizontal: 15,
 		paddingTop: isTallIPhone() ? 49 : 23,
 		paddingBottom: 5,
 	},
