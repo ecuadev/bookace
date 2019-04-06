@@ -1,69 +1,69 @@
 import EStyleSheet from 'react-native-extended-stylesheet';
-import normalize from '../../helpers/normalizeText';
+import { normalize } from '../../helpers';
 
 export default EStyleSheet.create({
 	container: {
-		flex: 1,
+		flex: 1
 	},
 	inner: {
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
 		paddingHorizontal: 30,
-		paddingVertical: 10,
+		paddingVertical: 10
 	},
 	logo: {
 		flex: 1,
 		width: '100%',
 		alignItems: 'center',
-		justifyContent: 'center',
+		justifyContent: 'center'
 	},
 	logoImage: {
-		width: 130,
-		height: 130,
-		tintColor: '$lightTextColor',
+		width: normalize(130),
+		height: normalize(130),
+		tintColor: '$lightTextColor'
 	},
 	title: {
 		fontSize: normalize(20),
 		textAlign: 'center',
-		margin: 10,
+		margin: 10
 	},
 	form: {
-		width: '100%',
+		width: '100%'
 	},
 	signinButton: {
-		marginTop: 10,
+		marginTop: normalize(10)
 	},
 	separator: {
 		flexDirection: 'row',
-		marginVertical: 25,
+		marginVertical: normalize(25),
 		alignItems: 'center',
-		justifyContent: 'center',
+		justifyContent: 'center'
 	},
 	separatorLine: {
 		height: 2,
 		backgroundColor: '$lightTextColor',
-		width: 40,
+		width: 40
 	},
 	separatorText: {
 		fontFamily: 'Montserrat-Medium',
 		fontSize: normalize(14),
 		color: '$lightTextColor',
-		paddingHorizontal: 20,
+		paddingHorizontal: 20
 	},
 	fbButton: {
-		marginBottom: 15,
+		marginBottom: normalize(15)
 	},
 	bottomLinks: {
 		width: '100%',
 		flexDirection: 'row',
 		justifyContent: 'space-between',
-		marginTop: 20,
+		marginTop: normalize(20)
 	},
 	bottomLink: {
-		color: '$lightTextColor',
+		color: '$lightTextColor'
 	},
 	bottomLinkContainer: {
-		paddingVertical: 10,
-	},
+		paddingVertical: 10
+	}
 });

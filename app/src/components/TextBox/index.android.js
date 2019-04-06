@@ -25,11 +25,10 @@ class TextBox extends Component {
 	}
 
 	render() {
-		const { type, label, onChange, value, placeholder, style, error } = this.props;
+		const { type, onChange, value, placeholder, style, error } = this.props;
 
 		return (
 			<View style={[styles.wrapper, style]}>
-				{ label && <Text style={styles.label}>{label}</Text> }
 				<View style={[styles.textBoxWrapper, styles.textBoxWrapperAndroid, error && styles.textBoxWrapperError]}>
 					<TextInput
 						onChangeText={text => onChange(text)}
@@ -39,7 +38,7 @@ class TextBox extends Component {
 						keyboardType={this.keyBoardType}
 						placeholder={placeholder}
 						placeholderTextColor={EStyleSheet.value('$lightTextColor')}
-						style={[styles.textBox, type === 'password' && styles.password]}
+						style={styles.textBox}
 						secureTextEntry={type === 'password'}
 						underlineColorAndroid="rgba(0,0,0,0)"
 					/>
@@ -52,7 +51,6 @@ class TextBox extends Component {
 
 TextBox.propTypes = {
 	type: PropTypes.string,
-	label: PropTypes.string,
 	onChange: PropTypes.func,
 	value: PropTypes.string,
 	placeholder: PropTypes.string,
@@ -62,7 +60,6 @@ TextBox.propTypes = {
 
 TextBox.defaultProps = {
 	type: 'text',
-	label: null,
 	onChange: () => {},
 	value: null,
 	placeholder: null,

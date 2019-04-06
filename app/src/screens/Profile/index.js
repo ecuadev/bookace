@@ -29,8 +29,10 @@ class Profile extends Component {
 							/>
 						</View>
 						<View style={styles.userInfoContainer}>
-							<Text style={styles.userName}>{user.profile.name}</Text>
-							<Text style={styles.userEmail}>{user.profile.email}</Text>
+							<Text style={styles.userName}>{user.profile.name || user.profile.email}</Text>
+							{ user.profile.name && user.profile.email && (
+								<Text style={styles.userEmail}>{user.profile.email}</Text>
+							)}
 						</View>
 					</View>
 					<View style={styles.scores}>

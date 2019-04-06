@@ -1,6 +1,5 @@
 import EStyleSheet from 'react-native-extended-stylesheet';
-import { isTallIPhone } from '../../helpers';
-import normalize from '../../helpers/normalizeText';
+import { isTallIPhone, normalize } from '../../helpers';
 
 export default EStyleSheet.create({
 	container: {
@@ -8,42 +7,36 @@ export default EStyleSheet.create({
 		flexDirection: 'column',
 		justifyContent: 'space-evenly',
 		backgroundColor: '$screenBackground',
-		paddingTop: isTallIPhone() ? 2 : 23,
-		paddingBottom: isTallIPhone() ? 87 : 49,
+		paddingTop: isTallIPhone() ? 46 : 20,
+		marginBottom: isTallIPhone() ? 83 : 49
 	},
-
 	header: {
 		flex: 1,
 		flexDirection: 'row',
-		marginHorizontal: 20,
-		marginTop: 60,
+		paddingHorizontal: 20,
+		alignItems: 'center',
+		justifyContent: 'space-between'
 	},
 	headerTitle: {
-		width: '80%',
-		marginLeft: 5,
-	},
-	title: {
 		textAlign: 'left',
 		color: '$primaryTextColor',
 		fontFamily: 'Montserrat-SemiBold',
-		fontSize: normalize(26),
-		paddingTop: 8,
+		fontSize: normalize(26)
 	},
-
 	userImageContainer: {
-		width: 50,
-		height: 50,
-		borderRadius: 100,
-		overflow: 'hidden',
+		width: normalize(50),
+		height: normalize(50),
+		borderRadius: normalize(100),
+		overflow: 'hidden'
 	},
 	userImage: {
-		width: 50,
-		height: 50,
+		width: normalize(50),
+		height: normalize(50)
 	},
 	carousel: {
 		flex: 2,
 		marginHorizontal: 20,
 		// height: 180,
-		paddingBottom: 10,
-	},
+		paddingBottom: 10
+	}
 });

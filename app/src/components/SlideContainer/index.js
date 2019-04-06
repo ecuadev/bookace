@@ -4,6 +4,7 @@ import { Image, ScrollView, Text, TouchableOpacity, View, Animated } from 'react
 import EStyleSheet from 'react-native-extended-stylesheet';
 import Images from '@assets/images';
 
+import { normalize } from '../../helpers';
 import styles from './styles';
 
 export default class SlideContainer extends Component {
@@ -20,24 +21,24 @@ export default class SlideContainer extends Component {
 		const { borderOpacity, titleOpacity } = this.state;
 		const offset = event.nativeEvent.contentOffset.y;
 
-		if (!titleOpacity._value && offset > 40) {
+		if (!titleOpacity._value && offset > normalize(40)) {
 			Animated.timing(titleOpacity, {
 				toValue: 1,
 				duration: 100
 			}).start();
-		} else if (titleOpacity._value && offset < 40) {
+		} else if (titleOpacity._value && offset < normalize(40)) {
 			Animated.timing(titleOpacity, {
 				toValue: 0,
 				duration: 50
 			}).start();
 		}
 
-		if (!borderOpacity._value && offset > 16) {
+		if (!borderOpacity._value && offset > normalize(16)) {
 			Animated.timing(borderOpacity, {
 				toValue: 1,
 				duration: 100
 			}).start();
-		} else if (borderOpacity._value && offset < 16) {
+		} else if (borderOpacity._value && offset < normalize(16)) {
 			Animated.timing(borderOpacity, {
 				toValue: 0,
 				duration: 50

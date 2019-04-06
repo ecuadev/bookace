@@ -1,7 +1,6 @@
 import EStyleSheet from 'react-native-extended-stylesheet';
 import { StyleSheet, Dimensions, Platform } from 'react-native';
 import { colors } from './styles';
-import normalize from '../../helpers/normalizeText';
 
 const IS_IOS = Platform.OS === 'ios';
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
@@ -25,7 +24,7 @@ export default EStyleSheet.create({
 		width: itemWidth,
 		height: slideHeight,
 		paddingHorizontal: itemHorizontalMargin,
-		paddingBottom: 10, // needed for shadow
+		paddingBottom: 10 // needed for shadow
 	},
 	shadow: {
 		position: 'absolute',
@@ -37,7 +36,7 @@ export default EStyleSheet.create({
 		shadowOpacity: 0.25,
 		shadowOffset: { width: 0, height: 10 },
 		shadowRadius: 10,
-		borderRadius: entryBorderRadius,
+		borderRadius: entryBorderRadius
 	},
 	imageContainer: {
 		flex: 1,
@@ -46,7 +45,7 @@ export default EStyleSheet.create({
 		borderTopLeftRadius: entryBorderRadius,
 		borderTopRightRadius: entryBorderRadius,
 		borderBottomLeftRadius: entryBorderRadius,
-		borderBottomRightRadius: entryBorderRadius,
+		borderBottomRightRadius: entryBorderRadius
 	},
 	// imageContainerEven: {
 	// 	backgroundColor: '$primaryColor',
@@ -54,7 +53,7 @@ export default EStyleSheet.create({
 	image: {
 		...StyleSheet.absoluteFillObject,
 		resizeMode: 'cover',
-		borderRadius: IS_IOS ? entryBorderRadius : 0,
+		borderRadius: IS_IOS ? entryBorderRadius : 0
 	},
 	// image's border radius is buggy on iOS; let's hack it!
 	radiusMask: {
@@ -63,40 +62,40 @@ export default EStyleSheet.create({
 		left: 0,
 		right: 0,
 		height: entryBorderRadius,
-		backgroundColor: 'white',
+		backgroundColor: 'white'
 	},
 	radiusMaskEven: {
-		backgroundColor: '$primaryColor',
+		backgroundColor: '$primaryColor'
 	},
 	textContainer: {
 		justifyContent: 'center',
 		// paddingTop: 20 - entryBorderRadius,
 		paddingTop: 2,
 		// paddingBottom: 20,
-		paddingHorizontal: 1,
+		paddingHorizontal: 1
 		// backgroundColor: 'white',
 		// borderBottomLeftRadius: entryBorderRadius,
 		// borderBottomRightRadius: entryBorderRadius,
 	},
 	textContainerEven: {
-		backgroundColor: '$primaryColor',
+		backgroundColor: '$primaryColor'
 	},
 	title: {
 		color: '$darkTextColor',
 		fontSize: 13,
 		fontWeight: 'bold',
-		letterSpacing: 0.5,
+		letterSpacing: 0.5
 	},
 	titleEven: {
-		color: 'white',
+		color: 'white'
 	},
 	subtitle: {
 		marginTop: 6,
 		color: colors.gray,
 		fontSize: 12,
-		fontStyle: 'italic',
+		fontStyle: 'italic'
 	},
 	subtitleEven: {
-		color: 'rgba(255, 255, 255, 0.7)',
-	},
+		color: 'rgba(255, 255, 255, 0.7)'
+	}
 });

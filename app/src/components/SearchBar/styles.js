@@ -1,26 +1,26 @@
 import EStyleSheet from 'react-native-extended-stylesheet';
-import normalize from '../../helpers/normalizeText';
+import { normalize } from '../../helpers';
 
 export default EStyleSheet.create({
 	textBoxWrapper: {
 		width: '100%',
-		borderRadius: 50,
+		borderRadius: normalize(50),
 		flexDirection: 'row',
 		alignItems: 'center',
 		backgroundColor: '$searchBarColor',
-		paddingHorizontal: 20,
+		paddingHorizontal: normalize(20)
 	},
 	textBox: {
 		color: '$lightTextColor',
-		height: 55,
-		paddingHorizontal: 15,
+		height: normalize(55),
+		paddingHorizontal: normalize(15),
 		flex: 1,
 		fontSize: normalize(15),
-		lineHeight: 17,
+		lineHeight: normalize(17)
 	},
 	icons: {
-		width: 20,
-		height: 20,
-		tintColor: '$lightTextColor',
-	},
+		width: normalize(20),
+		height: normalize(20),
+		tintColor: '$lightTextColor'
+	}
 });

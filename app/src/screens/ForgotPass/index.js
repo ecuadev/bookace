@@ -1,5 +1,5 @@
 /* eslint-disable lines-between-class-members */
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
 	Text,
 	View,
@@ -7,13 +7,13 @@ import {
 	TouchableOpacity,
 	Image,
 	Animated
-} from "react-native";
-import { Navigation } from "react-native-navigation";
-import Images from "@assets/images";
-import DismissKeyboardView from "../../components/DismissKeyboardView";
-import TextBox from "../../components/TextBox";
-import Button from "../../components/Button";
-import styles from "./styles";
+} from 'react-native';
+import { Navigation } from 'react-native-navigation';
+import Images from '@assets/images';
+import DismissKeyboardView from '../../components/DismissKeyboardView';
+import TextBox from '../../components/TextBox';
+import Button from '../../components/Button';
+import styles from './styles';
 
 export class ForgotPass extends Component {
 	constructor(props) {
@@ -35,8 +35,7 @@ export class ForgotPass extends Component {
 						<View style={styles.headerButtonLeftView}>
 							<TouchableOpacity
 								onPress={() => Navigation.pop(componentId)}
-								style={styles.headerButtonLeft}
-							>
+								style={styles.headerButtonLeft}>
 								<Image
 									source={Images.backIcon}
 									style={styles.headerButtonLeftIcon}

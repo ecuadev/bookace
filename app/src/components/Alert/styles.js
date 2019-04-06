@@ -1,6 +1,6 @@
 import EStyleSheet from 'react-native-extended-stylesheet';
 import { Platform, StatusBar } from 'react-native';
-import normalize from '../../helpers/normalizeText';
+import { normalize } from '../../helpers';
 
 export default EStyleSheet.create({
 	container: {
@@ -14,18 +14,18 @@ export default EStyleSheet.create({
 		overflow: 'hidden',
 		...Platform.select({
 			android: {
-				paddingTop: StatusBar.currentHeight * 1.5,
-			},
-		}),
+				paddingTop: StatusBar.currentHeight * 1.5
+			}
+		})
 	},
 	messageText: {
 		fontSize: normalize(14),
 		textAlign: 'left',
 		fontWeight: 'normal',
 		color: '$lightTextColor',
-		backgroundColor: 'transparent',
+		backgroundColor: 'transparent'
 	},
 	error: {
-		backgroundColor: '$errorColor',
-	},
+		backgroundColor: '$errorColor'
+	}
 });

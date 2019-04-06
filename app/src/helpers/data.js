@@ -6,7 +6,7 @@ export const books = [
 		isbn13: '9781484206485',
 		price: '$32.76',
 		image: 'https://itbook.store/img/books/9781484206485.png',
-		url: 'https://itbook.store/books/9781484206485',
+		url: 'https://itbook.store/books/9781484206485'
 	},
 	{
 		title: 'The Definitive Guide to MongoDB, 3rd Edition',
@@ -14,7 +14,7 @@ export const books = [
 		isbn13: '9781484211830',
 		price: '$49.99',
 		image: 'https://itbook.store/img/books/9781484211830.png',
-		url: 'https://itbook.store/books/9781484211830',
+		url: 'https://itbook.store/books/9781484211830'
 	},
 	{
 		title: 'MongoDB in Action, 2nd Edition',
@@ -22,7 +22,7 @@ export const books = [
 		isbn13: '9781617291609',
 		price: '$19.99',
 		image: 'https://itbook.store/img/books/9781617291609.png',
-		url: 'https://itbook.store/books/9781617291609',
+		url: 'https://itbook.store/books/9781617291609'
 	},
 	{
 		title: 'Pentaho Analytics for MongoDB',
@@ -31,7 +31,7 @@ export const books = [
 		isbn13: '9781782168355',
 		price: '$16.99',
 		image: 'https://itbook.store/img/books/9781782168355.png',
-		url: 'https://itbook.store/books/9781782168355',
+		url: 'https://itbook.store/books/9781782168355'
 	},
 	{
 		title: 'Pentaho Analytics for MongoDB Cookbook',
@@ -40,7 +40,7 @@ export const books = [
 		isbn13: '9781783553273',
 		price: '$28.28',
 		image: 'https://itbook.store/img/books/9781783553273.png',
-		url: 'https://itbook.store/books/9781783553273',
+		url: 'https://itbook.store/books/9781783553273'
 	},
 	{
 		title: 'Web Development with MongoDB and NodeJS, 2nd Edition',
@@ -49,7 +49,7 @@ export const books = [
 		isbn13: '9781785287527',
 		price: '$31.99',
 		image: 'https://itbook.store/img/books/9781785287527.png',
-		url: 'https://itbook.store/books/9781785287527',
+		url: 'https://itbook.store/books/9781785287527'
 	},
 	{
 		title: 'MongoDB Cookbook, 2nd Edition',
@@ -58,7 +58,7 @@ export const books = [
 		isbn13: '9781785289989',
 		price: '$35.99',
 		image: 'https://itbook.store/img/books/9781785289989.png',
-		url: 'https://itbook.store/books/9781785289989',
+		url: 'https://itbook.store/books/9781785289989'
 	},
 	{
 		title: 'Node.js, MongoDB and Angular Web Development, 2nd Edition',
@@ -66,7 +66,7 @@ export const books = [
 		isbn13: '9780134655536',
 		price: '$34.07',
 		image: 'https://itbook.store/img/books/9780134655536.png',
-		url: 'https://itbook.store/books/9780134655536',
+		url: 'https://itbook.store/books/9780134655536'
 	},
 	{
 		title: 'The Definitive Guide to MongoDB',
@@ -74,7 +74,7 @@ export const books = [
 		isbn13: '9781430230519',
 		price: '$8.83',
 		image: 'https://itbook.store/img/books/9781430230519.png',
-		url: 'https://itbook.store/books/9781430230519',
+		url: 'https://itbook.store/books/9781430230519'
 	},
 	{
 		title: 'Pro Hibernate and MongoDB',
@@ -82,6 +82,6 @@ export const books = [
 		isbn13: '9781430257943',
 		price: '$49.99',
 		image: 'https://itbook.store/img/books/9781430257943.png',
-		url: 'https://itbook.store/books/9781430257943',
-	},
+		url: 'https://itbook.store/books/9781430257943'
+	}
 ];

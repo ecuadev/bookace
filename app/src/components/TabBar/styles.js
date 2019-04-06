@@ -11,21 +11,21 @@ export default EStyleSheet.create({
 		flexDirection: 'row',
 		justifyContent: 'space-around',
 		borderTopWidth: 0.3,
-		borderTopColor: '$borderColor',
+		borderTopColor: '$borderColor'
 	},
 	tab: {
 		width: '10%',
 		height: 49,
 		alignItems: 'center',
-		justifyContent: 'center',
+		justifyContent: 'center'
 	},
 	image: {
 		width: 20,
 		height: 20,
-		tintColor: '$tabsSecondaryColor',
+		tintColor: '$tabsSecondaryColor'
 	},
 	imageActive: {
-		tintColor: '$tabsActiveColor',
+		tintColor: '$tabsActiveColor'
 	},
 	cameraTab: {
 		backgroundColor: '$tabsPrimaryColor',
@@ -35,7 +35,7 @@ export default EStyleSheet.create({
 		width: 70,
 		height: 70,
 		padding: 3,
-		top: -10,
+		top: -10
 	},
 	cameraTabInner: {
 		backgroundColor: '$tabsSecondaryColor',
@@ -43,17 +43,17 @@ export default EStyleSheet.create({
 		width: 60,
 		height: 60,
 		alignItems: 'center',
-		justifyContent: 'center',
+		justifyContent: 'center'
 	},
 	cameraImage: {
 		width: 30,
 		height: 30,
-		tintColor: '$tabsPrimaryColor',
+		tintColor: '$tabsPrimaryColor'
 	},
 	cameraTabActive: {
-		borderColor: '$tabsActiveColor',
+		borderColor: '$tabsActiveColor'
 	},
 	cameraTabInnerActive: {
-		backgroundColor: '$tabsActiveColor',
-	},
+		backgroundColor: '$tabsActiveColor'
+	}
 });

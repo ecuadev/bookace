@@ -170,8 +170,7 @@ class Login extends Component {
 						/>
 						<Button
 							onPress={this.onEmailPasswordLogin.bind(this)}
-							style={styles.signinButton}
-						>
+							style={styles.signinButton}>
 							SIGN IN
 						</Button>
 

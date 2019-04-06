@@ -47,7 +47,7 @@ class ModalPicker extends Component {
 	}
 
 	onPressCancel() {
-		this.setModalVisible(false)
+		this.setModalVisible(false);
 	}
 
 	onPressConfirm() {
@@ -62,7 +62,7 @@ class ModalPicker extends Component {
 	}
 
 	onChange(itemValue) {
-		this.setState({ allowPointerEvents: false, selectedValue: itemValue })
+		this.setState({ allowPointerEvents: false, selectedValue: itemValue });
 		const timeoutId = setTimeout(() => {
 			this.setState({ allowPointerEvents: true });
 			clearTimeout(timeoutId);

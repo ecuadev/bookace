@@ -1,5 +1,5 @@
 import isTallIPhone from './isTallIPhone';
-import normalize from './normalizeText';
+import normalize from './normalize';
 
 export {
 	isTallIPhone,

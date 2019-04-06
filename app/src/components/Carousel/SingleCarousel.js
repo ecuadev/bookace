@@ -13,7 +13,7 @@ class SingleCarousel extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			slider1ActiveSlide: SLIDER_1_FIRST_ITEM,
+			slider1ActiveSlide: SLIDER_1_FIRST_ITEM
 		};
 	}
 
@@ -69,7 +69,7 @@ class SingleCarousel extends Component {
 SingleCarousel.propTypes = {
 	// eslint-disable-next-line react/require-default-props
 	// eslint-disable-next-line react/no-unused-prop-types
-	books: PropTypes.array.isRequired,
+	books: PropTypes.array.isRequired
 };
 // eslint-disable-next-line react/default-props-match-prop-types
 SingleCarousel.defaultProps = { title: PropTypes.string };

@@ -36,7 +36,7 @@ class StackCarousel extends Component {
 
 StackCarousel.propTypes = {
 	// eslint-disable-next-line react/require-default-props
-	books: PropTypes.array.isRequired,
+	books: PropTypes.array.isRequired
 };
 // eslint-disable-next-line react/default-props-match-prop-types
 StackCarousel.defaultProps = { title: PropTypes.string };

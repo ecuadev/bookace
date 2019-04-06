@@ -1,54 +1,38 @@
 import EStyleSheet from 'react-native-extended-stylesheet';
-import normalize from '../../helpers/normalizeText';
+import { normalize } from '../../helpers';
 
 export default EStyleSheet.create({
 	wrapper: {
-		marginBottom: 20,
-		width: '100%',
-	},
-	label: {
-		color: '$darkTextColor',
-		fontSize: normalize(12),
-		lineHeight: 14,
-		marginBottom: 9,
+		marginBottom: normalize(20),
+		width: '100%'
 	},
 	textBoxWrapper: {
-		borderRadius: 10,
+		borderRadius: normalize(10),
 		flexDirection: 'row',
-		alignItems: 'center',
+		alignItems: 'center'
 	},
 	textBoxWrapperAndroid: {
-		backgroundColor: 'rgba(0,0,0, 0.7)',
+		backgroundColor: 'rgba(0,0,0, 0.7)'
 	},
 	textBoxWrapperError: {
-		borderColor: '#FE6068',
+		borderColor: '#FE6068'
 	},
 	textBox: {
 		fontFamily: 'Montserrat',
 		color: '$lightTextColor',
-		height: 55,
-		paddingHorizontal: 15,
+		height: normalize(55),
+		paddingHorizontal: normalize(15),
 		flex: 1,
 		fontSize: normalize(15),
-		lineHeight: 17,
-	},
-	password: {
-		paddingRight: 15,
-	},
-	showPasswordWrapper: {
-		paddingRight: 15,
-		paddingLeft: 15,
-	},
-	showPassword: {
-		width: 22,
+		lineHeight: normalize(17)
 	},
 	error: {
 		position: 'absolute',
 		bottom: -16,
 		color: '#FFFFFF',
 		fontSize: normalize(14),
-		lineHeight: 14,
-		marginTop: 9,
+		lineHeight: normalize(14),
+		marginTop: 9
 	},
 	blurView: {
 		position: 'absolute',
@@ -56,6 +40,6 @@ export default EStyleSheet.create({
 		right: 0,
 		top: 0,
 		bottom: 0,
-		borderRadius: 10,
-	},
+		borderRadius: normalize(10)
+	}
 });

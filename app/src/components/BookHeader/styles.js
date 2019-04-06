@@ -1,72 +1,71 @@
 import EStyleSheet from 'react-native-extended-stylesheet';
-import { isTallIPhone } from '../../helpers';
-import normalize from '../../helpers/normalizeText';
+import { isTallIPhone, normalize } from '../../helpers';
 
 export default EStyleSheet.create({
 	container: {
 		justifyContent: 'center',
 		paddingHorizontal: 15,
-		paddingTop: isTallIPhone() ? 49 : 28,
+		paddingTop: isTallIPhone() ? 49 : normalize(28)
 	},
 	staticContainer: {
 		flexDirection: 'row',
 		justifyContent: 'space-between',
 		alignItems: 'center',
-		paddingTop: isTallIPhone() ? 42 : 21,
+		paddingTop: isTallIPhone() ? 42 : normalize(27)
 	},
 	headerButtons: {
 		flexDirection: 'row',
 		justifyContent: 'space-between',
-		marginBottom: 15,
+		marginBottom: normalize(15)
 	},
 	headerButtonBack: {
-		padding: 5,
+		padding: 5
 	},
 	headerButtonBackIcon: {
-		width: 22,
-		height: 22,
-		tintColor: '$lightTextColor',
+		width: normalize(22),
+		height: normalize(22),
+		tintColor: '$lightTextColor'
 	},
 	headerButtonMenu: {
-		padding: 5,
+		padding: 5
 	},
 	headerButtonMenuIcon: {
-		width: 22,
-		height: 22,
-		tintColor: '$lightTextColor',
+		width: normalize(22),
+		height: normalize(22),
+		tintColor: '$lightTextColor'
 	},
 	bookMain: {
 		flexDirection: 'row',
-		paddingHorizontal: 5,
+		paddingHorizontal: 5
 	},
 	bookImageShadow: {
 		borderWidth: 5,
 		borderColor: '$lightTextColor',
 		borderRadius: 8,
-		width: 120,
-		height: 180,
+		width: normalize(120),
+		height: normalize(180),
 		shadowColor: '$shadowColor',
 		shadowOffset: {
 			width: 0,
-			height: 2,
+			height: 2
 		},
 		shadowOpacity: 0.25,
 		shadowRadius: 3.84,
-		elevation: 5,
+		elevation: 5
 	},
 	bookImageContainer: {
 		width: '100%',
 		height: '100%',
-		overflow: 'hidden',
+		overflow: 'hidden'
 	},
 	bookImage: {
 		width: '100%',
-		height: '100%',
+		height: '100%'
 	},
 	bookInfo: {
 		flex: 1,
 		flexWrap: 'wrap',
-		marginLeft: 20,
+		marginLeft: 20
 	},
 	bookTitle: {
 		color: '$lightTextColor',
@@ -74,7 +73,7 @@ export default EStyleSheet.create({
 		fontSize: normalize(22),
 		textShadowColor: 'rgba(0, 0, 0, 0.75)',
 		textShadowOffset: { width: 1, height: 1 },
-		textShadowRadius: 2,
+		textShadowRadius: 2
 	},
 	bookTitleSmall: {
 		flex: 1,
@@ -83,7 +82,7 @@ export default EStyleSheet.create({
 		fontFamily: 'Montserrat-Semibold',
 		fontSize: normalize(16),
 		textAlign: 'center',
-		paddingHorizontal: 20,
+		paddingHorizontal: 20
 	},
 	bookAuthors: {
 		color: '$lightTextColor',
@@ -92,6 +91,6 @@ export default EStyleSheet.create({
 		marginTop: 10,
 		textShadowColor: 'rgba(0, 0, 0, 0.75)',
 		textShadowOffset: { width: 1, height: 1 },
-		textShadowRadius: 2,
-	},
+		textShadowRadius: 2
+	}
 });

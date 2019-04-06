@@ -61,12 +61,17 @@ export default class Signup extends Component {
 							icon={Images.facebookAuthIcon}
 							style={styles.fbButton}>
 							CONTINUE WITH FACEBOOK
-						</TransparentButton>
+
+
+						
+</TransparentButton>
 
 						<TransparentButton
 							onPress={this.login}
 							icon={Images.googleAuthIcon}>
 							CONTINUE WITH GOOGLE
+
+
 						</TransparentButton>
 
 						<View style={styles.bottomLinks}>
@@ -75,7 +80,9 @@ export default class Signup extends Component {
 								containerStyle={styles.bottomLinkContainer}
 								onPress={() => Navigation.pop(componentId)}>
 								Already have an account
-							</LinkButton>
+
+
+       </LinkButton>
 						</View>
 					</View>
 				</DismissKeyboardView>

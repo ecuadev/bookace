@@ -18,9 +18,7 @@ class Home extends Component {
 		return (
 			<View style={styles.container}>
 				<View style={styles.header}>
-					<View style={styles.headerTitle}>
-						<Text style={styles.title}>{`Hi, ${user.profile.firstName}`}</Text>
-					</View>
+					<Text style={styles.headerTitle}>{`Hi, ${user.profile.firstName}`}</Text>
 
 					<View style={styles.user}>
 						<View style={styles.userImageContainer}>
@@ -53,5 +51,5 @@ class Home extends Component {
 
 export default connect(state => ({
 	network: state.network,
-	user: state.user.currentUser,
+	user: state.user.currentUser
 }))(Home);

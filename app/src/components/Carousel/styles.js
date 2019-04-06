@@ -1,26 +1,26 @@
 import EStyleSheet from 'react-native-extended-stylesheet';
 import { StyleSheet } from 'react-native';
-import normalize from '../../helpers/normalizeText';
+import { normalize } from '../../helpers';
 
 export const colors = {
 	black: '#1a1917',
 	gray: '#888888',
 	background1: '#B721FF',
-	background2: '#21D4FD',
+	background2: '#21D4FD'
 };
 
 export default EStyleSheet.create({
 	gradient: {
-		...StyleSheet.absoluteFillObject,
+		...StyleSheet.absoluteFillObject
 	},
 	exampleContainer: {
-		paddingVertical: 1,
+		paddingVertical: 1
 	},
 	exampleContainerDark: {
-		backgroundColor: '$darkTextColor',
+		backgroundColor: '$darkTextColor'
 	},
 	exampleContainerLight: {
-		backgroundColor: 'white',
+		backgroundColor: 'white'
 	},
 	title: {
 		// paddingHorizontal: 3,
@@ -32,10 +32,10 @@ export default EStyleSheet.create({
 		color: '$primaryTextColor',
 		fontFamily: 'Montserrat-SemiBold',
 		fontSize: normalize(26),
-		paddingTop: 8,
+		paddingTop: 8
 	},
 	titleDark: {
-		color: '$darkTextColor',
+		color: '$darkTextColor'
 	},
 	subtitle: {
 		marginTop: 5,
@@ -44,22 +44,22 @@ export default EStyleSheet.create({
 		color: 'rgba(255, 255, 255, 0.75)',
 		fontSize: normalize(13),
 		fontStyle: 'italic',
-		textAlign: 'center',
+		textAlign: 'center'
 	},
 	slider: {
 		marginTop: 5,
-		overflow: 'visible', // for custom animations
+		overflow: 'visible' // for custom animations
 	},
 	sliderContentContainer: {
-		paddingVertical: 10, // for custom animation
+		paddingVertical: 10 // for custom animation
 	},
 	paginationContainer: {
-		paddingVertical: 8,
+		paddingVertical: 8
 	},
 	paginationDot: {
 		width: 8,
 		height: 8,
 		borderRadius: 4,
-		marginHorizontal: 8,
-	},
+		marginHorizontal: 8
+	}
 });
