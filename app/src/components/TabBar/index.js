@@ -18,6 +18,13 @@ export default class TabBar extends Component {
 	changeToTab(newIndex) {
 		this.setState({ activeTab: newIndex });
 
+		Navigation.popToRoot('bottomTabSearch').catch(err => {
+			console.log(err);
+		});
+		Navigation.popToRoot('bottomTabProfile').catch(err => {
+			console.log(err);
+		});
+
 		Navigation.mergeOptions('BotomTabs', {
 			bottomTabs: {
 				currentTabIndex: newIndex

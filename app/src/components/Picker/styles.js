@@ -23,7 +23,6 @@ export default EStyleSheet.create({
 	pickerAndroid: {
 		fontFamily: 'Montserrat',
 		fontSize: normalize(14),
-		paddingTop: normalize(20),
 		flex: 1
 	},
 	valueText: {

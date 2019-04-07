@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Image, ScrollView, Switch, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Image, ScrollView, Switch, Text, TextInput, TouchableOpacity, View, Platform } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { connect } from 'react-redux';
 import Images from '@assets/images';
@@ -63,15 +63,15 @@ class ProfileEdit extends Component {
 						<View style={styles.sectionForm}>
 							<View style={styles.sectionField}>
 								<Text style={styles.sectionLabel}>First Name</Text>
-								<TextInput value={user.profile.firstName} style={styles.sectionInput} />
+								<TextInput value={user.profile.firstName} style={[styles.sectionInput, Platform.OS === 'android' && styles.sectionInputAndroid]} />
 							</View>
 							<View style={styles.sectionField}>
 								<Text style={styles.sectionLabel}>Last Name</Text>
-								<TextInput value={user.profile.lastName} style={styles.sectionInput} />
+								<TextInput value={user.profile.lastName} style={[styles.sectionInput, Platform.OS === 'android' && styles.sectionInputAndroid]} />
 							</View>
 							<View style={styles.sectionField}>
 								<Text style={styles.sectionLabel}>Email</Text>
-								<TextInput value={user.profile.email} style={styles.sectionInput} />
+								<TextInput value={user.profile.email} style={[styles.sectionInput, Platform.OS === 'android' && styles.sectionInputAndroid]} />
 							</View>
 							<Picker
 								label="Gender"

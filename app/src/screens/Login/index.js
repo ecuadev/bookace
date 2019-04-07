@@ -133,7 +133,7 @@ class Login extends Component {
 				goHome();
 			})
 			.catch(err => {
-				console.log(`Failed to log in anonymously: ${err}`);
+				console.log(`Failed to log in: ${err}`);
 				setCurrentUser(null);
 			});
 	}

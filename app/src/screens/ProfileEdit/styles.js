@@ -42,8 +42,7 @@ export default EStyleSheet.create({
 		width: normalize(120),
 		height: normalize(120),
 		borderRadius: normalize(100),
-		overflow: 'hidden',
-		marginRight: 15
+		overflow: 'hidden'
 	},
 	image: {
 		width: '100%',
@@ -61,9 +60,7 @@ export default EStyleSheet.create({
 		paddingHorizontal: 20,
 		fontSize: normalize(16),
 		paddingTop: 35,
-		paddingBottom: 15,
-		borderBottomWidth: 0.5,
-		borderColor: '$borderColor'
+		paddingBottom: 15
 	},
 	sectionForm: {
 		borderTopWidth: 0.3,
@@ -98,6 +95,10 @@ export default EStyleSheet.create({
 		height: normalize(65),
 		paddingTop: normalize(20),
 		paddingHorizontal: 20
+	},
+	sectionInputAndroid: {
+		fontSize: normalize(16),
+		padding: 0
 	},
 	pickerOptions: {
 		marginBottom: isTallIPhone() ? 83 : 49

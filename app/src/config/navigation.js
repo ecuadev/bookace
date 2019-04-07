@@ -1,4 +1,5 @@
 /* eslint-disable implicit-arrow-linebreak */
+import { Platform } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import Images from '@assets/images';
 
@@ -7,9 +8,12 @@ export const goHome = () => {
 		root: {
 			bottomTabs: {
 				id: 'BotomTabs',
+				visible: false,
+				...Platform.select({ android: { drawBehind: true } }),
 				children: [
 					{
 						component: {
+							id: 'bottomTabHome',
 							name: 'bookace.Home',
 							options: {
 								bottomTab: {
@@ -20,7 +24,7 @@ export const goHome = () => {
 					},
 					{
 						stack: {
-							id: 'SearchStack',
+							id: 'bottomTabSearch',
 							children: [
 								{
 									component: {
@@ -41,6 +45,7 @@ export const goHome = () => {
 					},
 					{
 						component: {
+							id: 'bottomTabCamera',
 							name: 'bookace.Camera',
 							options: {
 								bottomTab: {
@@ -51,6 +56,7 @@ export const goHome = () => {
 					},
 					{
 						component: {
+							id: 'bottomTabSocial',
 							name: 'bookace.Social',
 							options: {
 								bottomTab: {
@@ -61,7 +67,7 @@ export const goHome = () => {
 					},
 					{
 						stack: {
-							id: 'ProfileStack',
+							id: 'bottomTabProfile',
 							children: [
 								{
 									component: {
@@ -165,7 +171,7 @@ export const goToProfile = stack =>
 	});
 
 export const goToCategory = category =>
-	Navigation.push('SearchStack', {
+	Navigation.push('bottomTabSearch', {
 		component: {
 			name: 'bookace.Category',
 			passProps: {
@@ -185,7 +191,7 @@ export const goToBook = (book, stack) =>
 	});
 
 export const goToProfileEdit = () =>
-	Navigation.push('ProfileStack', {
+	Navigation.push('bottomTabProfile', {
 		component: {
 			name: 'bookace.ProfileEdit'
 		}
