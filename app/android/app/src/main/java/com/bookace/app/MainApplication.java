@@ -14,6 +14,7 @@ import com.facebook.reactnative.androidsdk.FBSDKPackage;
 import co.apptailor.googlesignin.RNGoogleSigninPackage;
 import org.reactnative.camera.RNCameraPackage;
 import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
+import com.imagepicker.ImagePickerPackage;
 
 import java.util.Arrays;
 import java.util.List;
@@ -46,10 +47,11 @@ public class MainApplication extends NavigationApplication {
     // Add additional packages you require here
     // No need to add RnnPackage and MainReactPackage
     return Arrays.<ReactPackage>asList(
-      new FBSDKPackage(mCallbackManager),
-      new RNGoogleSigninPackage(),
-			new RNCameraPackage(),
-			new ReactNativeConfigPackage()
+        new FBSDKPackage(mCallbackManager),
+        new RNGoogleSigninPackage(),
+        new RNCameraPackage(),
+        new ReactNativeConfigPackage(),
+        new ImagePickerPackage()
     );
   }
 

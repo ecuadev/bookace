@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Image, ScrollView, Switch, Text, TextInput, TouchableOpacity, View, Platform } from 'react-native';
 import { Navigation } from 'react-native-navigation';
+import ImagePicker from 'react-native-image-picker';
 import { connect } from 'react-redux';
 import Images from '@assets/images';
 
@@ -33,6 +34,18 @@ class ProfileEdit extends Component {
 			});
 	}
 
+	handleChoosePhoto() {
+		const options = {
+			title: 'Select Profile Picture',
+		};
+
+		ImagePicker.showImagePicker(options, response => {
+			if (response.uri) {
+				// send picture
+			}
+		});
+	}
+
 	render() {
 		const { user, componentId } = this.props;
 
@@ -55,7 +68,7 @@ class ProfileEdit extends Component {
 							style={styles.image}
 						/>
 					</View>
-					<Button style={styles.imageButton}>Change picture</Button>
+					<Button style={styles.imageButton} onPress={this.handleChoosePhoto}>Change picture</Button>
 				</DismissKeyboardView>
 				<ScrollView style={styles.body} showsVerticalScrollIndicator={false}>
 					<View style={styles.section}>
