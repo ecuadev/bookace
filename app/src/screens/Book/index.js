@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Navigation } from 'react-native-navigation';
 import { Image, Text, View } from 'react-native';
 import HeaderImageScrollView, { TriggeringView } from 'react-native-image-header-scroll-view';
+import ActionSheet from 'react-native-action-sheet';
+import Share from 'react-native-share';
 import * as Animatable from 'react-native-animatable';
 
 import { isTallIPhone, normalize } from '../../helpers';
@@ -10,6 +12,37 @@ import BookHeaderStatic from '../../components/BookHeader/BookHeaderStatic';
 import styles from './styles';
 
 class Book extends Component {
+	handleMenuPress() {
+		ActionSheet.showActionSheetWithOptions({
+			options: [
+				'Add to my read books',
+				'Add to my wishlist',
+				'Share',
+				'Cancel'
+			],
+			cancelButtonIndex: 3
+		},
+		buttonIndex => {
+			switch (buttonIndex) {
+				case 0:
+					break;
+				case 1:
+					break;
+				case 2:
+					Share.open({
+						title: 'Look at this book',
+						message: 'I like this book',
+						failOnCancel: false
+					})
+						.then(res => { console.log(res) })
+						.catch(err => { err && console.log(err); });
+					break;
+				default:
+					break;
+			}
+		});
+	}
+
 	render() {
 		const { componentId } = this.props;
 		return (
@@ -27,10 +60,18 @@ class Book extends Component {
 						ref={navTitleView => {
 							this.navTitleView = navTitleView;
 						}}>
-						<BookHeaderStatic onBack={() => Navigation.pop(componentId)} />
+						<BookHeaderStatic
+							onBack={() => Navigation.pop(componentId)}
+							onMenu={this.handleMenuPress}
+						/>
 					</Animatable.View>
 				)}
-				renderForeground={() => <BookHeader onBack={() => Navigation.pop(componentId)} />}>
+				renderForeground={() => (
+					<BookHeader
+						onBack={() => Navigation.pop(componentId)}
+						onMenu={this.handleMenuPress}
+					/>
+				)}>
 				<View style={styles.content}>
 					<TriggeringView
 						onHide={() => this.navTitleView.fadeInUp(200)}

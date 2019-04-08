@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { ImageBackground, ActivityIndicator } from 'react-native';
 import Config from 'react-native-config';
 import { Stitch } from 'mongodb-stitch-react-native-sdk';
 import { connect } from 'react-redux';
+import Images from '@assets/images';
 
 import { setStitchClient } from '../../actions/global';
 import { setCurrentUser } from '../../actions/user';
@@ -29,9 +30,9 @@ class Welcome extends Component {
 
 	render() {
 		return (
-			<View style={styles.container}>
-				<Text style={styles.message}>Loading</Text>
-			</View>
+			<ImageBackground source={Images.authBackground} style={styles.container}>
+				<ActivityIndicator size="large" color="#ffffff" />
+			</ImageBackground>
 		);
 	}
 }

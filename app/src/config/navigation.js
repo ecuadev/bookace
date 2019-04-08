@@ -1,5 +1,4 @@
 /* eslint-disable implicit-arrow-linebreak */
-import { Platform } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import Images from '@assets/images';
 
@@ -8,8 +7,6 @@ export const goHome = () => {
 		root: {
 			bottomTabs: {
 				id: 'BotomTabs',
-				visible: false,
-				...Platform.select({ android: { drawBehind: true } }),
 				children: [
 					{
 						component: {

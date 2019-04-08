@@ -36,7 +36,7 @@ class ProfileEdit extends Component {
 
 	handleChoosePhoto() {
 		const options = {
-			title: 'Select Profile Picture',
+			title: 'Select Profile Picture'
 		};
 
 		ImagePicker.showImagePicker(options, response => {

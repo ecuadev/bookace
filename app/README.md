@@ -11,8 +11,11 @@
 | [React Native Navigation](https://github.com/wix/react-native-navigation) | App-wide support for 100% native navigation with an easy cross-platform interface. |
 | [React Native Extended StyleSheet](https://github.com/vitalets/react-native-extended-stylesheet) | Drop-in replacement of React Native StyleSheet with media-queries, variables, dynamic themes, relative units, percents, math operations, scaling and other styling stuff. |
 | [React Native Camera](https://github.com/react-native-community/react-native-camera) | A Camera component for React Native. |
-| [Redux](https://nodejs.org/) | Predictable state container for JavaScript apps. |
+| [Redux](https://redux.js.org/) | Predictable state container for JavaScript apps. |
 | [Redux Thunk](https://github.com/wix/react-native-navigation) | Thunk middleware for Redux. |
+| [MongoDB Stitch React Native SDK](https://www.npmjs.com/package/mongodb-stitch-react-native-sdk) | The official MongoDB Stitch React Native SDK for JavaScript/TypeScript. |
+
+
 
 ## Installation
 

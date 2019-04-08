@@ -1,3 +1,4 @@
+import { Platform } from 'react-native';
 import NetInfo from '@react-native-community/netinfo';
 import { Navigation } from 'react-native-navigation';
 import { Provider } from 'react-redux';
@@ -18,7 +19,7 @@ Navigation.events().registerAppLaunchedListener(() => {
 	Navigation.setDefaultOptions({
 		bottomTabs: {
 			visible: false,
-			drawBehind: true
+			...Platform.select({ android: { drawBehind: true } }),
 		}
 	});
 

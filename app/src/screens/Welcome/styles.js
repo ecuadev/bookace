@@ -7,8 +7,5 @@ export default EStyleSheet.create({
 		justifyContent: 'center',
 		alignItems: 'center',
 		backgroundColor: '$screenBackground'
-	},
-	message: {
-		fontSize: normalize(28)
 	}
 });

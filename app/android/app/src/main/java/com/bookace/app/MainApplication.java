@@ -15,6 +15,9 @@ import co.apptailor.googlesignin.RNGoogleSigninPackage;
 import org.reactnative.camera.RNCameraPackage;
 import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
 import com.imagepicker.ImagePickerPackage;
+import com.actionsheet.ActionSheetPackage;
+import cl.json.RNSharePackage;
+import cl.json.ShareApplication;
 
 import java.util.Arrays;
 import java.util.List;
@@ -51,7 +54,9 @@ public class MainApplication extends NavigationApplication {
         new RNGoogleSigninPackage(),
         new RNCameraPackage(),
         new ReactNativeConfigPackage(),
-        new ImagePickerPackage()
+        new ImagePickerPackage(),
+				new ActionSheetPackage(),
+				new RNSharePackage()
     );
   }
 

@@ -141,6 +141,8 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-share')
+    implementation project(':react-native-action-sheet')
     implementation project(':react-native-image-picker')
     implementation project(':react-native-blur')
     implementation project(':react-native-camera')
