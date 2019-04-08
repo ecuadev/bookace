@@ -9,18 +9,14 @@ export default EStyleSheet.create({
 		flex: 1
 	},
 	preview: {
-		flex: 1,
-		height: height - (isTallIPhone() ? 83 : 49),
-		width
+		flex: 1
 	},
 	overlay: {
 		position: 'absolute',
 		top: 0,
 		left: 0,
 		flex: 1,
-		height: height - (isTallIPhone() ? 83 : 49),
 		width,
-		justifyContent: 'flex-end',
-		alignItems: 'center'
+		height: height - (isTallIPhone() ? 83 : 49)
 	}
 });

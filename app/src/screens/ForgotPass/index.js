@@ -15,7 +15,7 @@ import TextBox from '../../components/TextBox';
 import Button from '../../components/Button';
 import styles from './styles';
 
-export class ForgotPass extends Component {
+class ForgotPass extends Component {
 	constructor(props) {
 		super(props);
 		this.email = React.createRef();

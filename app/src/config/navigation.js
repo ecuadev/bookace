@@ -30,23 +30,8 @@ export const goHome = () => {
 								}
 							],
 							options: {
-								topBar: {
-									visible: false,
-									height: 0
-								},
 								bottomTab: {
 									icon: Images.searchTabIcon
-								}
-							}
-						}
-					},
-					{
-						component: {
-							id: 'bottomTabCamera',
-							name: 'bookace.Camera',
-							options: {
-								bottomTab: {
-									icon: Images.cameraTabIcon
 								}
 							}
 						}
@@ -73,10 +58,6 @@ export const goHome = () => {
 								}
 							],
 							options: {
-								topBar: {
-									visible: false,
-									height: 0
-								},
 								bottomTab: {
 									icon: Images.searchTabIcon
 								}
@@ -193,3 +174,13 @@ export const goToProfileEdit = () =>
 			name: 'bookace.ProfileEdit'
 		}
 	});
+
+export const showCamera = props => Navigation.showModal({
+	component: {
+		id: 'cameraModal',
+		name: 'bookace.Camera',
+		passProps: props
+	}
+});
+
+export const hideCamera = () => Navigation.dismissModal('cameraModal');

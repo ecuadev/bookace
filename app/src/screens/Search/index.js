@@ -25,9 +25,9 @@ export default class Search extends Component {
 	componentDidUpdate(prevProps, prevState) {
 		const { searchValue } = this.state;
 		if (prevState.searchValue === '' && searchValue) {
-			this.resultsView.transitionTo({ right: 0 }, 200, 'ease');
+			this.resultsView.transitionTo({ left: 0 }, 300, 'linear');
 		} else if (prevState.searchValue !== '' && !searchValue) {
-			this.resultsView.transitionTo({ right: width }, 200, 'ease');
+			this.resultsView.transitionTo({ left: -width }, 300, 'linear');
 		}
 	}
 

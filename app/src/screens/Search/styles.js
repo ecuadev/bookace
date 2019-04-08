@@ -48,7 +48,6 @@ export default EStyleSheet.create({
 		backgroundColor: '$screenBackground',
 		top: 0,
 		right: width,
-		width: '100%',
-		height: '100%'
+		width: '100%'
 	}
 });

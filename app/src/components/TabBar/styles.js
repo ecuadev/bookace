@@ -13,6 +13,9 @@ export default EStyleSheet.create({
 		borderTopWidth: 0.3,
 		borderTopColor: '$borderColor'
 	},
+	tabBarCamera: {
+		height: isTallIPhone() ? 113 : 79
+	},
 	tab: {
 		width: '10%',
 		height: 49,
