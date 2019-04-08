@@ -20,6 +20,8 @@ const images = {
 	profileTabIcon: require('./tabIcons/user.png'),
 	// Camera
 	cameraOverlay: require('./camera/overlay.png'),
+	cameraBackIcon: require('./camera/back-arrow.png'),
+	cameraPhotoLibrary: require('./camera/photo-library.png'),
 	// Search
 	searchBackground: require('./search/background.jpg'),
 	searchBarIcon: require('./search/search.png'),
