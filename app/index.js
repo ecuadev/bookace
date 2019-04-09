@@ -2,6 +2,7 @@ import { Platform } from 'react-native';
 import NetInfo from '@react-native-community/netinfo';
 import { Navigation } from 'react-native-navigation';
 import { Provider } from 'react-redux';
+import SplashScreen from 'react-native-splash-screen';
 
 import buildStyles from './src/config/styles';
 import store from './src/config/store';
@@ -16,10 +17,12 @@ NetInfo.addEventListener('connectionChange', info => {
 });
 
 Navigation.events().registerAppLaunchedListener(() => {
+	SplashScreen.hide();
+
 	Navigation.setDefaultOptions({
 		bottomTabs: {
 			visible: false,
-			...Platform.select({ android: { drawBehind: true } }),
+			...Platform.select({ android: { drawBehind: true } })
 		}
 	});
 

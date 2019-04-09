@@ -18,6 +18,7 @@ import com.imagepicker.ImagePickerPackage;
 import com.actionsheet.ActionSheetPackage;
 import cl.json.RNSharePackage;
 import cl.json.ShareApplication;
+import org.devio.rn.splashscreen.SplashScreenReactPackage;
 
 import java.util.Arrays;
 import java.util.List;
@@ -56,7 +57,8 @@ public class MainApplication extends NavigationApplication {
         new ReactNativeConfigPackage(),
         new ImagePickerPackage(),
 				new ActionSheetPackage(),
-				new RNSharePackage()
+				new RNSharePackage(),
+				new SplashScreenReactPackage()
     );
   }
 

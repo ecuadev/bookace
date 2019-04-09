@@ -1,5 +1,5 @@
 import EStyleSheet from 'react-native-extended-stylesheet';
-import { normalize } from '../../helpers';
+import { isTallIPhone, normalize } from '../../helpers';
 
 export default EStyleSheet.create({
 	container: {
@@ -19,9 +19,8 @@ export default EStyleSheet.create({
 		justifyContent: 'center'
 	},
 	logoImage: {
-		width: normalize(130),
-		height: normalize(130),
-		tintColor: '$lightTextColor'
+		width: normalize(150),
+		height: normalize(150)
 	},
 	title: {
 		fontSize: normalize(20),
@@ -64,6 +63,7 @@ export default EStyleSheet.create({
 		color: '$lightTextColor'
 	},
 	bottomLinkContainer: {
-		paddingVertical: 10
+		paddingVertical: 10,
+		paddingBottom: isTallIPhone() ? 30 : 10
 	}
 });

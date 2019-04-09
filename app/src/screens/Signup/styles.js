@@ -1,5 +1,5 @@
 import EStyleSheet from 'react-native-extended-stylesheet';
-import { normalize } from '../../helpers';
+import { isTallIPhone, normalize } from '../../helpers';
 
 export default EStyleSheet.create({
 	container: {
@@ -63,11 +63,11 @@ export default EStyleSheet.create({
 		marginTop: 20
 	},
 	bottomLink: {
-		color: '$lightTextColor',
-		fontWeight: '500'
+		color: '$lightTextColor'
 	},
 	bottomLinkContainer: {
-		paddingVertical: 10
+		paddingVertical: 10,
+		paddingBottom: isTallIPhone() ? 30 : 10
 	},
 	backToLogin: {
 		color: '$primaryColor'

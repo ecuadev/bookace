@@ -6,9 +6,8 @@ const images = {
 	calendarIcon: require('./global/calendar.png'),
 	caretDown: require('./global/caret-down.png'),
 	noInternet: require('./global/no-connection.png'),
-
 	// Login/Signup
-	authLogo: require('./auth/logo.png'),
+	authLogo: require('./auth/app-logo.png'),
 	authBackground: require('./auth/background.png'),
 	facebookAuthIcon: require('./auth/facebook.png'),
 	googleAuthIcon: require('./auth/google.png'),

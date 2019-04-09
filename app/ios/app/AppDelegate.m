@@ -12,6 +12,7 @@
 #import <ReactNativeNavigation/ReactNativeNavigation.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <RNGoogleSignin/RNGoogleSignin.h>
+#import "RNSplashScreen.h"
 
 @implementation AppDelegate
 
@@ -25,6 +26,7 @@
                            didFinishLaunchingWithOptions:launchOptions];
   NSURL *jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
   [ReactNativeNavigation bootstrap:jsCodeLocation launchOptions:launchOptions];
+  [RNSplashScreen show];
   
   return YES;
 }
