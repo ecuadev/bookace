@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { View, Text, TextInput } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import { BlurView } from 'react-native-blur';
 import EStyleSheet from 'react-native-extended-stylesheet';
 
@@ -11,6 +11,10 @@ class TextBox extends Component {
 		super(props);
 
 		const { type } = this.props;
+
+		this.state = {
+			secure: type == 'password'
+		};
 
 		switch (type) {
 			case 'email':
@@ -25,8 +29,15 @@ class TextBox extends Component {
 		}
 	}
 
+	changeSecurity() {
+		const { secure } = this.state;
+
+		this.setState({ secure: !secure });
+	}
+
 	render() {
 		const { type, onChange, value, placeholder, style, error } = this.props;
+		const { secure } = this.state;
 
 		return (
 			<View style={[styles.wrapper, style]}>
@@ -41,9 +52,16 @@ class TextBox extends Component {
 						placeholder={placeholder}
 						placeholderTextColor={EStyleSheet.value('$lightTextColor')}
 						style={styles.textBox}
-						secureTextEntry={type === 'password'}
+						secureTextEntry={secure}
 						underlineColorAndroid="rgba(0,0,0,0)"
 					/>
+					{ type === 'password' && (
+						<TouchableOpacity style={styles.showPassword} onPress={this.changeSecurity.bind(this)}>
+							<Text style={styles.showPasswordText}>
+								{secure ? 'SHOW' : 'HIDE'}
+							</Text>
+						</TouchableOpacity>
+					)}
 				</View>
 				{ !!error && <Text style={styles.error}>{ error }</Text> }
 			</View>

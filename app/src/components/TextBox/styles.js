@@ -41,5 +41,14 @@ export default EStyleSheet.create({
 		top: 0,
 		bottom: 0,
 		borderRadius: normalize(10)
+	},
+	showPassword: {
+		paddingVertical: normalize(10),
+		paddingHorizontal: normalize(15)
+	},
+	showPasswordText: {
+		fontFamily: 'Montserrat-Medium',
+		color: '$lightTextColor',
+		fontSize: normalize(12)
 	}
 });
