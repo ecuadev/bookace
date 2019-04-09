@@ -7,65 +7,44 @@ export default EStyleSheet.create({
 	},
 	inner: {
 		flex: 1,
-		justifyContent: 'center',
-		alignItems: 'flex-start',
+		alignItems: 'center',
 		paddingHorizontal: 20,
-		paddingVertical: 10
+		paddingVertical: 20,
+		paddingTop: isTallIPhone() ? 42 : 25
 	},
-	heading: {
-		flex: 1,
+	titleContainer: {
 		width: '100%',
 		alignItems: 'center',
-		justifyContent: 'center'
+		justifyContent: 'center',
+		paddingTop: normalize(35),
+		paddingBottom: 15
 	},
 	title: {
-		fontFamily: 'Montserrat-Bold',
-		fontSize: normalize(35),
+		fontFamily: 'Montserrat-Medium',
+		fontSize: normalize(28),
 		textAlign: 'center',
-		margin: 5,
-		color: '$lightTextColor'
+		color: '$primaryTextColor'
+	},
+	header: {
+		width: '100%',
+		marginBottom: normalize(150)
+	},
+	headerButtonLeftView: {
+		width: normalize(32),
+		height: normalize(32)
+	},
+	headerButtonLeft: {
+		padding: normalize(5)
+	},
+	headerButtonLeftIcon: {
+		width: normalize(22),
+		height: normalize(22),
+		tintColor: '$primaryTextColor'
 	},
 	form: {
-		flex: 1,
 		width: '100%'
-	},
-	formFields: {
-		flex: 1
 	},
 	sendEmail: {
 		marginTop: 10
-	},
-
-	header: {
-		flexDirection: 'row',
-		justifyContent: 'flex-start',
-		paddingHorizontal: 15,
-		paddingTop: isTallIPhone() ? 49 : 23,
-		paddingBottom: 5
-	},
-	headerButtonLeftView: {
-		width: 32,
-		height: 32
-	},
-	headerButtonLeft: {
-		padding: 5
-	},
-	headerButtonLeftIcon: {
-		width: 22,
-		height: 22,
-		tintColor: '$lightTextColor'
-	},
-
-	bottomLinks: {
-		width: '100%',
-		flexDirection: 'row',
-		justifyContent: 'space-around',
-		marginTop: 10
-	},
-	bottomLink: {
-		color: '$lightTextColor'
-	},
-	bottomLinkContainer: {
-		paddingVertical: 10
 	}
 });

@@ -40,11 +40,13 @@ class ProfileEdit extends Component {
 		};
 
 		ImagePicker.showImagePicker(options, response => {
+			console.log(response)
 			if (response.uri) {
-				// send picture
+				this.uploadFile(response.uri);
 			}
 		});
 	}
+
 
 	render() {
 		const { user, componentId } = this.props;

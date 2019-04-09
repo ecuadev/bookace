@@ -5,8 +5,7 @@ import {
 	View,
 	ImageBackground,
 	TouchableOpacity,
-	Image,
-	Animated
+	Image
 } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import Images from '@assets/images';
@@ -31,7 +30,7 @@ class ForgotPass extends Component {
 		return (
 			<ImageBackground source={Images.authBackground} style={styles.container}>
 				<DismissKeyboardView style={styles.inner}>
-					<Animated.View style={{ ...styles.header }}>
+					<View style={styles.header}>
 						<View style={styles.headerButtonLeftView}>
 							<TouchableOpacity
 								onPress={() => Navigation.pop(componentId)}
@@ -42,15 +41,13 @@ class ForgotPass extends Component {
 								/>
 							</TouchableOpacity>
 						</View>
-					</Animated.View>
-
-					<View style={styles.heading}>
-						<Text style={styles.title}>Forgot Password?</Text>
+						<View style={styles.titleContainer}>
+							<Text style={styles.title}>Forgot Password?</Text>
+						</View>
 					</View>
 					<View style={styles.form}>
 						<View style={styles.formFields}>
 							<TextBox placeholder="Email" type="email" ref={this.email} />
-
 							<Button onPress={this.sendEmail}>SEND EMAIL</Button>
 						</View>
 					</View>

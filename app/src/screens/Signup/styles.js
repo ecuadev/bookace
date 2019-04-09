@@ -7,28 +7,24 @@ export default EStyleSheet.create({
 	},
 	inner: {
 		flex: 1,
-		justifyContent: 'center',
+		justifyContent: 'space-between',
 		alignItems: 'center',
-		paddingHorizontal: 30,
-		paddingVertical: 10
+		paddingHorizontal: 20,
+		paddingVertical: 20,
+		paddingTop: isTallIPhone() ? 42 : 20
 	},
-	logo: {
-		flex: 1,
+	titleContainer: {
 		width: '100%',
 		alignItems: 'center',
-		justifyContent: 'center'
-	},
-	logoImage: {
-		width: 130,
-		height: 130,
-		tintColor: '$lightTextColor'
+		justifyContent: 'center',
+		paddingTop: 55,
+		paddingBottom: 15
 	},
 	title: {
 		fontFamily: 'Montserrat-Medium',
-		fontSize: normalize(35),
+		fontSize: normalize(28),
 		textAlign: 'center',
-		margin: 10,
-		color: '$lightTextColor'
+		color: '$primaryTextColor'
 	},
 	form: {
 		width: '100%'

@@ -4,6 +4,8 @@ import android.os.Bundle;
 import com.reactnativenavigation.NavigationActivity;
 import android.content.Intent;
 import cl.json.ShareApplication;
+import com.facebook.react.ReactActivity;
+import org.devio.rn.splashscreen.SplashScreen;
 
 public class MainActivity extends NavigationActivity implements ShareApplication {
 		@Override
