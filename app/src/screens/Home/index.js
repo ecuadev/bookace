@@ -3,8 +3,8 @@ import { Text, View, Image, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import Images from '@assets/images';
 import { goToProfile } from '../../config/navigation';
-import SingleCarousel from '../../components/Carousel/SingleCarousel';
-import StackCarousel from '../../components/Carousel/StackCarousel';
+import SingleCarousel from '../../components/Carousel/SingleCarousel/SingleCarousel';
+import StackCarousel from '../../components/Carousel/StackCarousel/StackCarousel';
 import NoConnection from '../../components/NoConnection';
 
 import { books } from '../../helpers/data';
@@ -24,7 +24,8 @@ class Home extends Component {
 						<View style={styles.userImageContainer}>
 							<TouchableOpacity
 								onPress={() => goToProfile(componentId)}
-								style={styles.headerButtonLeft}>
+								style={styles.headerButtonLeft}
+							>
 								<Image
 									source={
 										user.picture
@@ -38,9 +39,21 @@ class Home extends Component {
 					</View>
 				</View>
 				{network.connected && (
-					<View>
-						<StackCarousel books={books} title="Best Sellers" componentId={componentId} />
-						<SingleCarousel books={books} title="Categories" componentId={componentId} />
+					<View style={styles.carouselContainer}>
+						<View style={{ flex: 4 }}>
+							<StackCarousel
+								books={books}
+								title="Best Sellers"
+								componentId={componentId}
+							/>
+						</View>
+						<View style={{ flex: 3 }}>
+							<SingleCarousel
+								books={books}
+								title="Categories"
+								componentId={componentId}
+							/>
+						</View>
 					</View>
 				)}
 				{network.hasCheckedStatus && !network.connected && <NoConnection />}

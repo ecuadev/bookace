@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import { View, Text } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import SliderEntry from './SliderEntry';
+import LinkButton from '../../../components/LinkButton';
 import { sliderWidth, itemWidth } from './SliderEntry.styles';
-import styles, { colors } from './styles';
+import styles from './styles';
 
 // const IS_ANDROID = Platform.OS === 'android';
-const SLIDER_1_FIRST_ITEM = 2;
+const SLIDER_1_FIRST_ITEM = 0;
 
 class SingleCarousel extends Component {
 	constructor(props) {
@@ -15,10 +16,6 @@ class SingleCarousel extends Component {
 		this.state = {
 			slider1ActiveSlide: SLIDER_1_FIRST_ITEM
 		};
-	}
-
-	_renderItem({ item, index }) {
-		return <SliderEntry data={item} even={(index + 1) % 2 === 0} />;
 	}
 
 	_renderItemWithParallax({ item, index }, parallaxProps) {
@@ -36,29 +33,28 @@ class SingleCarousel extends Component {
 		const { slider1ActiveSlide } = this.state;
 		const { books, title } = this.props;
 		return (
-			<View style={styles.exampleContainer}>
-				{title && <Text style={styles.title}>{title}</Text>}
+			<View style={styles.carouselContainer}>
+				<View style={styles.header}>
+					<View style={styles.headerTitle}>
+						{title && <Text style={styles.title}>{title}</Text>}
+					</View>
+					<View style={styles.headerLink}>
+						{/* <Text style={styles.link}>View All</Text> */}
+						<LinkButton style={styles.link}>View All</LinkButton>
+					</View>
+				</View>
 
 				<Carousel
 					activeSlideAlignment="start"
-					// eslint-disable-next-line no-return-assign
-					ref={c => (this._slider1Ref = c)}
 					data={books}
 					renderItem={this._renderItemWithParallax}
 					sliderWidth={sliderWidth}
 					itemWidth={itemWidth}
 					hasParallaxImages
 					firstItem={SLIDER_1_FIRST_ITEM}
-					inactiveSlideScale={0.9}
-					inactiveSlideOpacity={0.7}
-					// inactiveSlideShift={20}
 					containerCustomStyle={styles.slider}
 					contentContainerCustomStyle={styles.sliderContentContainer}
 					// loop
-					loopClonesPerSide={2}
-					// autoplay
-					// autoplayDelay={500}
-					// autoplayInterval={3000}
 					onSnapToItem={index => this.setState({ slider1ActiveSlide: index })}
 				/>
 			</View>

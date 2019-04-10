@@ -20,7 +20,8 @@ class Profile extends Component {
 				rightIcon={Images.profileEditIcon}
 				style={styles.container}
 				titleStyle={styles.title}
-				stickyHeaderIndices={[0]}>
+				stickyHeaderIndices={[0]}
+			>
 				<View style={styles.topContainer}>
 					<View style={styles.user}>
 						<View style={styles.userImageContainer}>
