@@ -3,28 +3,31 @@ import { View, Text, Image, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 import { ParallaxImage } from 'react-native-snap-carousel';
 import styles from './SliderEntry.styles';
-import { goToBook } from '../../config/navigation';
-
-export default class SliderEntry extends Component {
+import { goToBook } from '../../../config/navigation';
+// import getImage from './getImage';
+class SliderEntry extends Component {
 	static propTypes = {
 		data: PropTypes.object.isRequired,
 		even: PropTypes.bool,
 		parallax: PropTypes.bool,
-		parallaxProps: PropTypes.object,
+		parallaxProps: PropTypes.object
 	};
 
-	get image() {
+	getImage = () => {
 		const {
 			data: { image },
 			parallax,
 			parallaxProps,
-			even,
+			even
 		} = this.props;
 
 		return parallax ? (
 			<ParallaxImage
 				source={{ uri: image }}
-				containerStyle={[styles.imageContainer, even ? styles.imageContainerEven : {}]}
+				containerStyle={[
+					styles.imageContainer,
+					even ? styles.imageContainerEven : {}
+				]}
 				style={styles.image}
 				parallaxFactor={0.35}
 				showSpinner={true}
@@ -34,14 +37,15 @@ export default class SliderEntry extends Component {
 		) : (
 			<Image source={{ uri: image }} style={styles.image} />
 		);
-	}
+	};
 
 	render() {
 		const {
-			data: { title, subtitle },
+			data: { title, subtitle, image },
 			parallaxProps,
-			componentId,
+			componentId
 		} = this.props;
+
 		const uppercaseTitle = title ? (
 			// <Text style={[styles.title, even ? styles.titleEven : {}]} numberOfLines={2}>
 			<Text style={styles.title} numberOfLines={2}>
@@ -57,16 +61,25 @@ export default class SliderEntry extends Component {
 				style={styles.slideInnerContainer}
 				onPress={book => goToBook(book, componentId)}
 			>
-				<View style={styles.imageContainer}>{this.image}</View>
-				{parallaxProps && (
-					<View style={styles.textContainer}>
-						{uppercaseTitle}
-						<Text style={styles.subtitle} numberOfLines={2}>
-							{subtitle}
-						</Text>
-					</View>
-				)}
+				<View style={styles.imageContainer}>
+					<Image
+						source={{
+							uri:
+								'https://images-na.ssl-images-amazon.com/images/I/51HSkTKlauL._SX346_BO1,204,203,200_.jpg'
+						}}
+						style={styles.image}
+						resizeMode="cover"
+					/>
+				</View>
+				<View style={styles.textContainer}>
+					{uppercaseTitle}
+					<Text style={styles.subtitle} numberOfLines={2}>
+						{subtitle}
+					</Text>
+				</View>
 			</TouchableOpacity>
 		);
 	}
 }
+
+export default SliderEntry;

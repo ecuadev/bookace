@@ -62,7 +62,8 @@ export const books = [
 	},
 	{
 		title: 'Node.js, MongoDB and Angular Web Development, 2nd Edition',
-		subtitle: 'The definitive guide to using the MEAN stack to build web applications',
+		subtitle:
+			'The definitive guide to using the MEAN stack to build web applications',
 		isbn13: '9780134655536',
 		price: '$34.07',
 		image: 'https://itbook.store/img/books/9780134655536.png',

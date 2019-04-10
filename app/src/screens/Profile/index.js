@@ -19,18 +19,25 @@ class Profile extends Component {
 				rightIcon={Images.profileEditIcon}
 				style={styles.container}
 				titleStyle={styles.title}
-				stickyHeaderIndices={[0]}>
+				stickyHeaderIndices={[0]}
+			>
 				<View style={styles.topContainer}>
 					<View style={styles.user}>
 						<View style={styles.userImageContainer}>
 							<Image
-								source={user.profile.pictureUrl ? { uri: user.profile.pictureUrl } : Images.profilePic}
+								source={
+									user.profile.pictureUrl
+										? { uri: user.profile.pictureUrl }
+										: Images.profilePic
+								}
 								style={styles.userImage}
 							/>
 						</View>
 						<View style={styles.userInfoContainer}>
-							<Text style={styles.userName}>{user.profile.name || user.profile.email}</Text>
-							{ user.profile.name && user.profile.email && (
+							<Text style={styles.userName}>
+								{user.profile.name || user.profile.email}
+							</Text>
+							{user.profile.name && user.profile.email && (
 								<Text style={styles.userEmail}>{user.profile.email}</Text>
 							)}
 						</View>
@@ -58,9 +65,7 @@ class Profile extends Component {
 	}
 }
 
-export default connect(
-	state => ({
-		client: state.global.client,
-		user: state.user.currentUser
-	})
-)(Profile);
+export default connect(state => ({
+	client: state.global.client,
+	user: state.user.currentUser
+}))(Profile);

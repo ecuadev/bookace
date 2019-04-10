@@ -4,18 +4,17 @@ import { isTallIPhone, normalize } from '../../helpers';
 export default EStyleSheet.create({
 	container: {
 		flex: 1,
-		flexDirection: 'column',
-		justifyContent: 'space-evenly',
-		backgroundColor: '$screenBackground',
-		paddingTop: isTallIPhone() ? 46 : 20,
-		marginBottom: isTallIPhone() ? 83 : 49
+		// backgroundColor: '$screenBackground',
+		paddingHorizontal: 20,
+		// backgroundColor: '#bada55',
+		paddingBottom: isTallIPhone() ? 83 : 49
 	},
 	header: {
 		flex: 1,
 		flexDirection: 'row',
-		paddingHorizontal: 20,
 		alignItems: 'center',
-		justifyContent: 'space-between'
+		justifyContent: 'space-between',
+		paddingTop: 25
 	},
 	headerTitle: {
 		textAlign: 'left',
@@ -24,19 +23,18 @@ export default EStyleSheet.create({
 		fontSize: normalize(26)
 	},
 	userImageContainer: {
-		width: normalize(50),
-		height: normalize(50),
+		width: normalize(65),
+		height: normalize(65),
 		borderRadius: normalize(100),
 		overflow: 'hidden'
 	},
 	userImage: {
-		width: normalize(50),
-		height: normalize(50)
+		width: '100%',
+		height: '100%'
 	},
-	carousel: {
-		flex: 2,
-		marginHorizontal: 20,
-		// height: 180,
-		paddingBottom: 10
+	carouselContainer: {
+		flex: 5,
+		alignItems: 'center',
+		justifyContent: 'flex-start'
 	}
 });
