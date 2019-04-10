@@ -1,22 +1,18 @@
 import EStyleSheet from 'react-native-extended-stylesheet';
-import { StyleSheet, Dimensions } from 'react-native';
 import { normalize } from '../../../helpers';
 
-const { width: viewportWidth, height: viewportHeight } = Dimensions.get(
-	'window'
-);
+export const slideWidth = normalize(230);
+export const slideHeight = slideWidth * 1.4;
 
 export default EStyleSheet.create({
-	gradient: {
-		...StyleSheet.absoluteFillObject
+	slideInnerContainer: {
+		width: slideWidth,
+		height: slideHeight,
+		borderRadius: normalize(12),
+		overflow: 'hidden'
 	},
-
-	slider: {
-		flex: 4,
-		overflow: 'visible', // for custom animations
-		marginBottom: viewportWidth * 0.08
-	},
-	sliderContentContainer: {
-		paddingVertical: 5 // for custom animation
+	image: {
+		height: '100%',
+		width: '100%'
 	}
 });

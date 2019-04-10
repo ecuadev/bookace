@@ -1,50 +1,29 @@
 import EStyleSheet from 'react-native-extended-stylesheet';
-import { StyleSheet, Dimensions } from 'react-native';
 import { normalize } from '../../../helpers';
 
-const { width: viewportWidth, height: viewportHeight } = Dimensions.get(
-	'window'
-);
-
 export default EStyleSheet.create({
-	title: {
-		backgroundColor: 'transparent',
-		paddingLeft: 30,
-		textAlign: 'left',
-		color: '$primaryTextColor',
-		fontFamily: 'Montserrat-SemiBold',
-		fontSize: normalize(23)
-		// paddingHorizontal: 20,
+	header: {
+		marginBottom: normalize(10),
+		paddingHorizontal: 20,
+		flexDirection: 'row',
+		alignItems: 'center',
+		justifyContent: 'space-between'
 	},
-	titleDark: {
-		color: '$darkTextColor'
+	title: {
+		fontFamily: 'Montserrat-Bold',
+		fontSize: normalize(18),
+		color: '$primaryTextColor'
+	},
+	link: {
+		fontFamily: 'Montserrat-Medium',
+		color: '$primaryColor',
+		fontSize: normalize(13)
 	},
 	slider: {
-		flex: 2,
 		marginLeft: 15,
 		overflow: 'visible' // for custom animations
 	},
 	sliderContentContainer: {
 		paddingVertical: 1 // for custom animation
-	},
-	header: {
-		paddingBottom: 10,
-		flexDirection: 'row',
-		justifyContent: 'center'
-	},
-	headerTitle: {
-		flex: 1,
-		justifyContent: 'center'
-	},
-	headerLink: {
-		flex: 1,
-		justifyContent: 'center'
-	},
-	link: {
-		textAlign: 'right',
-		marginLeft: 35,
-		color: '$primaryColor',
-		fontFamily: 'Montserrat-SemiBold',
-		fontSize: normalize(13)
 	}
 });
