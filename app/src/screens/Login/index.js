@@ -1,20 +1,20 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React, { Component } from 'react';
 import { Image, ImageBackground, Text, View } from 'react-native';
-import Config from 'react-native-config';
-import { LoginManager, AccessToken } from 'react-native-fbsdk';
-import { GoogleSignin, statusCodes } from 'react-native-google-signin';
 import {
-	UserPasswordCredential,
-	FacebookCredential,
-	GoogleCredential
+	UserPasswordCredential
 } from 'mongodb-stitch-react-native-sdk';
 import { connect } from 'react-redux';
 import validator from 'validator';
 import Images from '@assets/images';
 
-import { setCurrentUser } from '../../actions/user';
-import { setError } from '../../actions/global';
+import {
+	setCurrentUser,
+	setUserData,
+	facebookLogin,
+	googleLogin
+} from '../../actions/user';
+import { setAlert } from '../../actions/global';
 
 import DismissKeyboardView from '../../components/DismissKeyboardView';
 import TextBox from '../../components/TextBox';
@@ -35,55 +35,6 @@ class Login extends Component {
 			password: '',
 			passwordError: null
 		};
-	}
-
-	componentDidMount() {
-		GoogleSignin.configure({
-			iosClientId: Config.GOOGLE_CLIENT_ID
-		});
-	}
-
-	async onFacebookLogin() {
-		if (!this.verifyConnection()) {
-			return false;
-		}
-
-		try {
-			const result = await LoginManager.logInWithReadPermissions([
-				'public_profile'
-			]);
-
-			if (!result.isCancelled) {
-				const token = await AccessToken.getCurrentAccessToken();
-				const credential = new FacebookCredential(token.accessToken);
-				this.login(credential);
-			}
-		} catch (error) {
-			console.log(`Login fail with error: ${error}`);
-		}
-	}
-
-	async onGoogleLogin() {
-		if (!this.verifyConnection()) {
-			return false;
-		}
-
-		try {
-			await GoogleSignin.hasPlayServices();
-			const userInfo = await GoogleSignin.signIn();
-			const credential = new GoogleCredential(userInfo.accessToken);
-			this.login(credential);
-		} catch (error) {
-			if (error.code === statusCodes.SIGN_IN_CANCELLED) {
-				// user cancelled the login flow
-			} else if (error.code === statusCodes.IN_PROGRESS) {
-				// operation (f.e. sign in) is in progress already
-			} else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
-				// play services not available or outdated
-			} else {
-				// some other error happened
-			}
-		}
 	}
 
 	onEmailPasswordLogin() {
@@ -108,34 +59,37 @@ class Login extends Component {
 		}
 	}
 
-	onNavigateToSignup() {}
-
 	verifyConnection() {
-		const { network, setError } = this.props;
+		const { network, setAlert } = this.props;
 
 		if (network.hasCheckedStatus && !network.connected) {
-			setError(
-				'Your device is not connected to the internet, please make sure your connection is working.'
-			);
+			setAlert('error', 'Your device is not connected to the internet, please make sure your connection is working.');
 			return false;
 		}
 
 		return true;
 	}
 
-	login(credential) {
-		const { client, setCurrentUser, setError } = this.props;
+	async handleFacebookLogin() {
+		const credential = await facebookLogin();
+		this.login(credential);
+	}
 
-		client.auth
-			.loginWithCredential(credential)
-			.then(user => {
-				setCurrentUser(user);
-				goHome();
-			})
-			.catch(err => {
-				console.log(`Failed to log in: ${err}`);
-				setCurrentUser(null);
-			});
+	async handleGoogleLogin() {
+		const credential = await googleLogin();
+		this.login(credential);
+	}
+
+	async login(credential) {
+		const { client, setCurrentUser } = this.props;
+
+		try {
+			await client.auth.loginWithCredential(credential);
+			setCurrentUser(client);
+			goHome();
+		} catch (err) {
+			console.log(`Failed to log in: ${err}`);
+		}
 	}
 
 	render() {
@@ -181,13 +135,13 @@ class Login extends Component {
 						</View>
 
 						<TransparentButton
-							onPress={this.onFacebookLogin.bind(this)}
+							onPress={this.handleFacebookLogin.bind(this)}
 							icon={Images.facebookAuthIcon}
 							style={styles.fbButton}>
 							CONTINUE WITH FACEBOOK
 						</TransparentButton>
 						<TransparentButton
-							onPress={this.onGoogleLogin.bind(this)}
+							onPress={this.handleGoogleLogin.bind(this)}
 							icon={Images.googleAuthIcon}>
 							CONTINUE WITH GOOGLE
 						</TransparentButton>
@@ -218,5 +172,5 @@ export default connect(
 		client: state.global.client,
 		network: state.network
 	}),
-	{ setCurrentUser, setError }
+	{ setCurrentUser, setUserData, setAlert }
 )(Login);

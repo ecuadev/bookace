@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Animated, Text, SafeAreaView, Dimensions, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 
-import { setError } from '../../actions/global';
+import { setAlert } from '../../actions/global';
 
 import styles from './styles';
 
@@ -14,6 +14,7 @@ class Alert extends Component {
 
 		this.state = {
 			contentHeight: height,
+			type: null,
 			message: null
 		};
 
@@ -21,21 +22,23 @@ class Alert extends Component {
 	}
 
 	componentDidUpdate(prevProps) {
-		const { error } = this.props;
+		const { alert } = this.props;
 
-		if (error !== prevProps.error && error) {
-			this.showAlert(error);
+		if (alert !== prevProps.alert && alert.message) {
+			this.showAlert(alert);
 		}
 	}
 
-	showAlert(message) {
-		const { setError } = this.props;
-		this.setState({ message },
+	showAlert(alert) {
+		const { setAlert } = this.props;
+
+		this.setState({ ...alert },
 			() => {
 				this.open().then(() => {
 					setTimeout(() => {
-						this.close();
-						setError(null);
+						this.close().then(() => {
+							setAlert({});
+						});
 					}, 3000);
 				});
 			});
@@ -66,11 +69,11 @@ class Alert extends Component {
 	}
 
 	render() {
-		const { contentHeight, message } = this.state;
+		const { contentHeight, type, message } = this.state;
 
 		const containerStyles = [
 			styles.container,
-			styles.error,
+			styles[type],
 			{
 				transform: [
 					{
@@ -97,7 +100,7 @@ class Alert extends Component {
 
 export default connect(
 	state => ({
-		error: state.global.error
+		alert: state.global.alert
 	}),
-	{ setError }
+	{ setAlert }
 )(Alert);

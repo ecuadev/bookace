@@ -4,7 +4,7 @@ import { normalize } from '../../helpers';
 export default EStyleSheet.create({
 	textBoxWrapper: {
 		width: '100%',
-		borderRadius: normalize(50),
+		borderRadius: normalize(10),
 		flexDirection: 'row',
 		alignItems: 'center',
 		backgroundColor: '$searchBarColor',

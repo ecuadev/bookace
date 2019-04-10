@@ -18,7 +18,7 @@ class Home extends Component {
 		return (
 			<View style={styles.container}>
 				<View style={styles.header}>
-					<Text style={styles.headerTitle}>{`Hi, ${user.profile.firstName}`}</Text>
+					<Text style={styles.headerTitle}>{`Hi, ${user.first_name || user.name || user.email}!`}</Text>
 
 					<View style={styles.user}>
 						<View style={styles.userImageContainer}>
@@ -27,8 +27,8 @@ class Home extends Component {
 								style={styles.headerButtonLeft}>
 								<Image
 									source={
-										user.profile.pictureUrl
-											? { uri: user.profile.pictureUrl }
+										user.picture
+											? { uri: user.picture }
 											: Images.profilePic
 									}
 									style={styles.userImage}
@@ -51,5 +51,5 @@ class Home extends Component {
 
 export default connect(state => ({
 	network: state.network,
-	user: state.user.currentUser
+	user: state.user.profile
 }))(Home);

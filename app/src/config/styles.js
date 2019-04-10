@@ -16,7 +16,9 @@ export default function () {
 		$tabsActiveColor: '#97253F',
 		$searchBarColor: '#000000',
 		$errorColor: '#CC3232',
+		$successColor: '#068900',
 		$listBorderColor: '#C4C9DF',
-		$shadowColor: '#000000'
+		$shadowColor: '#000000',
+		$errorTextColor: '#BB0000'
 	});
 }

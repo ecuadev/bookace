@@ -27,5 +27,8 @@ export default EStyleSheet.create({
 	},
 	error: {
 		backgroundColor: '$errorColor'
+	},
+	success: {
+		backgroundColor: '$successColor'
 	}
 });

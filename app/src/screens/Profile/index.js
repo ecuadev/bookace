@@ -3,6 +3,7 @@ import { Image, Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import Images from '@assets/images';
 
+import ProfileScores from '../../components/ProfileScores';
 import SlideContainer from '../../components/SlideContainer';
 import styles from './styles';
 
@@ -24,31 +25,18 @@ class Profile extends Component {
 					<View style={styles.user}>
 						<View style={styles.userImageContainer}>
 							<Image
-								source={user.profile.pictureUrl ? { uri: user.profile.pictureUrl } : Images.profilePic}
+								source={user.picture ? { uri: user.picture } : Images.profilePic}
 								style={styles.userImage}
 							/>
 						</View>
 						<View style={styles.userInfoContainer}>
-							<Text style={styles.userName}>{user.profile.name || user.profile.email}</Text>
-							{ user.profile.name && user.profile.email && (
-								<Text style={styles.userEmail}>{user.profile.email}</Text>
+							<Text style={styles.userName}>{user.name || user.email}</Text>
+							{ !!user.name && !!user.email && (
+								<Text style={styles.userEmail}>{user.email}</Text>
 							)}
 						</View>
 					</View>
-					<View style={styles.scores}>
-						<View style={styles.scoreItem}>
-							<Text style={styles.scoreItemTitle}>+20K</Text>
-							<Text style={styles.scoreItemValue}>Followers</Text>
-						</View>
-						<View style={styles.scoreItem}>
-							<Text style={styles.scoreItemTitle}>392</Text>
-							<Text style={styles.scoreItemValue}>Follow</Text>
-						</View>
-						<View style={styles.scoreItem}>
-							<Text style={styles.scoreItemTitle}>258</Text>
-							<Text style={styles.scoreItemValue}>Reviews</Text>
-						</View>
-					</View>
+					<ProfileScores />
 				</View>
 				<View style={styles.bottomContainer}>
 					<Text>List of books</Text>
@@ -61,6 +49,6 @@ class Profile extends Component {
 export default connect(
 	state => ({
 		client: state.global.client,
-		user: state.user.currentUser
+		user: state.user.profile
 	})
 )(Profile);

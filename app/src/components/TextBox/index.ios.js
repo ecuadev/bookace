@@ -13,7 +13,7 @@ class TextBox extends Component {
 		const { type } = this.props;
 
 		this.state = {
-			secure: type == 'password'
+			secure: type === 'password'
 		};
 
 		switch (type) {

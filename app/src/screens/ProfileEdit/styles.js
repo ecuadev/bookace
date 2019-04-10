@@ -20,6 +20,7 @@ export default EStyleSheet.create({
 		width: '100%',
 		flexDirection: 'row',
 		justifyContent: 'space-between',
+		alignItems: 'center',
 		marginBottom: 20
 	},
 	headerButtonBack: {
@@ -30,13 +31,13 @@ export default EStyleSheet.create({
 		height: normalize(22),
 		tintColor: '$primaryColor'
 	},
-	headerButtonMenu: {
+	headerButtonSave: {
 		padding: 5
 	},
-	headerButtonMenuIcon: {
-		width: normalize(22),
-		height: normalize(22),
-		tintColor: '$primaryColor'
+	headerButtonSaveText: {
+		fontFamily: 'Montserrat',
+		fontSize: normalize(16),
+		color: '$primaryColor'
 	},
 	imageBorder: {
 		width: normalize(120),
@@ -86,19 +87,6 @@ export default EStyleSheet.create({
 		fontFamily: 'Montserrat-SemiBold',
 		fontSize: normalize(14),
 		color: '$secondaryTextColor'
-	},
-	sectionInput: {
-		flex: 1,
-		fontFamily: 'Montserrat',
-		fontSize: normalize(14),
-		color: '$primaryTextColor',
-		height: normalize(65),
-		paddingTop: normalize(20),
-		paddingHorizontal: 20
-	},
-	sectionInputAndroid: {
-		fontSize: normalize(16),
-		padding: 0
 	},
 	pickerOptions: {
 		marginBottom: isTallIPhone() ? 83 : 49

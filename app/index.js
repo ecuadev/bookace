@@ -20,6 +20,10 @@ Navigation.events().registerAppLaunchedListener(() => {
 	SplashScreen.hide();
 
 	Navigation.setDefaultOptions({
+		topBar: {
+			visible: false,
+			height: 0
+		},
 		bottomTabs: {
 			visible: false,
 			...Platform.select({ android: { drawBehind: true } })

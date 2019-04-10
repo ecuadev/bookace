@@ -12,7 +12,7 @@ export default EStyleSheet.create({
 	},
 	searchBackground: {
 		width: '100%',
-		height: isTallIPhone() ? 200 : normalize(160),
+		height: isTallIPhone() ? 180 : normalize(140),
 		zIndex: 2
 	},
 	searchWrapper: {

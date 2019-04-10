@@ -20,8 +20,9 @@ class Welcome extends Component {
 			setStitchClient(client);
 
 			if (client.auth.isLoggedIn) {
-				setCurrentUser(client.auth.user);
-				goHome();
+				setCurrentUser(client).then(() => {
+					goHome();
+				});
 			} else {
 				goToLogin();
 			}
