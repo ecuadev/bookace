@@ -13,7 +13,7 @@ export default EStyleSheet.create({
 		justifyContent: 'space-between',
 		paddingHorizontal: 20,
 		paddingTop: isTallIPhone() ? 52 : normalize(35),
-		paddingBottom: normalize(20)
+		paddingBottom: normalize(28)
 	},
 	headerTitle: {
 		textAlign: 'left',

@@ -19,7 +19,7 @@ class Home extends Component {
 		return (
 			<View style={styles.container}>
 				<View style={styles.header}>
-					<Text style={styles.headerTitle}>{`Hi, ${user.first_name || user.name || user.email}!`}</Text>
+					<Text style={styles.headerTitle} numberOfLines={1}>{`Hi, ${user.first_name || user.name || user.email}!`}</Text>
 
 					<View style={styles.user}>
 						<View style={styles.userImageContainer}>
@@ -36,7 +36,7 @@ class Home extends Component {
 						<StackCarousel books={books} />
 						<SingleCarousel
 							books={books}
-							title="Categories"
+							title="Recommended"
 							componentId={componentId}
 						/>
 					</View>
