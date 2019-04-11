@@ -20,7 +20,7 @@ export default EStyleSheet.create({
 		fontSize: normalize(13)
 	},
 	slider: {
-		marginLeft: 15,
+		paddingHorizontal: 20,
 		overflow: 'visible' // for custom animations
 	},
 	sliderContentContainer: {

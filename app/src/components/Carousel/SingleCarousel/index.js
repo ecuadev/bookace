@@ -16,11 +16,10 @@ class SingleCarousel extends Component {
 		};
 	}
 
-	_renderItemWithParallax({ item, index }, parallaxProps) {
+	_renderItemWithParallax({ item }, parallaxProps) {
 		return (
 			<SliderEntry
 				data={item}
-				even={(index + 1) % 2 === 0}
 				parallax
 				parallaxProps={parallaxProps}
 			/>

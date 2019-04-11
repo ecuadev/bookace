@@ -6,58 +6,35 @@ import styles from './SliderEntry.styles';
 import { goToBook } from '../../../config/navigation';
 
 class SliderEntry extends Component {
-	static propTypes = {
-		data: PropTypes.object.isRequired,
-		even: PropTypes.bool,
-		parallax: PropTypes.bool,
-		parallaxProps: PropTypes.object,
-	};
-
-	getImage = () => {
+	getImage() {
 		const {
 			data: { image },
 			parallax,
 			parallaxProps,
-			even,
 		} = this.props;
 
 		return parallax ? (
 			<ParallaxImage
 				source={{ uri: image }}
-				containerStyle={[styles.imageContainer, even ? styles.imageContainerEven : {}]}
+				containerStyle={styles.imageContainer}
 				style={styles.image}
 				parallaxFactor={0.35}
-				showSpinner={true}
-				spinnerColor={even ? 'rgba(255, 255, 255, 0.4)' : 'rgba(0, 0, 0, 0.25)'}
+				showSpinner
+				spinnerColor="rgba(0, 0, 0, 0.25)"
 				{...parallaxProps}
 			/>
 		) : (
 			<Image source={{ uri: image }} style={styles.image} />
 		);
-	};
+	}
 
 	render() {
 		const {
-			data: { title, subtitle, image },
-			parallaxProps,
-			componentId,
+			data: { title, subtitle },
 		} = this.props;
 
-		const uppercaseTitle = title ? (
-			// <Text style={[styles.title, even ? styles.titleEven : {}]} numberOfLines={2}>
-			<Text style={styles.title} numberOfLines={2}>
-				{title.toUpperCase()}
-			</Text>
-		) : (
-			false
-		);
-
 		return (
-			<TouchableOpacity
-				activeOpacity={1}
-				style={styles.slideInnerContainer}
-				onPress={this.onCategoryPress}
-			>
+			<TouchableOpacity activeOpacity={1} style={styles.slideInnerContainer} onPress={goToBook}>
 				<View style={styles.imageContainer}>
 					<Image
 						source={{
@@ -69,7 +46,9 @@ class SliderEntry extends Component {
 					/>
 				</View>
 				<View style={styles.textContainer}>
-					{uppercaseTitle}
+					<Text style={styles.title} numberOfLines={2}>
+						{!!title && title.toUpperCase()}
+					</Text>
 					<Text style={styles.subtitle} numberOfLines={2}>
 						{subtitle}
 					</Text>
@@ -78,5 +57,16 @@ class SliderEntry extends Component {
 		);
 	}
 }
+
+SliderEntry.propTypes = {
+	data: PropTypes.object.isRequired,
+	parallax: PropTypes.bool,
+	parallaxProps: PropTypes.object,
+};
+
+SliderEntry.defaultProps = {
+	parallax: PropTypes.bool,
+	parallaxProps: PropTypes.object,
+};
 
 export default SliderEntry;
