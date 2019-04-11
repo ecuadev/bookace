@@ -10,7 +10,7 @@ class SliderEntry extends Component {
 		const {
 			data: { image },
 			parallax,
-			parallaxProps
+			parallaxProps,
 		} = this.props;
 
 		return parallax ? (
@@ -30,24 +30,28 @@ class SliderEntry extends Component {
 
 	render() {
 		const {
-			data: { title, subtitle }
+			data: { title, subtitle },
 		} = this.props;
 
 		return (
-			<TouchableOpacity
-				activeOpacity={1}
-				style={styles.slideInnerContainer}
-				onPress={goToBook}>
+			<TouchableOpacity activeOpacity={1} style={styles.slideInnerContainer} onPress={goToBook}>
 				<View style={styles.imageContainer}>
 					<Image
-						source={{  uri: 'https://images-na.ssl-images-amazon.com/images/I/51HSkTKlauL._SX346_BO1,204,203,200_.jpg' }}
+						source={{
+							uri:
+								'https://images-na.ssl-images-amazon.com/images/I/51HSkTKlauL._SX346_BO1,204,203,200_.jpg',
+						}}
 						style={styles.image}
 						resizeMode="cover"
 					/>
 				</View>
 				<View style={styles.textContainer}>
-					<Text style={styles.title} numberOfLines={2}>{!!title && title.toUpperCase()}</Text>
-					<Text style={styles.subtitle} numberOfLines={2}>{subtitle}</Text>
+					<Text style={styles.title} numberOfLines={2}>
+						{!!title && title.toUpperCase()}
+					</Text>
+					<Text style={styles.subtitle} numberOfLines={2}>
+						{subtitle}
+					</Text>
 				</View>
 			</TouchableOpacity>
 		);
@@ -57,12 +61,12 @@ class SliderEntry extends Component {
 SliderEntry.propTypes = {
 	data: PropTypes.object.isRequired,
 	parallax: PropTypes.bool,
-	parallaxProps: PropTypes.object
+	parallaxProps: PropTypes.object,
 };
 
 SliderEntry.defaultProps = {
 	parallax: PropTypes.bool,
-	parallaxProps: PropTypes.object
+	parallaxProps: PropTypes.object,
 };
 
 export default SliderEntry;
