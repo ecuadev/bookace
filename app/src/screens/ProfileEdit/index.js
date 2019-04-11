@@ -5,9 +5,12 @@ import ImagePicker from 'react-native-image-picker';
 import { connect } from 'react-redux';
 import Moment from 'moment';
 import validator from 'validator';
+import Config from 'react-native-config';
+import uuidv1 from 'uuid/v1';
 import Images from '@assets/images';
 
 import DismissKeyboardView from '../../components/DismissKeyboardView';
+import ProfileImage from '../../components/ProfileImage';
 import Button from '../../components/Button';
 import LinkButton from '../../components/LinkButton';
 import ProfileTextBox from '../../components/ProfileTextBox';
@@ -16,8 +19,8 @@ import DatePicker from '../../components/DatePicker';
 import styles from './styles';
 
 import {
-	setUserData,
 	updateUser,
+	updateUserPicture,
 	facebookLogin,
 	googleLogin,
 	loggout
@@ -61,7 +64,6 @@ class ProfileEdit extends Component {
 
 
 		const { client } = this.props;
-		console.log(client.auth.user.identities);
 	}
 
 	handleLogout() {
@@ -72,7 +74,14 @@ class ProfileEdit extends Component {
 		});
 	}
 
-	save() {
+	handleInputChange(name, value) {
+		const { form } = this.state;
+		form[name] = value;
+
+		this.setState({ form });
+	}
+
+	handleSave() {
 		const { user, client, updateUser, setAlert } = this.props;
 		const { form } = this.state;
 		const errors = {};
@@ -94,11 +103,19 @@ class ProfileEdit extends Component {
 		}
 	}
 
-	handleInputChange(name, value) {
-		const { form } = this.state;
-		form[name] = value;
+	isLinked(service) {
+		const { client } = this.props;
+		return !!client.auth.user && !!client.auth.user.identities.find(identity => identity.providerType === service);
+	}
 
-		this.setState({ form });
+	async handleLink(service) {
+		if (service === 'oauth2-facebook') {
+			const credential = await facebookLogin();
+			this.link(credential);
+		} else if (service === 'oauth2-google') {
+			const credential = await googleLogin();
+			this.link(credential);
+		}
 	}
 
 	async link(credential) {
@@ -112,30 +129,37 @@ class ProfileEdit extends Component {
 		}
 	}
 
-	async handleLink(service) {
-		if (service === 'oauth2-facebook') {
-			const credential = await facebookLogin();
-			this.link(credential);
-		} else if (service === 'oauth2-google') {
-			const credential = await googleLogin();
-			this.link(credential);
-		}
-	}
-
-	isLinked(service) {
-		const { client } = this.props;
-		return !!client.auth.user && !!client.auth.user.identities.find(identity => identity.providerType === service);
-	}
-
 	handleChoosePhoto() {
 		const options = {
+			quality: 0.5,
+			base64: true,
 			title: 'Select Profile Picture'
 		};
 
 		ImagePicker.showImagePicker(options, response => {
 			if (response.uri) {
-				this.uploadFile(response.uri);
+				this.uploadImage(response);
 			}
+		});
+	}
+
+	uploadImage(image) {
+		const { setAlert, user, client, updateUserPicture } = this.props;
+		const filename = `${Config.AWS_PROFILE_PICTURES_FOLDER_NAME}${uuidv1()}.${image.fileName.split('.').pop()}`;
+
+		client.callFunction('uploadPicture', [
+			image.data,
+			filename,
+			image.type
+		]).then(result => {
+			updateUserPicture(user._id, {
+				picture: filename
+			}, client).then(() => {
+				setAlert('success', 'Image succesfully updated.');
+			});
+		}).catch(error => {
+			console.log('error', error)
+			setAlert('error', 'There was an error uploading the image.');
 		});
 	}
 
@@ -150,17 +174,14 @@ class ProfileEdit extends Component {
 						<TouchableOpacity onPress={() => Navigation.pop(componentId)} style={styles.headerButtonBack}>
 							<Image source={Images.backIcon} style={styles.headerButtonBackIcon} />
 						</TouchableOpacity>
-						<TouchableOpacity style={styles.headerButtonSave} onPress={this.save.bind(this)}>
+						<TouchableOpacity style={styles.headerButtonSave} onPress={this.handleSave.bind(this)}>
 							<Text style={styles.headerButtonSaveText}>Save</Text>
 						</TouchableOpacity>
 					</View>
 					<View style={styles.imageBorder}>
-						<Image
-							source={user.picture ? { uri: user.picture } : Images.profilePic}
-							style={styles.image}
-						/>
+						<ProfileImage picture={user.picture} source={user.pictureSource} />
 					</View>
-					<Button style={styles.imageButton} onPress={this.handleChoosePhoto}>Change picture</Button>
+					<Button style={styles.imageButton} onPress={this.handleChoosePhoto.bind(this)}>Change picture</Button>
 				</DismissKeyboardView>
 				<ScrollView style={styles.body} showsVerticalScrollIndicator={false}>
 					<View style={styles.section}>
@@ -269,5 +290,5 @@ export default connect(
 		client: state.global.client,
 		user: state.user.profile
 	}),
-	{ setUserData, updateUser, setAlert, loggout }
+	{ updateUser, updateUserPicture, setAlert, loggout }
 )(ProfileEdit);

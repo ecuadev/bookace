@@ -17,7 +17,7 @@ GoogleSignin.configure({
 
 export const SET_USER_PROFILE = 'SET_USER_PROFILE';
 
-export const setUserData = data => ({
+const setUserData = data => ({
 	type: SET_USER_PROFILE,
 	data
 });
@@ -26,9 +26,13 @@ export const setCurrentUser = client => dispatch => {
 	const db = client.getServiceClient(RemoteMongoClient.factory, 'mongodb-books').db('bookace');
 	const users = db.collection('users');
 
-	return users.findOne({}, { _id: 0 }).then(data => {
+	return users.findOne({}, { _id: 0 }).then(async data => {
 		if (data) {
 			// user exists
+			if (data.pictureSource === 's3') {
+				data.picture = await client.callFunction('getPicture', [data.picture]);
+			}
+
 			dispatch(setUserData(data));
 		} else {
 			// user does not exist
@@ -54,6 +58,17 @@ export const updateUser = (id, data, client) => dispatch => {
 	return users.updateOne({ _id: id }, { $set: { ...data } })
 		.then(() => {
 			dispatch(setUserData(data));
+		});
+};
+
+export const updateUserPicture = (id, data, client) => dispatch => {
+	const db = client.getServiceClient(RemoteMongoClient.factory, 'mongodb-books').db('bookace');
+	const users = db.collection('users');
+
+	return users.updateOne({ _id: id }, { $set: { ...data, pictureSource: 's3' } })
+		.then(async () => {
+			data.picture = await client.callFunction('getPicture', [data.picture]);
+			dispatch(setUserData({ ...data, pictureSource: 's3' }));
 		});
 };
 

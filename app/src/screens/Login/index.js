@@ -10,7 +10,6 @@ import Images from '@assets/images';
 
 import {
 	setCurrentUser,
-	setUserData,
 	facebookLogin,
 	googleLogin
 } from '../../actions/user';
@@ -172,5 +171,5 @@ export default connect(
 		client: state.global.client,
 		network: state.network
 	}),
-	{ setCurrentUser, setUserData, setAlert }
+	{ setCurrentUser, setAlert }
 )(Login);

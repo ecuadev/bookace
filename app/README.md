@@ -4,6 +4,7 @@
 - [Node](https://nodejs.org/) >= 10.15.3
 - [npm](https://npmjs.com) >= 6.4.1
 
+
 ## Tools
 | Name             | Description   |
 | -------------- |--------------|
@@ -14,7 +15,6 @@
 | [Redux](https://redux.js.org/) | Predictable state container for JavaScript apps. |
 | [Redux Thunk](https://github.com/wix/react-native-navigation) | Thunk middleware for Redux. |
 | [MongoDB Stitch React Native SDK](https://www.npmjs.com/package/mongodb-stitch-react-native-sdk) | The official MongoDB Stitch React Native SDK for JavaScript/TypeScript. |
-
 
 
 ## Installation
@@ -59,6 +59,7 @@ https://developers.facebook.com/quickstarts/?platform=android
 
 Set your MongoDB Stitch App Id (STITCH_CLIENT_APP_ID) in the .env file.
 
+
 ## Development
 
 - This project uses EditorConfig to standarize text editor configuration.
@@ -76,6 +77,7 @@ To run the project on android:
 ```sh
 react-native run-android
 ```
+
 
 ### Testing
 

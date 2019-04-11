@@ -1,14 +1,23 @@
 import React, { Component } from 'react';
 import { View, TouchableOpacity, Image } from 'react-native';
 import ImagePicker from 'react-native-image-picker';
+import { connect } from 'react-redux';
 import Images from '@assets/images';
+import Config from 'react-native-config';
+import uuidv1 from 'uuid/v1';
 
 import styles from './styles';
+import { setAlert } from '../../actions/global';
 
-export default class TabBar extends Component {
+class TabBar extends Component {
 	handleChooseFromAlbum() {
-		ImagePicker.launchImageLibrary({}, response => {
-			console.log(response.uri)
+		const options = {
+			quality: 0.5,
+			base64: true
+		};
+
+		ImagePicker.launchImageLibrary(options, response => {
+			this.uploadImage(response);
 		});
 	}
 
@@ -16,7 +25,23 @@ export default class TabBar extends Component {
 		const { takePicture } = this.props;
 
 		const data = await takePicture();
-		console.log(data.uri);
+		this.uploadImage(data);
+	}
+
+	uploadImage(image) {
+		const { setAlert, client } = this.props;
+		const filename = `${Config.AWS_BOOKS_PICTURES_FOLDER_NAME}${uuidv1()}.${image.fileName.split('.').pop()}`;
+
+		client.callFunction('uploadPicture', [
+			image.data,
+			filename,
+			image.type
+		]).then(result => {
+			setAlert('success', 'Image succesfully uploaded.');
+		}).catch(error => {
+			console.log('error', error)
+			setAlert('error', 'There was an error uploading the image.');
+		});
 	}
 
 	render() {
@@ -48,3 +73,8 @@ export default class TabBar extends Component {
 		);
 	}
 }
+
+export default connect(
+	null,
+	{ setAlert }
+)(TabBar);

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Image, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import Images from '@assets/images';
 
+import ProfileImage from '../../components/ProfileImage';
 import ProfileScores from '../../components/ProfileScores';
 import SlideContainer from '../../components/SlideContainer';
 import styles from './styles';
@@ -25,10 +26,7 @@ class Profile extends Component {
 				<View style={styles.topContainer}>
 					<View style={styles.user}>
 						<View style={styles.userImageContainer}>
-							<Image
-								source={user.picture ? { uri: user.picture } : Images.profilePic}
-								style={styles.userImage}
-							/>
+							<ProfileImage picture={user.picture} source={user.pictureSource} />
 						</View>
 						<View style={styles.userInfoContainer}>
 							<Text style={styles.userName}>{user.name || user.email}</Text>

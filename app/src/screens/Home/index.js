@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Text, View, Image, TouchableOpacity } from 'react-native';
+import { Text, View, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
-import Images from '@assets/images';
+
 import { goToProfile } from '../../config/navigation';
+import ProfileImage from '../../components/ProfileImage';
 import SingleCarousel from '../../components/Carousel/SingleCarousel';
 import StackCarousel from '../../components/Carousel/StackCarousel';
 import NoConnection from '../../components/NoConnection';
@@ -25,10 +26,7 @@ class Home extends Component {
 							<TouchableOpacity
 								onPress={() => goToProfile(componentId)}
 								style={styles.headerButtonLeft}>
-								<Image
-									source={user.picture ? { uri: user.picture } : Images.profilePic}
-									style={styles.userImage}
-								/>
+								<ProfileImage picture={user.picture} source={user.pictureSource} />
 							</TouchableOpacity>
 						</View>
 					</View>

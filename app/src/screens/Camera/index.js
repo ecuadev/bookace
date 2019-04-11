@@ -10,7 +10,10 @@ import styles from './styles';
 export default class Camera extends Component {
 	takePicture() {
 		if (this.camera) {
-			const options = { quality: 0.5, base64: true };
+			const options = {
+				quality: 0.5,
+				base64: true
+			};
 			return this.camera.takePictureAsync(options);
 		}
 	}
