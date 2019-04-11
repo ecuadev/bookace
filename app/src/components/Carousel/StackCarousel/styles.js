@@ -1,8 +1,11 @@
 import EStyleSheet from 'react-native-extended-stylesheet';
+import { Dimensions } from 'react-native';
 import { normalize } from '../../../helpers';
 
-export const slideWidth = normalize(230);
-export const slideHeight = slideWidth * 1.4;
+const { height } = Dimensions.get('window');
+
+export const slideHeight = height / 2.5;
+export const slideWidth = slideHeight * 0.7;
 
 export default EStyleSheet.create({
 	slideInnerContainer: {

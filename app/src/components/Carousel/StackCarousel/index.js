@@ -3,7 +3,7 @@ import { Dimensions } from 'react-native';
 import PropTypes from 'prop-types';
 import Carousel from 'react-native-snap-carousel';
 import StackSlider from './StackSlider';
-import styles, { slideWidth } from './styles';
+import { slideWidth } from './styles';
 
 const { width } = Dimensions.get('window');
 
@@ -17,7 +17,6 @@ class StackCarousel extends Component {
 				renderItem={({ item }) => <StackSlider book={item} />}
 				sliderWidth={width}
 				itemWidth={slideWidth}
-				contentContainerCustomStyle={styles.sliderContentContainer}
 				layout="stack"
 				layoutCardOffset={30}
 				loop
