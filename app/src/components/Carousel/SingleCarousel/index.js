@@ -3,13 +3,17 @@ import PropTypes from 'prop-types';
 import { View, Text } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import SliderEntry from './SliderEntry';
-import LinkButton from '../../LinkButton';
+import LinkButton from '../../../components/LinkButton';
+import { goToScreen } from '../../../config/navigation';
 import { sliderWidth, itemWidth } from './SliderEntry.styles';
 import styles from './styles';
 
 class SingleCarousel extends Component {
 	constructor(props) {
 		super(props);
+		this.state = {
+			slider1ActiveSlide: 0,
+		};
 	}
 
 	_renderItemWithParallax({ item, index }, parallaxProps) {
@@ -23,13 +27,28 @@ class SingleCarousel extends Component {
 		);
 	}
 
+	goTo(componentId, screen) {
+		goToScreen(componentId, screen);
+	}
+
 	render() {
-		const { books, title } = this.props;
+		const { slider1ActiveSlide } = this.state;
+		const { books, title, componentId } = this.props;
+
 		return (
 			<View style={styles.carouselContainer}>
 				<View style={styles.header}>
-					<Text style={styles.title}>{title}</Text>
-					<LinkButton style={styles.link}>View All</LinkButton>
+					<View style={styles.headerTitle}>
+						{title && <Text style={styles.title}>{title}</Text>}
+					</View>
+					<View style={styles.headerLink}>
+						<LinkButton
+							style={styles.link}
+							onPress={this.goTo.bind(this, componentId, 'bookace.Search')}
+						>
+							View All
+						</LinkButton>
+					</View>
 				</View>
 
 				<Carousel
@@ -39,7 +58,7 @@ class SingleCarousel extends Component {
 					sliderWidth={sliderWidth}
 					itemWidth={itemWidth}
 					hasParallaxImages
-					firstItem={0}
+					firstItem={slider1ActiveSlide}
 					containerCustomStyle={styles.slider}
 					contentContainerCustomStyle={styles.sliderContentContainer}
 				/>
@@ -49,12 +68,9 @@ class SingleCarousel extends Component {
 }
 
 SingleCarousel.propTypes = {
-	title: PropTypes.string,
-	books: PropTypes.array.isRequired
-};
-
-SingleCarousel.defaultProps = {
-	title: ''
+	// eslint-disable-next-line react/require-default-props
+	// eslint-disable-next-line react/no-unused-prop-types
+	books: PropTypes.array.isRequired,
 };
 
 export default SingleCarousel;

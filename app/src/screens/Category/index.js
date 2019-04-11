@@ -15,7 +15,8 @@ class Category extends Component {
 			<SlideContainer
 				title={`${category} Books`}
 				onLeftButtonPress={() => Navigation.pop(componentId)}
-				style={styles.container}>
+				style={styles.container}
+			>
 				<BookGrid onBookPress={book => goToBook(book, componentId)} />
 			</SlideContainer>
 		);
