@@ -3,22 +3,26 @@ import PropTypes from 'prop-types';
 import { View, Text, Dimensions } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import SliderEntry from './SliderEntry';
-import LinkButton from '../../LinkButton';
-import { goToScreen } from '../../../config/navigation';
-import styles, { slideWidth } from './styles';
-
-const { width } = Dimensions.get('window');
+import LinkButton from '../../../components/LinkButton';
+import { goToTab, goToCategory } from '../../../config/navigation';
+import styles from './styles';
 
 class SingleCarousel extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			slider1ActiveSlide: 0
+			slider1ActiveSlide: 0,
 		};
 	}
 
-	goTo(componentId, screen) {
-		goToScreen(componentId, screen);
+	_renderItemWithParallax({ item }, parallaxProps) {
+		return <SliderEntry data={item} parallax parallaxProps={parallaxProps} />;
+	}
+
+	goTo() {
+		const { title } = this.props;
+		goToTab(1);
+		goToCategory(title);
 	}
 
 	render() {
@@ -32,10 +36,8 @@ class SingleCarousel extends Component {
 						{title && <Text style={styles.title}>{title}</Text>}
 					</View>
 					<View style={styles.headerLink}>
-						<LinkButton
-							style={styles.link}
-							onPress={this.goTo.bind(this, componentId, 'bookace.Search')}>
-							{ 'View All' }
+						<LinkButton style={styles.link} onPress={this.goTo.bind(this)}>
+							View All
 						</LinkButton>
 					</View>
 				</View>
@@ -58,7 +60,9 @@ class SingleCarousel extends Component {
 }
 
 SingleCarousel.propTypes = {
-	books: PropTypes.array.isRequired
+	// eslint-disable-next-line react/require-default-props
+	// eslint-disable-next-line react/no-unused-prop-types
+	books: PropTypes.array.isRequired,
 };
 
 export default SingleCarousel;
