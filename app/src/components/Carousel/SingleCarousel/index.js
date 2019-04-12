@@ -62,9 +62,7 @@ class SingleCarousel extends Component {
 }
 
 SingleCarousel.propTypes = {
-	// eslint-disable-next-line react/require-default-props
-	// eslint-disable-next-line react/no-unused-prop-types
-	books: PropTypes.array.isRequired,
+	books: PropTypes.array.isRequired
 };
 
 export default SingleCarousel;
