@@ -10,17 +10,6 @@ import styles, { slideWidth } from './styles';
 const { width } = Dimensions.get('window');
 
 class SingleCarousel extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			slider1ActiveSlide: 0,
-		};
-	}
-
-	_renderItemWithParallax({ item }, parallaxProps) {
-		return <SliderEntry data={item} parallax parallaxProps={parallaxProps} />;
-	}
-
 	goTo() {
 		const { title } = this.props;
 		goToTab(1);
@@ -28,7 +17,6 @@ class SingleCarousel extends Component {
 	}
 
 	render() {
-		const { slider1ActiveSlide } = this.state;
 		const { books, title, componentId } = this.props;
 
 		return (
@@ -51,7 +39,6 @@ class SingleCarousel extends Component {
 					renderItem={({ item }) => <SliderEntry data={item} />}
 					sliderWidth={width}
 					itemWidth={slideWidth}
-					firstItem={slider1ActiveSlide}
 					containerCustomStyle={styles.slider}
 					inactiveSlideScale={1}
 					inactiveSlideOpacity={1}
@@ -62,7 +49,12 @@ class SingleCarousel extends Component {
 }
 
 SingleCarousel.propTypes = {
+	title: PropTypes.string,
 	books: PropTypes.array.isRequired
+};
+
+SingleCarousel.defaultProps = {
+	title: ''
 };
 
 export default SingleCarousel;
