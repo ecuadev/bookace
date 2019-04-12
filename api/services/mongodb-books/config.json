@@ -1,0 +1,11 @@
+{
+    "id": "5cafe35d35fed52dd52d67f1",
+    "name": "mongodb-books",
+    "type": "mongodb-atlas",
+    "config": {
+        "clusterName": "Cluster0",
+        "readPreference": "primary",
+        "wireProtocolEnabled": false
+    },
+    "version": 1
+}

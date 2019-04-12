@@ -1,0 +1,12 @@
+{
+    "id": "5cafe27011500e339de35211",
+    "name": "aws",
+    "type": "aws",
+    "config": {
+        "accessKeyId": "AKIAILDMWZWEOZDQKK7A"
+    },
+    "secret_config": {
+        "secretAccessKey": "aws"
+    },
+    "version": 1
+}

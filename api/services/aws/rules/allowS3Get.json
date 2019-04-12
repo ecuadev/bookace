@@ -1,0 +1,10 @@
+{
+    "id": "5cafe285d50ec7df63978942",
+    "name": "allowS3Get",
+    "actions": [
+        "s3:GetObject"
+    ],
+    "when": {
+        "%%args.Bucket": "bookace-test"
+    }
+}

@@ -1,0 +1,16 @@
+{
+    "id": "5cafe2d72fa59ec6a32422b2",
+    "name": "allowS3Put",
+    "actions": [
+        "s3:PutObject"
+    ],
+    "when": {
+        "%%args.Bucket": "bookace-test",
+        "%%args.ContentType": {
+            "%in": [
+                "image/png",
+                "image/jpeg"
+            ]
+        }
+    }
+}
