@@ -4,15 +4,21 @@ import {
 	FacebookCredential,
 	GoogleCredential
 } from 'mongodb-stitch-react-native-sdk';
+import { Platform } from 'react-native';
 import { LoginManager, AccessToken } from 'react-native-fbsdk';
 import { GoogleSignin, statusCodes } from 'react-native-google-signin';
 import Config from 'react-native-config';
 
-GoogleSignin.configure({
-	webClientId: Config.GOOGLE_CLIENT_WEB_ID,
-	offlineAccess: true,
-	iosClientId: Config.GOOGLE_CLIENT_IOS_ID
-});
+
+if (Platform.OS === 'ios') {
+	GoogleSignin.configure({
+		webClientId: Config.GOOGLE_CLIENT_WEB_ID,
+		offlineAccess: true,
+		iosClientId: Config.GOOGLE_CLIENT_IOS_ID
+	});
+} else {
+	GoogleSignin.configure();
+}
 
 
 export const SET_USER_PROFILE = 'SET_USER_PROFILE';

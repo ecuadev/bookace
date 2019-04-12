@@ -21,16 +21,17 @@ class Profile extends Component {
 				rightIcon={Images.profileEditIcon}
 				style={styles.container}
 				titleStyle={styles.title}
-				stickyHeaderIndices={[0]}
-			>
+				stickyHeaderIndices={[0]}>
 				<View style={styles.topContainer}>
 					<View style={styles.user}>
 						<View style={styles.userImageContainer}>
 							<ProfileImage picture={user.picture} source={user.pictureSource} />
 						</View>
 						<View style={styles.userInfoContainer}>
-							<Text style={styles.userName}>{user.name || user.email}</Text>
-							{ !!user.name && !!user.email && (
+							<Text style={styles.userName}>
+								{user.first_name && `${user.first_name} ${user.last_name}`}
+							</Text>
+							{ !!user.first_name && !!user.email && (
 								<Text style={styles.userEmail}>{user.email}</Text>
 							)}
 						</View>

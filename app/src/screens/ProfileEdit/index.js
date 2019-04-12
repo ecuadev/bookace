@@ -25,7 +25,7 @@ import {
 	googleLogin,
 	loggout
 } from '../../actions/user';
-import { setAlert } from '../../actions/global';
+import { setAlert, setLoading } from '../../actions/global';
 import { goToLogin } from '../../config/navigation';
 
 class ProfileEdit extends Component {
@@ -82,7 +82,7 @@ class ProfileEdit extends Component {
 	}
 
 	handleSave() {
-		const { user, client, updateUser, setAlert } = this.props;
+		const { user, client, updateUser, setAlert, setLoading } = this.props;
 		const { form } = this.state;
 		const errors = {};
 		let valid = true;
@@ -95,8 +95,14 @@ class ProfileEdit extends Component {
 		this.setState({ errors });
 
 		if (valid) {
+			setLoading(true);
 			updateUser(user._id, form, client).then(() => {
 				setAlert('success', 'Updates succesfully saved.');
+				setLoading(false);
+			}).catch(error => {
+				console.log('error', error);
+				setAlert('error', 'There was an error saving your data.');
+				setLoading(false);
 			});
 		} else {
 			setAlert('error', 'Fix your errors and try again.');
@@ -144,8 +150,10 @@ class ProfileEdit extends Component {
 	}
 
 	uploadImage(image) {
-		const { setAlert, user, client, updateUserPicture } = this.props;
+		const { setAlert, setLoading, user, client, updateUserPicture } = this.props;
 		const filename = `${Config.AWS_PROFILE_PICTURES_FOLDER_NAME}${uuidv1()}.${image.fileName.split('.').pop()}`;
+
+		setLoading(true);
 
 		client.callFunction('uploadPicture', [
 			image.data,
@@ -156,10 +164,16 @@ class ProfileEdit extends Component {
 				picture: filename
 			}, client).then(() => {
 				setAlert('success', 'Image succesfully updated.');
+				setLoading(false);
+			}).catch(error => {
+				console.log('error', error);
+				setAlert('error', 'There was an error saving the image.');
+				setLoading(false);
 			});
 		}).catch(error => {
-			console.log('error', error)
+			console.log('error', error);
 			setAlert('error', 'There was an error uploading the image.');
+			setLoading(false);
 		});
 	}
 
@@ -290,5 +304,5 @@ export default connect(
 		client: state.global.client,
 		user: state.user.profile
 	}),
-	{ updateUser, updateUserPicture, setAlert, loggout }
+	{ updateUser, updateUserPicture, setAlert, setLoading, loggout }
 )(ProfileEdit);

@@ -15,6 +15,7 @@ import ProfileEdit from './ProfileEdit';
 
 import Alert from '../components/Alert';
 import TabBar from '../components/TabBar';
+import Loading from '../components/Loading';
 
 
 export default function (Provider, store) {
@@ -33,6 +34,7 @@ export default function (Provider, store) {
 	Navigation.registerComponentWithRedux('bookace.ProfileEdit', () => ProfileEdit, Provider, store);
 
 	// Overlay components
+	Navigation.registerComponentWithRedux('bookace.Loading', () => Loading, Provider, store);
 	Navigation.registerComponentWithRedux('bookace.Alert', () => Alert, Provider, store);
 	Navigation.registerComponentWithRedux('bookace.TabBar', () => TabBar, Provider, store);
 }
