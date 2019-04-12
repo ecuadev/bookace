@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ImageBackground, Text, TouchableOpacity, View } from 'react-native';
+import { ImageBackground, Text, TouchableOpacity } from 'react-native';
 import Images from '@assets/images';
 
 import styles from './styles';

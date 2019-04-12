@@ -40,17 +40,6 @@ Navigation.events().registerAppLaunchedListener(() => {
 
 	Navigation.showOverlay({
 		component: {
-			name: 'bookace.Loading',
-			options: {
-				overlay: {
-					interceptTouchOutside: false
-				}
-			}
-		}
-	});
-
-	Navigation.showOverlay({
-		component: {
 			name: 'bookace.Alert',
 			options: {
 				overlay: {

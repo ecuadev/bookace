@@ -23,9 +23,11 @@
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb454019612072534</string>
+				<string>fb858222867855240</string>
 			</array>
 		</dict>
 		<dict>
@@ -33,14 +35,14 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.825454354533-7fm1uh7d4t5ad99rlc224iqiko4vg27t</string>
+				<string>com.googleusercontent.apps.732471927166-3dfi8nuq6s1pluni7v858u68akpp450o</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>FacebookAppID</key>
-	<string>454019612072534</string>
+	<string>858222867855240</string>
 	<key>FacebookDisplayName</key>
 	<string>bookace</string>
 	<key>LSApplicationQueriesSchemes</key>

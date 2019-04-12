@@ -138,8 +138,8 @@ export const goToForgotPass = () =>
 export const goToProfile = () =>
 	Navigation.mergeOptions('BotomTabs', {
 		bottomTabs: {
-			currentTabIndex: 4,
-		},
+			currentTabIndex: 4
+		}
 	});
 
 export const goToCategory = category =>

@@ -119,8 +119,9 @@ export const googleLogin = async () => {
 
 
 export const loggout = client => async dispatch => {
-	await GoogleSignin.revokeAccess();
+	//await GoogleSignin.revokeAccess();
 	await GoogleSignin.signOut();
+	await LoginManager.logOut();
 	await client.auth.logout();
 
 	return dispatch(setUserData({}));

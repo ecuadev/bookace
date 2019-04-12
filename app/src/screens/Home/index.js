@@ -24,7 +24,7 @@ class Home extends Component {
 					<View style={styles.user}>
 						<View style={styles.userImageContainer}>
 							<TouchableOpacity
-								onPress={() => goToProfile(componentId)}
+								onPress={goToProfile}
 								style={styles.headerButtonLeft}>
 								<ProfileImage picture={user.picture} source={user.pictureSource} />
 							</TouchableOpacity>

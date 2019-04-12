@@ -6,7 +6,7 @@ import styles from './styles';
 
 const Loading = ({ isLoading }) => (
 	<Spinner
-		visible={isLoading}
+		isLoading={true}
 		textContent="Loading..."
 		textStyle={styles.spinnerTextStyle}
 	/>
@@ -20,8 +20,4 @@ Loading.defaultProps = {
 	isLoading: false
 };
 
-export default connect(
-	state => ({
-		isLoading: state.global.isLoading
-	})
-)(Loading);
+export default Loading;

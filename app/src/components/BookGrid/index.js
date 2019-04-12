@@ -4,29 +4,37 @@ import { View } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
 
 import Book from './Book';
+import LoadingBook from './LoadingBook';
 import styles from './styles';
 
-const BookGrid = ({ onBookPress, style }) => (
+const BookGrid = ({ books, onBookPress, style }) => (
 	<View style={[styles.grid, style]}>
-		<Book onPress={() => onBookPress(null)} style={EStyleSheet.child(styles, 'book', 0, 10)} />
-		<Book onPress={() => onBookPress(null)} style={EStyleSheet.child(styles, 'book', 1, 10)} />
-		<Book onPress={() => onBookPress(null)} style={EStyleSheet.child(styles, 'book', 2, 10)} />
-		<Book onPress={() => onBookPress(null)} style={EStyleSheet.child(styles, 'book', 3, 10)} />
-		<Book onPress={() => onBookPress(null)} style={EStyleSheet.child(styles, 'book', 4, 10)} />
-		<Book onPress={() => onBookPress(null)} style={EStyleSheet.child(styles, 'book', 5, 10)} />
-		<Book onPress={() => onBookPress(null)} style={EStyleSheet.child(styles, 'book', 6, 10)} />
-		<Book onPress={() => onBookPress(null)} style={EStyleSheet.child(styles, 'book', 7, 10)} />
-		<Book onPress={() => onBookPress(null)} style={EStyleSheet.child(styles, 'book', 8, 10)} />
-		<Book onPress={() => onBookPress(null)} style={EStyleSheet.child(styles, 'book', 9, 10)} />
+		{ !books.length && (
+			<View style={styles.loadingContent}>
+				<LoadingBook index={0} />
+				<LoadingBook index={1} />
+				<LoadingBook index={2} />
+				<LoadingBook index={3} />
+			</View>
+		)}
+		{ books.map((book, i) => (
+			<Book
+				key={i}
+				data={book}
+				onPress={() => onBookPress(book)}
+				style={EStyleSheet.child(styles, 'book', i, books.length)} />
+		))}
 	</View>
 );
 
 BookGrid.propTypes = {
+	books: PropTypes.array,
 	onBookPress: PropTypes.func,
 	style: PropTypes.object
 };
 
 BookGrid.defaultProps = {
+	books: [],
 	onBookPress: () => {},
 	style: null
 };
