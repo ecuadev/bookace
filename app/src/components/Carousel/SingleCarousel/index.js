@@ -3,9 +3,11 @@ import PropTypes from 'prop-types';
 import { View, Text, Dimensions } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import SliderEntry from './SliderEntry';
-import LinkButton from '../../../components/LinkButton';
+import LinkButton from '../../LinkButton';
 import { goToTab, goToCategory } from '../../../config/navigation';
-import styles from './styles';
+import styles, { slideWidth } from './styles';
+
+const { width } = Dimensions.get('window');
 
 class SingleCarousel extends Component {
 	constructor(props) {
@@ -37,7 +39,7 @@ class SingleCarousel extends Component {
 					</View>
 					<View style={styles.headerLink}>
 						<LinkButton style={styles.link} onPress={this.goTo.bind(this)}>
-							View All
+							{ 'View All' }
 						</LinkButton>
 					</View>
 				</View>
