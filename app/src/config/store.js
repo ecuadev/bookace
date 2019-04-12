@@ -8,10 +8,7 @@ import reducer from '../reducers';
 import sagas from './sagas';
 
 const sagaMiddleware = createSagaMiddleware();
-const middleware = [
-	thunk,
-	sagaMiddleware
-];
+const middleware = [thunk, sagaMiddleware];
 
 let debuggWrapper = data => data;
 if (__DEV__) {
@@ -19,11 +16,7 @@ if (__DEV__) {
 	debuggWrapper = composeWithDevTools({ realtime: true, port: 8000 });
 }
 
-const store = createStore(
-	reducer,
-	{},
-	debuggWrapper(compose(applyMiddleware(...middleware)))
-);
+const store = createStore(reducer, {}, debuggWrapper(compose(applyMiddleware(...middleware))));
 
 sagaMiddleware.run(sagas);
 

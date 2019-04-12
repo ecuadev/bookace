@@ -113,12 +113,6 @@ export const goToSignup = () =>
 	Navigation.push('AuthStack', {
 		component: {
 			name: 'bookace.Signup',
-			options: {
-				topBar: {
-					visible: false,
-					height: 0,
-				},
-			},
 		},
 	});
 
@@ -126,22 +120,18 @@ export const goToForgotPass = () =>
 	Navigation.push('AuthStack', {
 		component: {
 			name: 'bookace.ForgotPass',
-			options: {
-				topBar: {
-					visible: false,
-					height: 0,
-				},
-			},
 		},
 	});
 
-export const goToProfile = () =>
+// Pass tab index as int
+export const goToTab = index =>
 	Navigation.mergeOptions('BotomTabs', {
 		bottomTabs: {
-			currentTabIndex: 4,
+			currentTabIndex: index,
 		},
 	});
 
+// Pass category as string
 export const goToCategory = category =>
 	Navigation.push('bottomTabSearch', {
 		component: {
@@ -149,13 +139,6 @@ export const goToCategory = category =>
 			passProps: {
 				category,
 			},
-		},
-	});
-
-export const goToScreen = (componentId, screenName) =>
-	Navigation.push(componentId, {
-		component: {
-			name: screenName,
 		},
 	});
 

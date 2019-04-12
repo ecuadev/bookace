@@ -10,7 +10,7 @@ import styles from './styles';
 class Category extends Component {
 	render() {
 		const { componentId, category } = this.props;
-
+		console.log(componentId);
 		return (
 			<SlideContainer
 				title={`${category} Books`}

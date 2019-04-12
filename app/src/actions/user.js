@@ -2,30 +2,28 @@ import {
 	RemoteMongoClient,
 	UserPasswordCredential,
 	FacebookCredential,
-	GoogleCredential
+	GoogleCredential,
 } from 'mongodb-stitch-react-native-sdk';
 import { Platform } from 'react-native';
 import { LoginManager, AccessToken } from 'react-native-fbsdk';
 import { GoogleSignin, statusCodes } from 'react-native-google-signin';
 import Config from 'react-native-config';
 
-
 if (Platform.OS === 'ios') {
 	GoogleSignin.configure({
 		webClientId: Config.GOOGLE_CLIENT_WEB_ID,
 		offlineAccess: true,
-		iosClientId: Config.GOOGLE_CLIENT_IOS_ID
+		iosClientId: Config.GOOGLE_CLIENT_IOS_ID,
 	});
 } else {
 	GoogleSignin.configure();
 }
 
-
 export const SET_USER_PROFILE = 'SET_USER_PROFILE';
 
 const setUserData = data => ({
 	type: SET_USER_PROFILE,
-	data
+	data,
 });
 
 export const setCurrentUser = client => dispatch => {
@@ -51,7 +49,8 @@ export const createUser = client => dispatch => {
 	const db = client.getServiceClient(RemoteMongoClient.factory, 'mongodb-books').db('bookace');
 	const users = db.collection('users');
 
-	return users.insertOne({ ...client.auth.user.profile.data, owner_id: client.auth.user.id })
+	return users
+		.insertOne({ ...client.auth.user.profile.data, owner_id: client.auth.user.id })
 		.then(() => {
 			dispatch(setUserData(client.auth.user.profile.data));
 		});
@@ -61,28 +60,24 @@ export const updateUser = (id, data, client) => dispatch => {
 	const db = client.getServiceClient(RemoteMongoClient.factory, 'mongodb-books').db('bookace');
 	const users = db.collection('users');
 
-	return users.updateOne({ _id: id }, { $set: { ...data } })
-		.then(() => {
-			dispatch(setUserData(data));
-		});
+	return users.updateOne({ _id: id }, { $set: { ...data } }).then(() => {
+		dispatch(setUserData(data));
+	});
 };
 
 export const updateUserPicture = (id, data, client) => dispatch => {
 	const db = client.getServiceClient(RemoteMongoClient.factory, 'mongodb-books').db('bookace');
 	const users = db.collection('users');
 
-	return users.updateOne({ _id: id }, { $set: { ...data, pictureSource: 's3' } })
-		.then(async () => {
-			data.picture = await client.callFunction('getPicture', [data.picture]);
-			dispatch(setUserData({ ...data, pictureSource: 's3' }));
-		});
+	return users.updateOne({ _id: id }, { $set: { ...data, pictureSource: 's3' } }).then(async () => {
+		data.picture = await client.callFunction('getPicture', [data.picture]);
+		dispatch(setUserData({ ...data, pictureSource: 's3' }));
+	});
 };
 
 export const facebookLogin = async () => {
 	try {
-		const result = await LoginManager.logInWithReadPermissions([
-			'public_profile'
-		]);
+		const result = await LoginManager.logInWithReadPermissions(['public_profile']);
 
 		if (!result.isCancelled) {
 			const token = await AccessToken.getCurrentAccessToken();
@@ -116,7 +111,6 @@ export const googleLogin = async () => {
 		}
 	}
 };
-
 
 export const loggout = client => async dispatch => {
 	await GoogleSignin.revokeAccess();
