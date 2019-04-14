@@ -20,10 +20,10 @@ export const goHome = () => {
 							],
 							options: {
 								bottomTab: {
-									icon: Images.homeTabIcon
-								}
-							}
-						}
+									icon: Images.homeTabIcon,
+								},
+							},
+						},
 					},
 					{
 						stack: {
@@ -31,16 +31,16 @@ export const goHome = () => {
 							children: [
 								{
 									component: {
-										name: 'bookace.Search'
-									}
-								}
+										name: 'bookace.Search',
+									},
+								},
 							],
 							options: {
 								bottomTab: {
-									icon: Images.searchTabIcon
-								}
-							}
-						}
+									icon: Images.searchTabIcon,
+								},
+							},
+						},
 					},
 					{
 						component: {
@@ -48,10 +48,10 @@ export const goHome = () => {
 							name: 'bookace.Social',
 							options: {
 								bottomTab: {
-									icon: Images.socialTabIcon
-								}
-							}
-						}
+									icon: Images.socialTabIcon,
+								},
+							},
+						},
 					},
 					{
 						stack: {
@@ -59,20 +59,20 @@ export const goHome = () => {
 							children: [
 								{
 									component: {
-										name: 'bookace.Profile'
-									}
-								}
+										name: 'bookace.Profile',
+									},
+								},
 							],
 							options: {
 								bottomTab: {
-									icon: Images.searchTabIcon
-								}
-							}
-						}
-					}
-				]
-			}
-		}
+									icon: Images.searchTabIcon,
+								},
+							},
+						},
+					},
+				],
+			},
+		},
 	});
 
 	Navigation.showOverlay({
@@ -81,10 +81,10 @@ export const goHome = () => {
 			name: 'bookace.TabBar',
 			options: {
 				overlay: {
-					interceptTouchOutside: false
-				}
-			}
-		}
+					interceptTouchOutside: false,
+				},
+			},
+		},
 	});
 };
 
@@ -104,14 +104,14 @@ export const goToLogin = dismissTabBar => {
 							options: {
 								topBar: {
 									visible: false,
-									height: 0
-								}
-							}
-						}
-					}
-				]
-			}
-		}
+									height: 0,
+								},
+							},
+						},
+					},
+				],
+			},
+		},
 	});
 };
 
@@ -155,24 +155,8 @@ export const goToTab = index => {
 				height: 0,
 			},
 		},
-			options: {
-				topBar: {
-					visible: false,
-					height: 0
-				}
-			}
-		}
 	});
-
-// Pass tab index as int
-export const goToTab = index =>
-	Navigation.mergeOptions('BotomTabs', {
-		bottomTabs: {
-			currentTabIndex: index
-		}
-
-	});
-
+};
 
 // Pass category as string
 export const goToCategory = category =>
@@ -190,16 +174,16 @@ export const goToBook = (book, stack) =>
 		component: {
 			name: 'bookace.Book',
 			passProps: {
-				book
-			}
-		}
+				book,
+			},
+		},
 	});
 
 export const goToProfileEdit = () =>
 	Navigation.push('bottomTabProfile', {
 		component: {
-			name: 'bookace.ProfileEdit'
-		}
+			name: 'bookace.ProfileEdit',
+		},
 	});
 
 export const showCamera = props =>
@@ -207,8 +191,8 @@ export const showCamera = props =>
 		component: {
 			id: 'cameraModal',
 			name: 'bookace.Camera',
-			passProps: props
-		}
+			passProps: props,
+		},
 	});
 
 export const hideCamera = () => Navigation.dismissModal('cameraModal');
