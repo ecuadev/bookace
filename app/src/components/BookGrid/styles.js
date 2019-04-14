@@ -45,5 +45,20 @@ export default EStyleSheet.create({
 		fontFamily: 'Montserrat-Light',
 		fontSize: normalize(14),
 		fontWeight: '300'
+	},
+	loadingContent: {
+		width: '100%',
+		flexDirection: 'row',
+		flexWrap: 'wrap'
+	},
+	loadingBook: {
+		width: '50% - 30',
+		marginBottom: 20
+	},
+	loadingBookOdd: {
+		marginLeft: 20
+	},
+	loadingBookText: {
+		marginVertical: 5
 	}
 });

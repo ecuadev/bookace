@@ -1,5 +1,5 @@
 import EStyleSheet from 'react-native-extended-stylesheet';
-import { isTallIPhone } from '../../helpers';
+import { isTallIPhone, normalize } from '../../helpers';
 
 export default EStyleSheet.create({
 	container: {

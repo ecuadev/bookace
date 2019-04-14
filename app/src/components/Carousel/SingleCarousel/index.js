@@ -7,6 +7,7 @@ import SliderEntry from './SliderEntry';
 import LinkButton from '../../../components/LinkButton';
 import styles, { slideWidth } from './styles';
 import { setTab } from '../../../actions/activeTab';
+
 const { width } = Dimensions.get('window');
 
 class SingleCarousel extends Component {
@@ -49,7 +50,6 @@ class SingleCarousel extends Component {
 					renderItem={({ item }) => <SliderEntry data={item} parentId={parentId} />}
 					sliderWidth={width}
 					itemWidth={slideWidth}
-					firstItem={slider1ActiveSlide}
 					containerCustomStyle={styles.slider}
 					inactiveSlideScale={1}
 					inactiveSlideOpacity={1}

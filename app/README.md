@@ -31,7 +31,7 @@ yarn install
 
 - Download the Facebook SDK for iOS from https://origincache.facebook.com/developers/resources/?id=facebook-ios-sdk-current.zip and uncompress it under **~/Documents/FacebookSDK**.
 
-- Open /ios/app/Info.plist file and update FacebookDisplayName, FacebookDisplayName and CFBundleURLSchemes values.
+- Open /ios/app/Info.plist file and update FacebookDisplayName, FacebookAppId and CFBundleURLSchemes values.
 
 <https://developers.facebook.com/docs/ios/getting-started/#xcode>
 

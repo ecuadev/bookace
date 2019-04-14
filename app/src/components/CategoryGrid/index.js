@@ -1,32 +1,38 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View } from 'react-native';
+import { ActivityIndicator, View } from 'react-native';
+import EStyleSheet from 'react-native-extended-stylesheet';
 
 import Category from './Category';
 
 import styles from './styles';
 
-const CategoryGrid = ({ onCategoryPress, style }) => (
-	<View style={[styles.grid, style]}>
-		<Category label="Action" onPress={() => onCategoryPress('Action')} />
-		<Category label="Horror" onPress={() => onCategoryPress('Horror')} />
-		<Category label="Drama" onPress={() => onCategoryPress('Drama')} />
-		<Category label="Novel" onPress={() => onCategoryPress('Novel')} />
-		<Category label="Fiction" onPress={() => onCategoryPress('Fiction')} />
-		<Category label="Cooking" onPress={() => onCategoryPress('Cooking')} />
-		<Category label="Kids" onPress={() => onCategoryPress('Kids')} />
-		<Category label="History" onPress={() => onCategoryPress('History')} />
-		<Category label="Crime" onPress={() => onCategoryPress('Crime')} />
-		<Category label="Fantasy" onPress={() => onCategoryPress('Fantasy')} />
-	</View>
-);
+const CategoryGrid = ({ categories, onCategoryPress, style }) => {
+	if (!categories.length) {
+		return (
+			<View style={styles.loading}>
+				<ActivityIndicator size="large" color={EStyleSheet.value('$primaryColor')} />
+			</View>
+		);
+	}
+
+	return (
+		<View style={[styles.grid, style]}>
+			{categories.map(category => (
+				<Category key={category._id} label={category.name} onPress={() => onCategoryPress(category)} />
+			))}
+		</View>
+	)
+};
 
 CategoryGrid.propTypes = {
+	categories: PropTypes.array,
 	onCategoryPress: PropTypes.func,
 	style: PropTypes.object
 };
 
 CategoryGrid.defaultProps = {
+	categories: [],
 	onCategoryPress: () => {},
 	style: null
 };
