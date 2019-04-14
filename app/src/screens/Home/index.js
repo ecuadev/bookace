@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Text, View, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
-
-import { goToProfile } from '../../config/navigation';
+import { setTab } from '../../actions/activeTab';
+// import { goToProfile } from '../../config/navigation';
 import ProfileImage from '../../components/ProfileImage';
 import SingleCarousel from '../../components/Carousel/SingleCarousel';
 import StackCarousel from '../../components/Carousel/StackCarousel';
@@ -13,19 +13,24 @@ import { books } from '../../helpers/data';
 import styles from './styles';
 
 class Home extends Component {
+	goToProfile(newIndex) {
+		const { setTab } = this.props;
+		setTab(newIndex);
+	}
+
 	render() {
 		const { network, user, componentId } = this.props;
 
 		return (
 			<View style={styles.container}>
 				<View style={styles.header}>
-					<Text style={styles.headerTitle} numberOfLines={1}>{`Hi, ${user.first_name || user.name || user.email}!`}</Text>
+					<Text style={styles.headerTitle} numberOfLines={1}>
+						{`Hi, ${user.first_name || user.name || user.email}!`}
+					</Text>
 
 					<View style={styles.user}>
 						<View style={styles.userImageContainer}>
-							<TouchableOpacity
-								onPress={() => goToProfile(componentId)}
-								style={styles.headerButtonLeft}>
+							<TouchableOpacity onPress={() => this.goToProfile(3)} style={styles.headerButtonLeft}>
 								<ProfileImage picture={user.picture} source={user.pictureSource} />
 							</TouchableOpacity>
 						</View>
@@ -33,12 +38,8 @@ class Home extends Component {
 				</View>
 				{network.connected && (
 					<View style={styles.carouselContainer}>
-						<StackCarousel books={books} />
-						<SingleCarousel
-							books={books}
-							title="Recommended"
-							componentId={componentId}
-						/>
+						<StackCarousel books={books} parentId={componentId} />
+						<SingleCarousel books={books} title="Recommended" parentId={componentId} />
 					</View>
 				)}
 				{network.hasCheckedStatus && !network.connected && <NoConnection />}
@@ -47,7 +48,18 @@ class Home extends Component {
 	}
 }
 
-export default connect(state => ({
-	network: state.network,
-	user: state.user.profile
-}))(Home);
+const mapStateToProps = state => {
+	return {
+		network: state.network,
+		user: state.user.profile,
+		activeTab: state.activeTab.tab,
+	};
+};
+const mapDispatchToProps = {
+	setTab,
+};
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps,
+)(Home);

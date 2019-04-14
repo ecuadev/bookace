@@ -4,7 +4,7 @@ import { isTallIPhone, normalize } from '../../helpers';
 export default EStyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: '$screenBackground'
+		backgroundColor: '$screenBackground',
 	},
 	header: {
 		flexDirection: 'row',
@@ -14,48 +14,48 @@ export default EStyleSheet.create({
 		paddingTop: isTallIPhone() ? 49 : 23,
 		paddingBottom: 5,
 		borderColor: 'white',
-		borderBottomWidth: 0.5
+		borderBottomWidth: 0.5,
 	},
 	headerButtonLeftView: {
 		width: normalize(32),
-		height: normalize(32)
+		height: normalize(32),
 	},
 	headerButtonLeft: {
-		padding: normalize(5)
+		padding: normalize(5),
 	},
 	headerButtonLeftIcon: {
 		width: normalize(22),
 		height: normalize(22),
-		tintColor: '$primaryColor'
+		color: '$primaryColor',
 	},
 	headerTitle: {
 		color: '$primaryTextColor',
 		fontFamily: 'Montserrat-SemiBold',
-		fontSize: normalize(16)
+		fontSize: normalize(16),
 	},
 	headerButtonRightView: {
 		width: normalize(32),
-		height: normalize(32)
+		height: normalize(32),
 	},
 	headerButtonRight: {
-		padding: normalize(5)
+		padding: normalize(5),
 	},
 	headerButtonRightIcon: {
 		width: normalize(22),
 		height: normalize(22),
-		tintColor: '$primaryColor'
+		color: '$primaryColor',
 	},
 	bigTitle: {
 		color: '$primaryTextColor',
 		fontFamily: 'Montserrat-SemiBold',
 		fontSize: normalize(28),
-		marginBottom: normalize(29)
+		marginBottom: normalize(29),
 	},
 	scrollView: {
-		flex: 1
+		flex: 1,
 	},
 	content: {
 		padding: 20,
-		paddingTop: 10
-	}
+		paddingTop: 10,
+	},
 });

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Image, TextInput, View } from 'react-native';
+import { TextInput, View } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
-import Images from '@assets/images';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
 import styles from './styles';
 
@@ -22,8 +22,8 @@ export default class SearchBar extends Component {
 					style={styles.textBox}
 					underlineColorAndroid="rgba(0,0,0,0)"
 				/>
-
-				<Image source={Images.searchTabIcon} style={styles.icons} />
+				<Icon name="search" size={15} style={styles.icons} />
+				{/* <Image source={Images.searchTabIcon} style={styles.icons} /> */}
 			</View>
 		);
 	}
@@ -32,11 +32,11 @@ export default class SearchBar extends Component {
 SearchBar.propTypes = {
 	onChangeText: PropTypes.func,
 	value: PropTypes.string,
-	style: PropTypes.object
+	style: PropTypes.object,
 };
 
 SearchBar.defaultProps = {
 	onChangeText: () => {},
 	value: '',
-	style: null
+	style: null,
 };

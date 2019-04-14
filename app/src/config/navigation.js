@@ -9,9 +9,15 @@ export const goHome = () => {
 				id: 'BotomTabs',
 				children: [
 					{
-						component: {
+						stack: {
 							id: 'bottomTabHome',
-							name: 'bookace.Home',
+							children: [
+								{
+									component: {
+										name: 'bookace.Home',
+									},
+								},
+							],
 							options: {
 								bottomTab: {
 									icon: Images.homeTabIcon,
@@ -124,12 +130,21 @@ export const goToForgotPass = () =>
 	});
 
 // Pass tab index as int
-export const goToTab = index =>
+export const goToTab = index => {
+	Navigation.dismissAllModals();
+	Navigation.popToRoot('bottomTabSearch').catch(err => {
+		console.log(err);
+	});
+	Navigation.popToRoot('bottomTabProfile').catch(err => {
+		console.log(err);
+	});
+
 	Navigation.mergeOptions('BotomTabs', {
 		bottomTabs: {
 			currentTabIndex: index,
 		},
 	});
+};
 
 // Pass category as string
 export const goToCategory = category =>
@@ -142,7 +157,8 @@ export const goToCategory = category =>
 		},
 	});
 
-export const goToBook = (book, stack) =>
+export const goToBook = (book, stack) => {
+	console.log(stack);
 	Navigation.push(stack, {
 		component: {
 			name: 'bookace.Book',
@@ -151,6 +167,7 @@ export const goToBook = (book, stack) =>
 			},
 		},
 	});
+};
 
 export const goToProfileEdit = () =>
 	Navigation.push('bottomTabProfile', {

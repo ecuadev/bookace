@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Image, ScrollView, Text, TouchableOpacity, View, Animated } from 'react-native';
+import { ScrollView, Text, TouchableOpacity, View, Animated } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import Images from '@assets/images';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
 import { normalize } from '../../helpers';
 import styles from './styles';
@@ -13,7 +14,7 @@ export default class SlideContainer extends Component {
 
 		this.state = {
 			borderOpacity: new Animated.Value(0),
-			titleOpacity: new Animated.Value(0)
+			titleOpacity: new Animated.Value(0),
 		};
 	}
 
@@ -24,24 +25,24 @@ export default class SlideContainer extends Component {
 		if (!titleOpacity._value && offset > normalize(40)) {
 			Animated.timing(titleOpacity, {
 				toValue: 1,
-				duration: 100
+				duration: 100,
 			}).start();
 		} else if (titleOpacity._value && offset < normalize(40)) {
 			Animated.timing(titleOpacity, {
 				toValue: 0,
-				duration: 50
+				duration: 50,
 			}).start();
 		}
 
 		if (!borderOpacity._value && offset > normalize(16)) {
 			Animated.timing(borderOpacity, {
 				toValue: 1,
-				duration: 100
+				duration: 100,
 			}).start();
 		} else if (borderOpacity._value && offset < normalize(16)) {
 			Animated.timing(borderOpacity, {
 				toValue: 0,
-				duration: 50
+				duration: 50,
 			}).start();
 		}
 	}
@@ -53,17 +54,17 @@ export default class SlideContainer extends Component {
 			title,
 			children,
 			onLeftButtonPress,
-			leftIcon,
+
 			onRightButtonPress,
-			rightIcon,
+
 			style,
 			titleStyle,
-			stickyHeaderIndices
+			stickyHeaderIndices,
 		} = this.props;
 
 		const borderBottomColor = borderOpacity.interpolate({
 			inputRange: [0, 1],
-			outputRange: [EStyleSheet.value('$screenBackground'), EStyleSheet.value('$borderColor')]
+			outputRange: [EStyleSheet.value('$screenBackground'), EStyleSheet.value('$borderColor')],
 		});
 
 		return (
@@ -72,7 +73,7 @@ export default class SlideContainer extends Component {
 					<View style={styles.headerButtonLeftView}>
 						{!!onLeftButtonPress && (
 							<TouchableOpacity onPress={onLeftButtonPress} style={styles.headerButtonLeft}>
-								<Image source={leftIcon} style={styles.headerButtonLeftIcon} />
+								<Icon name="arrow-left" size={20} style={styles.headerButtonLeftIcon} />
 							</TouchableOpacity>
 						)}
 					</View>
@@ -82,7 +83,7 @@ export default class SlideContainer extends Component {
 					<View style={styles.headerButtonRightView}>
 						{!!onRightButtonPress && (
 							<TouchableOpacity onPress={onRightButtonPress} style={styles.headerButtonRight}>
-								<Image source={rightIcon} style={styles.headerButtonRightIcon} />
+								<Icon name="arrow-right" size={20} style={styles.headerButtonLeftIcon} />
 							</TouchableOpacity>
 						)}
 					</View>
@@ -93,9 +94,8 @@ export default class SlideContainer extends Component {
 					showsVerticalScrollIndicator={false}
 					onScroll={this.handleScroll.bind(this)}
 					scrollEventThrottle={1}
-					stickyHeaderIndices={
-						stickyHeaderIndices.map(i => i + 1)
-					}>
+					stickyHeaderIndices={stickyHeaderIndices.map(i => i + 1)}
+				>
 					<Text style={[styles.bigTitle, titleStyle]}>{title}</Text>
 					{children}
 				</ScrollView>
@@ -106,17 +106,14 @@ export default class SlideContainer extends Component {
 
 SlideContainer.propTypes = {
 	title: PropTypes.string,
-	children: PropTypes.oneOfType([
-		PropTypes.element,
-		PropTypes.arrayOf(PropTypes.element)
-	]),
+	children: PropTypes.oneOfType([PropTypes.element, PropTypes.arrayOf(PropTypes.element)]),
 	leftIcon: PropTypes.number,
 	onLeftButtonPress: PropTypes.func,
 	rightIcon: PropTypes.number,
 	onRightButtonPress: PropTypes.func,
 	stickyHeaderIndices: PropTypes.arrayOf(PropTypes.number),
 	style: PropTypes.object,
-	titleStyle: PropTypes.object
+	titleStyle: PropTypes.object,
 };
 
 SlideContainer.defaultProps = {
@@ -128,5 +125,5 @@ SlideContainer.defaultProps = {
 	onRightButtonPress: undefined,
 	stickyHeaderIndices: [],
 	style: null,
-	titleStyle: null
+	titleStyle: null,
 };

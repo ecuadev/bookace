@@ -2,28 +2,25 @@ import React, { Component } from 'react';
 import { Image, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 import styles from './styles';
-import { goToBook, goToTab, goToCategory } from '../../../config/navigation';
+import { goToBook } from '../../../config/navigation';
 
 class StackSlider extends Component {
-	//
-	onPressgoToBook() {
-		const { componentId } = this.props;
-		goToTab(1);
-		// goToCategory()
+	redirectToBook(category, book) {
+		goToBook(book, category);
 	}
 
 	render() {
-		const { book, goToBook } = this.props;
+		const { book, parentId } = this.props;
 		return (
 			<TouchableOpacity
 				activeOpacity={1}
 				style={styles.slideInnerContainer}
-				onPress={() => this.onPressgoToBook()}
+				onPress={() => this.redirectToBook(parentId, book)}
 			>
 				<Image
 					source={{
 						uri:
-							'https://images-na.ssl-images-amazon.com/images/I/51HSkTKlauL._SX346_BO1,204,203,200_.jpg'
+							'https://images-na.ssl-images-amazon.com/images/I/51HSkTKlauL._SX346_BO1,204,203,200_.jpg',
 					}}
 					style={styles.image}
 				/>
@@ -34,11 +31,11 @@ class StackSlider extends Component {
 
 StackSlider.propTypes = {
 	book: PropTypes.object.isRequired,
-	goToBook: PropTypes.func
+	parentId: PropTypes.string.isRequired,
 };
 
 StackSlider.defaultProps = {
-	goToBook: () => {}
+	goToBook: () => {},
 };
 
 export default StackSlider;

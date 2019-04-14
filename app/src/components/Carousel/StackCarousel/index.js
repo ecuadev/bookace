@@ -9,14 +9,14 @@ const { width } = Dimensions.get('window');
 
 class StackCarousel extends Component {
 	render() {
-		const { books } = this.props;
+		const { books, parentId } = this.props;
 
 		return (
 			<Carousel
 				loop
 				data={books}
 				activeSlideAlignment="start"
-				renderItem={({ item }) => <StackSlider book={item} />}
+				renderItem={({ item }) => <StackSlider book={item} parentId={parentId} />}
 				sliderWidth={width}
 				itemWidth={slideWidth}
 				layout="stack"
@@ -28,7 +28,8 @@ class StackCarousel extends Component {
 }
 
 StackCarousel.propTypes = {
-	books: PropTypes.array.isRequired
+	books: PropTypes.array.isRequired,
+	parentId: PropTypes.string.isRequired,
 };
 
 export default StackCarousel;

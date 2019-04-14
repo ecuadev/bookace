@@ -8,6 +8,7 @@ import validator from 'validator';
 import Config from 'react-native-config';
 import uuidv1 from 'uuid/v1';
 import Images from '@assets/images';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
 import DismissKeyboardView from '../../components/DismissKeyboardView';
 import ProfileImage from '../../components/ProfileImage';
@@ -23,7 +24,7 @@ import {
 	updateUserPicture,
 	facebookLogin,
 	googleLogin,
-	loggout
+	loggout,
 } from '../../actions/user';
 import { setAlert, setLoading } from '../../actions/global';
 import { goToLogin } from '../../config/navigation';
@@ -37,16 +38,16 @@ class ProfileEdit extends Component {
 		this.genderOptions = [
 			{
 				value: '',
-				label: ''
+				label: '',
 			},
 			{
 				value: 'male',
-				label: 'Male'
+				label: 'Male',
 			},
 			{
 				value: 'female',
-				label: 'Female'
-			}
+				label: 'Female',
+			},
 		];
 
 		this.state = {
@@ -57,11 +58,10 @@ class ProfileEdit extends Component {
 				gender: user.gender,
 				birthday: user.birthday,
 				password: null,
-				passwordRewrite: null
+				passwordRewrite: null,
 			},
-			errors: {}
+			errors: {},
 		};
-
 
 		const { client } = this.props;
 	}
@@ -96,14 +96,16 @@ class ProfileEdit extends Component {
 
 		if (valid) {
 			setLoading(true);
-			updateUser(user._id, form, client).then(() => {
-				setAlert('success', 'Updates succesfully saved.');
-				setLoading(false);
-			}).catch(error => {
-				console.log('error', error);
-				setAlert('error', 'There was an error saving your data.');
-				setLoading(false);
-			});
+			updateUser(user._id, form, client)
+				.then(() => {
+					setAlert('success', 'Updates succesfully saved.');
+					setLoading(false);
+				})
+				.catch(error => {
+					console.log('error', error);
+					setAlert('error', 'There was an error saving your data.');
+					setLoading(false);
+				});
 		} else {
 			setAlert('error', 'Fix your errors and try again.');
 		}
@@ -111,7 +113,10 @@ class ProfileEdit extends Component {
 
 	isLinked(service) {
 		const { client } = this.props;
-		return !!client.auth.user && !!client.auth.user.identities.find(identity => identity.providerType === service);
+		return (
+			!!client.auth.user &&
+			!!client.auth.user.identities.find(identity => identity.providerType === service)
+		);
 	}
 
 	async handleLink(service) {
@@ -139,7 +144,7 @@ class ProfileEdit extends Component {
 		const options = {
 			quality: 0.5,
 			base64: true,
-			title: 'Select Profile Picture'
+			title: 'Select Profile Picture',
 		};
 
 		ImagePicker.showImagePicker(options, response => {
@@ -151,30 +156,37 @@ class ProfileEdit extends Component {
 
 	uploadImage(image) {
 		const { setAlert, setLoading, user, client, updateUserPicture } = this.props;
-		const filename = `${Config.AWS_PROFILE_PICTURES_FOLDER_NAME}${uuidv1()}.${image.fileName.split('.').pop()}`;
+		const filename = `${Config.AWS_PROFILE_PICTURES_FOLDER_NAME}${uuidv1()}.${image.fileName
+			.split('.')
+			.pop()}`;
 
 		setLoading(true);
 
-		client.callFunction('uploadPicture', [
-			image.data,
-			filename,
-			image.type
-		]).then(result => {
-			updateUserPicture(user._id, {
-				picture: filename
-			}, client).then(() => {
-				setAlert('success', 'Image succesfully updated.');
-				setLoading(false);
-			}).catch(error => {
+		client
+			.callFunction('uploadPicture', [image.data, filename, image.type])
+			.then(result => {
+				updateUserPicture(
+					user._id,
+					{
+						picture: filename,
+					},
+					client,
+				)
+					.then(() => {
+						setAlert('success', 'Image succesfully updated.');
+						setLoading(false);
+					})
+					.catch(error => {
+						console.log('error', error);
+						setAlert('error', 'There was an error saving the image.');
+						setLoading(false);
+					});
+			})
+			.catch(error => {
 				console.log('error', error);
-				setAlert('error', 'There was an error saving the image.');
+				setAlert('error', 'There was an error uploading the image.');
 				setLoading(false);
 			});
-		}).catch(error => {
-			console.log('error', error);
-			setAlert('error', 'There was an error uploading the image.');
-			setLoading(false);
-		});
 	}
 
 	render() {
@@ -185,8 +197,12 @@ class ProfileEdit extends Component {
 			<View style={styles.container}>
 				<DismissKeyboardView style={styles.header}>
 					<View style={styles.headerButtons}>
-						<TouchableOpacity onPress={() => Navigation.pop(componentId)} style={styles.headerButtonBack}>
-							<Image source={Images.backIcon} style={styles.headerButtonBackIcon} />
+						<TouchableOpacity
+							onPress={() => Navigation.pop(componentId)}
+							style={styles.headerButtonBack}
+						>
+							<Icon name="arrow-left" size={20} style={styles.headerButtonBackIcon} />
+							{/* <Image source={Images.backIcon} style={styles.headerButtonBackIcon} /> */}
 						</TouchableOpacity>
 						<TouchableOpacity style={styles.headerButtonSave} onPress={this.handleSave.bind(this)}>
 							<Text style={styles.headerButtonSaveText}>Save</Text>
@@ -195,7 +211,9 @@ class ProfileEdit extends Component {
 					<View style={styles.imageBorder}>
 						<ProfileImage picture={user.picture} source={user.pictureSource} />
 					</View>
-					<Button style={styles.imageButton} onPress={this.handleChoosePhoto.bind(this)}>Change picture</Button>
+					<Button style={styles.imageButton} onPress={this.handleChoosePhoto.bind(this)}>
+						Change picture
+					</Button>
 				</DismissKeyboardView>
 				<ScrollView style={styles.body} showsVerticalScrollIndicator={false}>
 					<View style={styles.section}>
@@ -263,7 +281,13 @@ class ProfileEdit extends Component {
 						<View style={styles.sectionForm}>
 							<View style={[styles.sectionField, styles.sectionFieldSocial]}>
 								<View style={styles.socialFieldService}>
-									<Image source={Images.facebookAuthIcon} style={styles.socialFieldIcon} />
+									<Icon
+										name="facebook-square"
+										size={20}
+										style={styles.socialFieldIcon}
+										color="#3C5A99"
+									/>
+
 									<Text style={styles.socialFieldLabel}>Link with facebook</Text>
 								</View>
 								<Switch
@@ -274,7 +298,12 @@ class ProfileEdit extends Component {
 							</View>
 							<View style={[styles.sectionField, styles.sectionFieldSocial]}>
 								<View style={styles.socialFieldService}>
-									<Image source={Images.googleAuthIcon} style={styles.socialFieldIcon} />
+									<Icon
+										name="google-plus-g"
+										size={20}
+										style={styles.socialFieldIcon}
+										color="#CC3333"
+									/>
 									<Text style={styles.socialFieldLabel}>Link with google</Text>
 								</View>
 								<Switch
@@ -285,10 +314,11 @@ class ProfileEdit extends Component {
 							</View>
 						</View>
 						<View style={styles.buttons}>
-							<Button onPress={this.handleLogout.bind(this)}>
-								{'Sign out'}
-							</Button>
-							<LinkButton containerStyle={styles.deleteAccountLink} style={styles.deleteAccountText}>
+							<Button onPress={this.handleLogout.bind(this)}>{'Sign out'}</Button>
+							<LinkButton
+								containerStyle={styles.deleteAccountLink}
+								style={styles.deleteAccountText}
+							>
 								{'Delete account'}
 							</LinkButton>
 						</View>
@@ -302,7 +332,7 @@ class ProfileEdit extends Component {
 export default connect(
 	state => ({
 		client: state.global.client,
-		user: state.user.profile
+		user: state.user.profile,
 	}),
-	{ updateUser, updateUserPicture, setAlert, setLoading, loggout }
+	{ updateUser, updateUserPicture, setAlert, setLoading, loggout },
 )(ProfileEdit);

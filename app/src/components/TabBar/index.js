@@ -1,44 +1,30 @@
 import React, { Component } from 'react';
-import { View, TouchableOpacity, Image } from 'react-native';
-import { Navigation } from 'react-native-navigation';
+import { View, TouchableOpacity } from 'react-native';
 import * as Animatable from 'react-native-animatable';
-import Images from '@assets/images';
-
+import { connect } from 'react-redux';
+import Icon from 'react-native-vector-icons/FontAwesome5';
+import { setTab } from '../../actions/activeTab';
 import { isTallIPhone } from '../../helpers';
 import { showCamera, hideCamera } from '../../config/navigation';
 import styles from './styles';
 
-export default class TabBar extends Component {
+class TabBar extends Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			activeTab: 0
+			tabs: ['home', 'search', 'camera', 'user-friends', 'user-alt'],
 		};
 	}
 
 	handleTabClick(newIndex) {
-		this.setState({ activeTab: newIndex });
-
-		Navigation.dismissAllModals();
-
-		Navigation.popToRoot('bottomTabSearch').catch(err => {
-			console.log(err);
-		});
-		Navigation.popToRoot('bottomTabProfile').catch(err => {
-			console.log(err);
-		});
-
-		Navigation.mergeOptions('BotomTabs', {
-			bottomTabs: {
-				currentTabIndex: newIndex
-			}
-		});
+		const { setTab } = this.props;
+		setTab(newIndex);
 	}
 
 	handleCameraClick() {
 		showCamera({
-			handleClose: this.handleCameraBack.bind(this)
+			handleClose: this.handleCameraBack.bind(this),
 		});
 		this.tabBar.transitionTo({ bottom: isTallIPhone() ? -95 : -60 }, 300, 'ease');
 	}
@@ -50,47 +36,64 @@ export default class TabBar extends Component {
 	}
 
 	render() {
-		const { activeTab } = this.state;
+		const { activeTab } = this.props;
+		const { tabs } = this.state;
 
 		return (
-			<Animatable.View style={styles.tabBar} ref={ref => { this.tabBar = ref; }}>
-				<TouchableOpacity
-					activeOpacity={1}
-					onPress={() => this.handleTabClick(0)}
-					style={styles.tab}>
-					<Image source={Images.homeTabIcon} style={[styles.image, activeTab === 0 && styles.imageActive]} />
-				</TouchableOpacity>
-
-				<TouchableOpacity
-					activeOpacity={1}
-					onPress={() => this.handleTabClick(1)}
-					style={styles.tab}>
-					<Image source={Images.searchTabIcon} style={[styles.image, activeTab === 1 && styles.imageActive]} />
-				</TouchableOpacity>
-
-				<TouchableOpacity
-					activeOpacity={1}
-					onPress={this.handleCameraClick.bind(this)}
-					style={[styles.cameraTab]}>
-					<View style={[styles.cameraTabInner]}>
-						<Image source={Images.cameraTabIcon} style={[styles.image, styles.cameraImage]} />
-					</View>
-				</TouchableOpacity>
-
-				<TouchableOpacity
-					activeOpacity={1}
-					onPress={() => this.handleTabClick(2)}
-					style={styles.tab}>
-					<Image source={Images.socialTabIcon} style={[styles.image, activeTab === 2 && styles.imageActive]} />
-				</TouchableOpacity>
-
-				<TouchableOpacity
-					activeOpacity={1}
-					onPress={() => this.handleTabClick(3)}
-					style={styles.tab}>
-					<Image source={Images.profileTabIcon} style={[styles.image, activeTab === 3 && styles.imageActive]} />
-				</TouchableOpacity>
+			<Animatable.View
+				style={styles.tabBar}
+				ref={ref => {
+					this.tabBar = ref;
+				}}
+			>
+				{tabs.map(tab => {
+					let tabIndex = tabs.indexOf(tab);
+					// this is because camera is not a tab but it is included in the array
+					if (tabIndex >= 2) {
+						tabIndex -= 1;
+					}
+					return tab === 'camera' ? (
+						<TouchableOpacity
+							activeOpacity={1}
+							onPress={this.handleCameraClick.bind(this)}
+							style={[styles.cameraTab]}
+							key={tabIndex}
+						>
+							<View style={[styles.cameraTabInner]}>
+								<Icon name={`${tab}`} size={30} style={[styles.image, styles.cameraImage]} />
+							</View>
+						</TouchableOpacity>
+					) : (
+						<TouchableOpacity
+							activeOpacity={1}
+							onPress={() => this.handleTabClick(tabIndex)}
+							style={styles.tab}
+							key={tab}
+						>
+							<View>
+								<Icon
+									name={`${tab}`}
+									size={15}
+									style={[styles.image, activeTab === tabIndex && styles.imageActive]}
+								/>
+							</View>
+						</TouchableOpacity>
+					);
+				})}
 			</Animatable.View>
 		);
 	}
 }
+
+function mapStateToProps(state) {
+	return {
+		activeTab: state.activeTab.tab,
+	};
+}
+const mapDispatchToProps = {
+	setTab,
+};
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps,
+)(TabBar);

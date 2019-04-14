@@ -8,7 +8,7 @@ export default EStyleSheet.create({
 		flexDirection: 'row',
 		alignItems: 'center',
 		backgroundColor: '$searchBarColor',
-		paddingHorizontal: normalize(20)
+		paddingHorizontal: normalize(20),
 	},
 	textBox: {
 		color: '$lightTextColor',
@@ -16,11 +16,11 @@ export default EStyleSheet.create({
 		paddingHorizontal: normalize(15),
 		flex: 1,
 		fontSize: normalize(15),
-		lineHeight: normalize(17)
+		lineHeight: normalize(17),
 	},
 	icons: {
 		width: normalize(20),
 		height: normalize(20),
-		tintColor: '$lightTextColor'
-	}
+		color: '$lightTextColor',
+	},
 });

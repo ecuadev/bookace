@@ -18,7 +18,7 @@ export default class Search extends Component {
 		super(props);
 
 		this.state = {
-			searchValue: ''
+			searchValue: '',
 		};
 	}
 
@@ -55,11 +55,20 @@ export default class Search extends Component {
 					</View>
 				</ImageBackground>
 				<View style={styles.paginator}>
-					<ScrollView style={styles.categories} showsVerticalScrollIndicator={false} keyboardDismissMode="on-drag">
+					<ScrollView
+						style={styles.categories}
+						showsVerticalScrollIndicator={false}
+						keyboardDismissMode="on-drag"
+					>
 						<Text style={styles.title}>Categories</Text>
 						<CategoryGrid onCategoryPress={this.onCategoryPress.bind(this)} />
 					</ScrollView>
-					<Animatable.View ref={ref => { this.resultsView = ref; }} style={styles.results}>
+					<Animatable.View
+						ref={ref => {
+							this.resultsView = ref;
+						}}
+						style={styles.results}
+					>
 						<SearchResults onBookPress={book => goToBook(book, componentId)} />
 					</Animatable.View>
 				</View>
