@@ -17,8 +17,12 @@ const Book = ({ data, onPress, style }) => (
 				imageSize={15}
 				style={styles.bookRating}
 			/>
-			<Text style={styles.bookTitle} numberOfLines={2}>{data.title}</Text>
-			<Text style={styles.bookAuthors} numberOfLines={2}>{data.authors && data.authors.join(', ')}</Text>
+			<Text style={styles.bookTitle} numberOfLines={2}>
+				{data.title}
+			</Text>
+			<Text style={styles.bookAuthors} numberOfLines={2}>
+				{data.authors && data.authors.join(', ')}
+			</Text>
 		</View>
 	</TouchableOpacity>
 );
@@ -26,15 +30,12 @@ const Book = ({ data, onPress, style }) => (
 Book.propTypes = {
 	data: PropTypes.object.isRequired,
 	onPress: PropTypes.func,
-	style: PropTypes.oneOfType([
-		PropTypes.arrayOf(PropTypes.object),
-		PropTypes.object
-	])
+	style: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.object), PropTypes.object]),
 };
 
 Book.defaultProps = {
 	onPress: () => {},
-	style: null
+	style: null,
 };
 
 export default Book;

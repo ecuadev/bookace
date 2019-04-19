@@ -202,7 +202,6 @@ class ProfileEdit extends Component {
 							style={styles.headerButtonBack}
 						>
 							<Icon name="arrow-left" size={20} style={styles.headerButtonBackIcon} />
-							{/* <Image source={Images.backIcon} style={styles.headerButtonBackIcon} /> */}
 						</TouchableOpacity>
 						<TouchableOpacity style={styles.headerButtonSave} onPress={this.handleSave.bind(this)}>
 							<Text style={styles.headerButtonSaveText}>Save</Text>

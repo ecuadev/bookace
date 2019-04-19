@@ -6,6 +6,7 @@ const images = {
 	calendarIcon: require('./global/calendar.png'),
 	caretDown: require('./global/caret-down.png'),
 	noInternet: require('./global/no-connection.png'),
+	star: require('./global/star.png'),
 	// Login/Signup
 	authLogo: require('./auth/app-logo.png'),
 	authBackground: require('./auth/background.png'),
@@ -28,7 +29,7 @@ const images = {
 	categoryHorror: require('./categories/horror.jpg'),
 	// Profile
 	profilePic: require('./profile/profile-pic.png'),
-	profileEditIcon: require('./profile/edit.png')
+	profileEditIcon: require('./profile/edit.png'),
 };
 
 export default images;

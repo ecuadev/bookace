@@ -57,6 +57,7 @@ class Category extends Component {
 	render() {
 		const { componentId, category } = this.props;
 		const { noNetwork, books } = this.state;
+		console.log(books);
 		return (
 			<SlideContainer
 				title={`${category.name} Books`}
